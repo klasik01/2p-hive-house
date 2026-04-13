@@ -1,30 +1,26 @@
 import { useState } from "react";
-import type { T } from "../i18n";
+import type { VoucherFormConfig } from "../types/content";
 import { createGiftVoucher, generateVoucherCode } from "../utils/contentStorage";
 
 type Props = {
-  t: T;
+  config: VoucherFormConfig;
   onClose: () => void;
 };
 
-const PRICE_PER_NIGHT = 3500;
-
-export function VoucherModal({ t, onClose }: Props) {
-  const tv = t.voucher;
-
+export function VoucherModal({ config, onClose }: Props) {
   const [form, setForm] = useState({
     recipientName: "",
     recipientEmail: "",
     senderName: "",
     senderEmail: "",
     message: "",
-    nights: 1,
+    nights: config.nightOptions[0] ?? 1,
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const price = form.nights * PRICE_PER_NIGHT;
+  const price = form.nights * config.pricePerNight;
 
   const set = (k: keyof typeof form, v: string | number) =>
     setForm((f) => ({ ...f, [k]: v }));
@@ -41,7 +37,7 @@ export function VoucherModal({ t, onClose }: Props) {
     try {
       const now = new Date();
       const validUntil = new Date(now);
-      validUntil.setFullYear(validUntil.getFullYear() + 1);
+      validUntil.setMonth(validUntil.getMonth() + config.validityMonths);
 
       await createGiftVoucher({
         recipientName: form.recipientName,
@@ -69,7 +65,7 @@ export function VoucherModal({ t, onClose }: Props) {
     <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal" role="dialog" aria-modal="true">
         <div className="modal-header">
-          <h3>🎁 {tv.title}</h3>
+          <h3>🎁 {config.modalTitle}</h3>
           <button className="modal-close" onClick={onClose} aria-label="Zavřít">✕</button>
         </div>
 
@@ -80,86 +76,59 @@ export function VoucherModal({ t, onClose }: Props) {
               Poukázka odeslána!
             </h4>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "14px", marginBottom: "24px" }}>
-              {tv.success}
+              {config.successMessage}
             </p>
             <button className="btn btn-primary" onClick={onClose}>Zavřít</button>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", marginBottom: "24px" }}>
-              {tv.desc}
+              {config.modalDesc}
             </p>
 
             <div className="form-group">
-              <label>{tv.name_label} *</label>
-              <input
-                type="text"
-                placeholder={tv.name_placeholder}
-                value={form.recipientName}
-                onChange={(e) => set("recipientName", e.target.value)}
-                required
-              />
+              <label>Jméno příjemce *</label>
+              <input type="text" placeholder="Jana Nováková" value={form.recipientName}
+                onChange={(e) => set("recipientName", e.target.value)} required />
             </div>
 
             <div className="form-group">
-              <label>{tv.email_label} *</label>
-              <input
-                type="email"
-                placeholder={tv.email_placeholder}
-                value={form.recipientEmail}
-                onChange={(e) => set("recipientEmail", e.target.value)}
-                required
-              />
+              <label>E-mail příjemce *</label>
+              <input type="email" placeholder="jana@example.cz" value={form.recipientEmail}
+                onChange={(e) => set("recipientEmail", e.target.value)} required />
             </div>
 
             <div className="form-group">
-              <label>{tv.sender_label} *</label>
-              <input
-                type="text"
-                placeholder={tv.sender_placeholder}
-                value={form.senderName}
-                onChange={(e) => set("senderName", e.target.value)}
-                required
-              />
+              <label>Vaše jméno (odesílatel) *</label>
+              <input type="text" placeholder="Petr Novák" value={form.senderName}
+                onChange={(e) => set("senderName", e.target.value)} required />
             </div>
 
             <div className="form-group">
-              <label>{tv.sender_email_label} *</label>
-              <input
-                type="email"
-                placeholder={tv.sender_email_placeholder}
-                value={form.senderEmail}
-                onChange={(e) => set("senderEmail", e.target.value)}
-                required
-              />
+              <label>Váš e-mail *</label>
+              <input type="email" placeholder="petr@example.cz" value={form.senderEmail}
+                onChange={(e) => set("senderEmail", e.target.value)} required />
             </div>
 
             <div className="form-group">
-              <label>{tv.nights_label}</label>
-              <select
-                value={form.nights}
-                onChange={(e) => set("nights", Number(e.target.value))}
-              >
-                {[1, 2, 3, 4, 5, 7].map((n) => (
+              <label>Počet nocí</label>
+              <select value={form.nights} onChange={(e) => set("nights", Number(e.target.value))}>
+                {config.nightOptions.map((n) => (
                   <option key={n} value={n}>
-                    {n} {n === 1 ? "noc" : n < 5 ? "noci" : "nocí"} — {n * PRICE_PER_NIGHT} Kč
+                    {n} {n === 1 ? "noc" : n < 5 ? "noci" : "nocí"} — {(n * config.pricePerNight).toLocaleString("cs-CZ")} Kč
                   </option>
                 ))}
               </select>
             </div>
 
             <div className="form-group">
-              <label>{tv.message_label}</label>
-              <textarea
-                placeholder={tv.message_placeholder}
-                value={form.message}
-                onChange={(e) => set("message", e.target.value)}
-                rows={3}
-              />
+              <label>Osobní vzkaz (nepovinné)</label>
+              <textarea placeholder="Přeji krásný pobyt..." value={form.message}
+                onChange={(e) => set("message", e.target.value)} rows={3} />
             </div>
 
             <div className="form-price">
-              <span>{tv.price_label}</span>
+              <span>Cena poukázky</span>
               <strong>{price.toLocaleString("cs-CZ")} Kč</strong>
             </div>
 
@@ -167,10 +136,10 @@ export function VoucherModal({ t, onClose }: Props) {
 
             <div className="form-actions">
               <button type="button" className="btn btn-secondary" onClick={onClose}>
-                {tv.cancel_btn}
+                {config.cancelButtonLabel}
               </button>
               <button type="submit" className="btn btn-primary" disabled={loading}>
-                {loading ? "Zpracovávám..." : `💳 ${tv.pay_btn}`}
+                {loading ? "Zpracovávám..." : `💳 ${config.payButtonLabel}`}
               </button>
             </div>
           </form>

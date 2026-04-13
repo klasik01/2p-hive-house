@@ -1,9 +1,29 @@
 import { useEffect, useMemo, useState } from "react";
 import { cs } from "./i18n";
-import type { CookieConsentState, Promotion } from "./types/content";
+import type {
+  ApiaryContent,
+  CookieConsentState,
+  FishingContent,
+  PermitFormConfig,
+  Promotion,
+  RoomContent,
+  SurroundingPlace,
+  SurroundingsPageContent,
+  VoucherFormConfig,
+} from "./types/content";
 import { getCookieConsent, setCookieConsent } from "./utils/cookieConsent";
 import { initAnalytics, disableAnalytics, trackPageView } from "./utils/analytics";
-import { subscribePromotions } from "./utils/contentStorage";
+import {
+  newRoomContent,
+  subscribeApiaryContent,
+  subscribeFishingContent,
+  subscribePermitFormConfig,
+  subscribePromotions,
+  subscribeRoomContent,
+  subscribeSurroundingPlaces,
+  subscribeSurroundingsPageContent,
+  subscribeVoucherFormConfig,
+} from "./utils/contentStorage";
 import { useCurrentLocation } from "./lib/router";
 
 import { Navbar } from "./components/Navbar";
@@ -24,11 +44,82 @@ import "./styles/main.scss";
 
 const t = cs;
 
+const defaultFishing: FishingContent = {
+  heroEyebrow: "Rybaření",
+  heroTitle: "Rybník přímo u chalupy",
+  heroHighlight: "pro hosty i veřejnost",
+  heroDescription: "Klidné rybaření v přírodním prostředí s výhledem na lesy.",
+  stepsTitle: "Jak si objednat povolení",
+  steps: [],
+  infoCards: [],
+  ctaLabel: "Objednat povolení",
+  ctaHref: "#povoleni",
+};
+
+const defaultVoucherConfig: VoucherFormConfig = {
+  modalTitle: "Dárková poukázka",
+  modalDesc: "Darujte nezapomenutelný zážitek. Poukázka na pobyt v 2P Hive House.",
+  successMessage: "Poukázka byla odeslána! Potvrzení přijde na váš e-mail.",
+  pricePerNight: 3500,
+  nightOptions: [1, 2, 3, 4, 5, 7],
+  validityMonths: 12,
+  payButtonLabel: "Zaplatit a odeslat",
+  cancelButtonLabel: "Zrušit",
+};
+
+const defaultPermitConfig: PermitFormConfig = {
+  modalTitle: "Rybářská povolenka",
+  modalDesc: "Sportovní rybolov na soukromém rybníku přímo u objektu.",
+  successMessage: "Povolenka zarezervována! Potvrzení přijde na váš e-mail.",
+  priceAdult: 150,
+  priceFirefighter: 75,
+  priceChild: 0,
+  maxPersons: 4,
+  discountFirefighterEnabled: true,
+  discountFirefighterLabel: "Jsem hasič z Hojanovic",
+  discountChildEnabled: true,
+  discountChildLabel: "Jsem dítě z Hojanovic",
+  payButtonLabel: "Zaplatit a rezervovat",
+  cancelButtonLabel: "Zrušit",
+};
+
+const defaultSurroundingsPage: SurroundingsPageContent = {
+  heroEyebrow: "Okolí",
+  heroTitle: "Objevujte okolí",
+  heroHighlight: "krok za krokem",
+  heroDescription: "Hojnovice a okolí nabízejí spoustu zážitků.",
+  sectionTitle: "Tipy na výlety",
+  sectionSubtitle: "",
+};
+
+const defaultApiary: ApiaryContent = {
+  heroEyebrow: "Včelín & Glamping",
+  heroTitle: "Příroda, klid",
+  heroHighlight: "a vůně medu",
+  heroDescription: "Glamping stan u lesa s přímým výhledem na včelín. Zažijte přírodu bez kompromisů.",
+  glampingTitle: "Glamping pod hvězdami",
+  glampingSubtitle: "Komfort v přírodě",
+  glampingCards: [],
+  beeLivingTitle: "Bydlení se včelami",
+  beeLivingHighlight: "Harmonie člověka a přírody",
+  beeLivingText: "Včely jsou naši nejbližší sousedé.",
+  apiTherapyTitle: "API terapie",
+  apiTherapyHighlight: "Léčba přírodou",
+  apiTherapyText: "Apiterapie využívá produkty včel ke zlepšení zdraví a pohody.",
+};
+
 function App() {
   const location = useCurrentLocation();
   const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 
   const [promotions, setPromotions] = useState<Promotion[]>([]);
+  const [roomContent, setRoomContent] = useState<RoomContent>(newRoomContent());
+  const [fishingContent, setFishingContent] = useState<FishingContent>(defaultFishing);
+  const [surroundingsPage, setSurroundingsPage] = useState<SurroundingsPageContent>(defaultSurroundingsPage);
+  const [surroundingPlaces, setSurroundingPlaces] = useState<SurroundingPlace[]>([]);
+  const [apiaryContent, setApiaryContent] = useState<ApiaryContent>(defaultApiary);
+  const [voucherConfig, setVoucherConfig] = useState<VoucherFormConfig>(defaultVoucherConfig);
+  const [permitConfig, setPermitConfig] = useState<PermitFormConfig>(defaultPermitConfig);
   const [cookieConsent, setCookieConsentState] = useState<CookieConsentState>(() => getCookieConsent());
   const [showVoucher, setShowVoucher] = useState(false);
   const [showFishing, setShowFishing] = useState(false);
@@ -47,6 +138,62 @@ function App() {
     const unsub = subscribePromotions(
       (promos) => setPromotions(promos),
       () => setPromotions([]),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeRoomContent(
+      (room) => setRoomContent(room),
+      () => setRoomContent(newRoomContent()),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeFishingContent(
+      (content) => setFishingContent(content),
+      () => setFishingContent(defaultFishing),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeApiaryContent(
+      (content) => setApiaryContent(content),
+      () => setApiaryContent(defaultApiary),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeSurroundingsPageContent(
+      (content) => setSurroundingsPage(content),
+      () => setSurroundingsPage(defaultSurroundingsPage),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeSurroundingPlaces(
+      (places) => setSurroundingPlaces(places),
+      () => setSurroundingPlaces([]),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeVoucherFormConfig(
+      (cfg) => setVoucherConfig(cfg),
+      () => setVoucherConfig(defaultVoucherConfig),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribePermitFormConfig(
+      (cfg) => setPermitConfig(cfg),
+      () => setPermitConfig(defaultPermitConfig),
     );
     return () => unsub();
   }, []);
@@ -107,13 +254,13 @@ function App() {
 
   let page = <HomePage {...sharedProps} />;
   if (location.pathname === "/ubytovani") {
-    page = <AccommodationPage t={t} onVoucherClick={() => setShowVoucher(true)} />;
+    page = <AccommodationPage onVoucherClick={() => setShowVoucher(true)} room={roomContent} />;
   } else if (location.pathname === "/rybareni") {
-    page = <FishingPage t={t} onFishingClick={() => setShowFishing(true)} />;
+    page = <FishingPage fishing={fishingContent} onFishingClick={() => setShowFishing(true)} />;
   } else if (location.pathname === "/vylety") {
-    page = <TripsPage t={t} />;
+    page = <TripsPage pageContent={surroundingsPage} places={surroundingPlaces} />;
   } else if (location.pathname === "/vcelin-glamping") {
-    page = <ApiaryGlampingPage t={t} />;
+    page = <ApiaryGlampingPage apiary={apiaryContent} />;
   } else if (location.pathname === "/rezervace") {
     page = <ReservationPage t={t} />;
   }
@@ -126,8 +273,8 @@ function App() {
 
       <Footer t={t} onVoucherClick={() => setShowVoucher(true)} onFishingClick={() => setShowFishing(true)} />
 
-      {showVoucher && <VoucherModal t={t} onClose={() => setShowVoucher(false)} />}
-      {showFishing && <FishingModal t={t} onClose={() => setShowFishing(false)} />}
+      {showVoucher && <VoucherModal config={voucherConfig} onClose={() => setShowVoucher(false)} />}
+      {showFishing && <FishingModal config={permitConfig} onClose={() => setShowFishing(false)} />}
 
       <PromoPopup items={activePromotions} />
 
