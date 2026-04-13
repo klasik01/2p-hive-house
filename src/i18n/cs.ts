@@ -1,0 +1,321 @@
+// ============================================================
+// 2P HIVE HOUSE — Překlady (čeština)
+// ============================================================
+
+export const cs = {
+  nav: {
+    vcelin: "Včelín",
+    glamping: "Glamping",
+    ubytovani: "Ubytování",
+    okolí: "Okolí",
+    rezervace: "Rezervace",
+    poukázka: "Poukázka",
+    rybareni: "Rybaření",
+  },
+
+  hero: {
+    eyebrow: "Glamping · Apiterapie · Příroda",
+    title: "Usněte nad",
+    titleAccent: "včelími úly",
+    desc: "Unikátní glamping nedaleko vodní nádrže Švihov. Apiterapie, vlastní med, soukromý rybník — maximální pohodlí v srdci přírody.",
+    cta_rezervace: "Rezervovat pobyt",
+    cta_poukázka: "Koupit poukázku",
+    stat_1_num: "27",
+    stat_1_label: "m² luxusního prostoru",
+    stat_2_num: "2",
+    stat_2_label: "Osoby, naprosté soukromí",
+    stat_3_num: "∞",
+    stat_3_label: "Klidu a přírody",
+  },
+
+  trust: [
+    "Apiterapie pod postelí",
+    "Soukromý rybník",
+    "Vlastní med",
+    "Blízko nádrže Švihov",
+    "Moderní technologie",
+    "Naprosté soukromí",
+  ],
+
+  apiary: {
+    eyebrow: "Včelín",
+    title: "Bydlení",
+    titleAccent: "se včelami",
+    desc: "Naše postel je umístěna přímo nad živými včelími úly. Tišiúčinkující vibrace, vůně medu a vosku a léčivé biorezonanční pole včel prostoupí vaše tělo i mysl. Toto je apiterapie v té nejčistší podobě.",
+    features: [
+      "Prosklený úl pro pozorování",
+      "Vibrace a zvuk úlů",
+      "Léčivá vůně vosku a medu",
+      "Přirozené biorezonanční pole",
+      "Včelaři na místě",
+      "Ochutnávka medu",
+    ],
+    badge: "100% přirozené",
+    img_alt_main: "Výhled na včelíny",
+    img_alt_accent: "Včelí úly zblízka",
+    cta: "Více o apiterapii",
+  },
+
+  glamping: {
+    eyebrow: "Glamping",
+    title: "Proč je",
+    titleAccent: "glamping tak skvělý?",
+    desc: "Příroda bez kompromisů. Luxus bez hranic. Glamping spojuje to nejlepší z obou světů — přímý kontakt s přírodou s veškerým komfortem moderního ubytování.",
+    card_1_title: "Příroda na dosah",
+    card_1_desc: "Probuďte se do zpěvu ptáků, vyjděte bosí na louku — a přitom máte za sebou luxusní postel.",
+    card_2_title: "Absolutní soukromí",
+    card_2_desc: "Váš vlastní kousek světa. Žádní sousedé, žádný hluk — jen vy a příroda.",
+    card_3_title: "Nezapomenutelný zážitek",
+    card_3_desc: "Kombinace apiterapie, venkovního koupání, rybolovu a přírody je prostě unikátní.",
+    stat_1: "⭐ 4.9",
+    stat_1_label: "Průměrné hodnocení",
+    stat_2: "200+",
+    stat_2_label: "Spokojených hostů",
+    stat_3: "4×",
+    stat_3_label: "Vrátilo se zpět",
+    stat_4: "5 min",
+    stat_4_label: "K rybníku pěšky",
+  },
+
+  accommodation: {
+    eyebrow: "Ubytování",
+    title: "Váš dům",
+    titleAccent: "v přírodě",
+    desc: "27 m² promyšleně navržený prostor plný komfortu. Každý detail je dotažen do dokonalosti.",
+    features: [
+      { icon: "🛏️", label: "Luxusní postel s matrací" },
+      { icon: "🚿", label: "Koupelna se sprchou" },
+      { icon: "🍳", label: "Malá kuchyň" },
+      { icon: "🌡️", label: "Klimatizace / topení" },
+      { icon: "📶", label: "Wi-Fi zdarma" },
+      { icon: "🚗", label: "Parkování u objektu" },
+      { icon: "🌿", label: "Terasa s výhledem" },
+      { icon: "🐝", label: "Apiterapeutická platforma" },
+    ],
+    extras: [
+      {
+        title: "Co vás čeká",
+        desc: "Ranní mlha nad loukou, bzukot úlů, vůně medu — a pak horká sprcha a snídaně z lokálních produktů.",
+      },
+      {
+        title: "Co je v okolí",
+        desc: "Výlety k vodní nádrži Švihov, turistické trasy, hrady Švihov a Klenová, historické centrum Klatov.",
+      },
+    ],
+  },
+
+  location: {
+    eyebrow: "Lokalita",
+    title: "Klidné místo",
+    titleAccent: "nedaleko Švihova",
+    desc: "Hojanovice u Klatov — klidná vesnice nedaleko vodní nádrže Švihov. Příroda, ticho a přitom výborná dostupnost.",
+    hero_title: "Hojanovice, Vysočina",
+    hero_desc: "Klidné místo v srdci přírody, 5 minut od vodní nádrže Švihov.",
+    attractions: [
+      {
+        icon: "💧",
+        title: "Vodní nádrž Švihov",
+        desc: "Největší pitná nádrž v ČR. Koupání, procházky po hrázi, nádherné výhledy.",
+        dist: "5 min jízdy",
+      },
+      {
+        icon: "🎣",
+        title: "Soukromý rybník",
+        desc: "Náš vlastní rybník přímo u objektu s možností sportovního rybolovu.",
+        dist: "u objektu",
+      },
+      {
+        icon: "🏰",
+        title: "Hrad Švihov",
+        desc: "Nejzachovalejší vodní hrad v Čechách z 15. století. Oblíbená turistická destinace.",
+        dist: "15 min",
+      },
+      {
+        icon: "🖼️",
+        title: "Zámek Klenová",
+        desc: "Historický zámek s galerií moderního umění a krásným parkem.",
+        dist: "20 min",
+      },
+      {
+        icon: "🏙️",
+        title: "Klatovy",
+        desc: "Historické město s katakomby, renesanční věží a živým náměstím.",
+        dist: "15 min",
+      },
+      {
+        icon: "🥾",
+        title: "Turistické trasy",
+        desc: "Přímé napojení na turistické a cyklistické trasy v okolí Šumavského předhůří.",
+        dist: "od prahu",
+      },
+    ],
+  },
+
+  booking: {
+    eyebrow: "Rezervace",
+    title: "Zarezervujte",
+    titleAccent: "svůj pobyt",
+    desc: "Vyberte si termín a zarezervujte přímo online. Okamžité potvrzení.",
+    embed_placeholder: "Zde bude vložen rezervační systém třetí strany.",
+  },
+
+  reviews: {
+    eyebrow: "Recenze hostů",
+    title: "Co říkají",
+    titleAccent: "naši hosté",
+    rating: "4.9",
+    rating_label: "z 5 hvězdiček",
+    reviews: [
+      {
+        text: "Naprosto unikátní zážitek. Zvuk včel, vůně medu, krásná příroda — a k tomu luxusní postel. Vrátíme se určitě!",
+        author: "Petra a Jan",
+        location: "Praha",
+        initials: "PJ",
+        rating: 5,
+      },
+      {
+        text: "Přesně to, co jsme potřebovali. Absolutní klid, žádný hluk, jen příroda a my. Rybník byl bonus navíc.",
+        author: "Tomáš K.",
+        location: "Brno",
+        initials: "TK",
+        rating: 5,
+      },
+      {
+        text: "Dostali jsme sem poukázku na narozeniny — byl to nejlepší dárek! Místo nás doslova vyléčilo od stresu.",
+        author: "Markéta a Ondřej",
+        location: "Plzeň",
+        initials: "MO",
+        rating: 5,
+      },
+      {
+        text: "Ubytování je nádherně zařízené, vše do posledního detailu. Apiterapie přes noc je opravdu cítit ráno.",
+        author: "Lucie V.",
+        location: "Liberec",
+        initials: "LV",
+        rating: 5,
+      },
+      {
+        text: "Rybaření na soukromém rybníce bylo úžasné. Syn byl nadšený, manželka si odpočinula — perfektní rodinná dovolená.",
+        author: "Radek a rodina",
+        location: "Olomouc",
+        initials: "RR",
+        rating: 5,
+      },
+      {
+        text: "Výlet k nádrži Švihov, odpoledne na terase s medem a večer nad úly — tohle se nedá zapomenout.",
+        author: "Michaela H.",
+        location: "Jihlava",
+        initials: "MH",
+        rating: 5,
+      },
+    ],
+  },
+
+  tech: {
+    eyebrow: "Technologie",
+    title: "Nejmodernější",
+    titleAccent: "vybavení",
+    desc: "Příroda a technologie se nevylučují. U nás máte to nejlepší z obou světů.",
+    cards: [
+      {
+        icon: "🌡️",
+        title: "Smart klimatizace",
+        desc: "Plná kontrola teploty přes mobilní aplikaci. V létě chladno, v zimě teplo.",
+      },
+      {
+        icon: "📶",
+        title: "Vysokorychlostní Wi-Fi",
+        desc: "Optické připojení s rychlostí 1 Gbps. Práce z přírody bez kompromisů.",
+      },
+      {
+        icon: "☀️",
+        title: "Solární energie",
+        desc: "Napájení z obnovitelných zdrojů. Šetrné k přírodě, stálá dodávka energie.",
+      },
+      {
+        icon: "🔒",
+        title: "Smart zámky",
+        desc: "Bezkontaktní vstup přes mobilní aplikaci nebo číselný kód. Bez čekání na předání klíčů.",
+      },
+      {
+        icon: "💡",
+        title: "Chytré osvětlení",
+        desc: "Nastavitelná teplota světla a jas. Ideální atmosféra pro každou náladu.",
+      },
+      {
+        icon: "🐝",
+        title: "Monitoring úlů",
+        desc: "Displej s aktuálním stavem včelstev — teplota, vlhkost, aktivita včel v reálném čase.",
+      },
+    ],
+  },
+
+  honey_fish: {
+    honey_title: "Náš vlastní med",
+    honey_desc: "Čerstvý med přímo od úlů, které spí pod vaší postelí. Můžete si ho koupit s sebou domů.",
+    honey_cta: "Objednat med",
+    fish_title: "Rybaření na rybníku",
+    fish_desc: "Soukromý rybník přímo u objektu. Kupte si povolenku a vyražte na ranní rybolov.",
+    fish_cta: "Koupit povolenku",
+  },
+
+  voucher: {
+    title: "Dárková poukázka",
+    desc: "Darujte nezapomenutelný zážitek. Poukázka na pobyt v 2P Hive House.",
+    name_label: "Jméno příjemce",
+    name_placeholder: "Jana Nováková",
+    email_label: "E-mail příjemce",
+    email_placeholder: "jana@example.cz",
+    sender_label: "Vaše jméno (odesílatel)",
+    sender_placeholder: "Petr Novák",
+    sender_email_label: "Váš e-mail",
+    sender_email_placeholder: "petr@example.cz",
+    message_label: "Osobní vzkaz (nepovinné)",
+    message_placeholder: "Přeji krásný pobyt...",
+    nights_label: "Počet nocí",
+    price_label: "Cena poukázky",
+    pay_btn: "Zaplatit a odeslat",
+    cancel_btn: "Zrušit",
+    success: "Poukázka byla odeslána! Potvrzení přijde na váš e-mail.",
+  },
+
+  fishing: {
+    title: "Rybářská povolenka",
+    desc: "Sportovní rybolov na soukromém rybníku přímo u objektu.",
+    name_label: "Jméno a příjmení",
+    name_placeholder: "Petr Novák",
+    email_label: "E-mail",
+    email_placeholder: "petr@example.cz",
+    date_label: "Datum rybolovu",
+    persons_label: "Počet osob",
+    discount_firefighter: "Jsem hasič z Hojanovic (sleva 50 %)",
+    discount_child: "Jsem dítě z Hojanovic (sleva 100 %)",
+    price_label: "Cena povolenky",
+    price_adult: 150,
+    price_firefighter: 75,
+    price_child: 0,
+    pay_btn: "Zaplatit a rezervovat",
+    cancel_btn: "Zrušit",
+    success: "Povolenka zarezervována! Potvrzení přijde na váš e-mail.",
+  },
+
+  footer: {
+    brand_desc: "Unikátní glamping ubytování s apiterapií u vodní nádrže Švihov. Vlastní med, soukromý rybník, moderní technologie.",
+    links_title: "Navigace",
+    contact_title: "Kontakt",
+    phone: "+420 774 110 224",
+    email: "hivehouse@2pmoment.cz",
+    address: "Hojanovice, 339 01 Klatovy",
+    company: "2P Moment s.r.o.",
+    copyright: "© 2026 2P Hive House. Všechna práva vyhrazena.",
+    legal: "IČO: 00000000 · 2P Moment s.r.o.",
+  },
+
+  cookie: {
+    text: "Používáme cookies pro zlepšení zážitku a analytiku návštěvnosti. Vaše data jsou v bezpečí.",
+    accept: "Přijmout",
+    reject: "Odmítnout",
+  },
+} as const;
+
+export type Translations = typeof cs;
