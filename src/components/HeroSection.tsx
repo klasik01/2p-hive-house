@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { T } from "../i18n";
+import { RouteLink } from "../lib/router";
 
 const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=85&auto=format",
@@ -61,9 +62,9 @@ export function HeroSection({ t, onVoucherClick }: Props) {
           <p className="hero-desc">{t.hero.desc}</p>
 
           <div className="hero-actions">
-            <a href="#rezervace" className="btn btn-primary">
+            <RouteLink to="/rezervace" className="btn btn-primary">
               🐝 {t.hero.cta_rezervace}
-            </a>
+            </RouteLink>
             <button className="btn btn-outline" onClick={onVoucherClick}>
               🎁 {t.hero.cta_poukázka}
             </button>

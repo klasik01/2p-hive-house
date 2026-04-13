@@ -1,4 +1,5 @@
 import type { T } from "../i18n";
+import { RouteLink } from "../lib/router";
 
 type Props = { t: T };
 
@@ -44,9 +45,9 @@ export function ApiarySection({ t }: Props) {
             </div>
 
             <div className="mt-xl">
-              <a href="#vcelin-detail" className="btn btn-ghost">
+              <RouteLink to="/vcelin-glamping" className="btn btn-ghost">
                 {ta.cta} →
-              </a>
+              </RouteLink>
             </div>
           </div>
         </div>

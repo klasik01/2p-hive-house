@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { T } from "../i18n";
+import { RouteLink, useCurrentLocation } from "../lib/router";
 
 type Props = {
   t: T;
@@ -7,43 +8,22 @@ type Props = {
 };
 
 const navLinks = [
-  { label: "vcelin" as const, href: "#vcelin" },
-  { label: "glamping" as const, href: "#glamping" },
-  { label: "ubytovani" as const, href: "#ubytovani" },
-  { label: "okolí" as const, href: "#lokalita" },
-  { label: "rezervace" as const, href: "#rezervace" },
+  { label: "vcelin" as const, href: "/vcelin-glamping" },
+  { label: "ubytovani" as const, href: "/ubytovani" },
+  { label: "rybareni" as const, href: "/rybareni" },
+  { label: "okolí" as const, href: "/vylety" },
+  { label: "rezervace" as const, href: "/rezervace" },
 ];
 
 export function Navbar({ t, onVoucherClick }: Props) {
+  const { pathname } = useCurrentLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const sections = ["uvod", "vcelin", "glamping", "ubytovani", "lokalita", "rezervace"];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: "-40% 0px -55% 0px" },
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -57,20 +37,20 @@ export function Navbar({ t, onVoucherClick }: Props) {
       <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
         <div className="container">
           <div className="navbar-inner">
-            <a href="#uvod" className="navbar-brand" onClick={closeMobile}>
+            <RouteLink to="/" className="navbar-brand" onClick={closeMobile}>
               <span className="brand-hex">⬡</span>
               2P Hive House
-            </a>
+            </RouteLink>
 
             <ul className="navbar-nav">
               {navLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <a
-                    href={href}
-                    className={activeSection === href.slice(1) ? "active" : ""}
+                  <RouteLink
+                    to={href}
+                    className={pathname === href ? "active" : ""}
                   >
                     {t.nav[label]}
-                  </a>
+                  </RouteLink>
                 </li>
               ))}
             </ul>
@@ -82,9 +62,9 @@ export function Navbar({ t, onVoucherClick }: Props) {
               >
                 {t.nav.poukázka}
               </button>
-              <a href="#rezervace" className="btn btn-primary navbar-cta">
+              <RouteLink to="/rezervace" className="btn btn-primary navbar-cta">
                 {t.nav.rezervace}
-              </a>
+              </RouteLink>
               <button
                 className={`navbar-hamburger${mobileOpen ? " open" : ""}`}
                 onClick={() => setMobileOpen((o) => !o)}
@@ -101,9 +81,9 @@ export function Navbar({ t, onVoucherClick }: Props) {
 
       <div className={`navbar-mobile${mobileOpen ? " open" : ""}`}>
         {navLinks.map(({ label, href }) => (
-          <a key={label} href={href} onClick={closeMobile}>
+          <RouteLink key={label} to={href} onClick={closeMobile}>
             {t.nav[label]}
-          </a>
+          </RouteLink>
         ))}
         <div className="mobile-actions">
           <button
@@ -112,9 +92,9 @@ export function Navbar({ t, onVoucherClick }: Props) {
           >
             {t.nav.poukázka}
           </button>
-          <a href="#rezervace" className="btn btn-primary" onClick={closeMobile}>
+          <RouteLink to="/rezervace" className="btn btn-primary" onClick={closeMobile}>
             {t.nav.rezervace}
-          </a>
+          </RouteLink>
         </div>
       </div>
     </>

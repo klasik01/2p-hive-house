@@ -1,4 +1,5 @@
 import type { T } from "../i18n";
+import { RouteLink } from "../lib/router";
 
 type Props = {
   t: T;
@@ -46,11 +47,11 @@ export function Footer({ t, onVoucherClick, onFishingClick }: Props) {
           <div className="footer-col">
             <h4>{tf.links_title}</h4>
             <ul>
-              <li><a href="#vcelin">Včelín & apiterapie</a></li>
-              <li><a href="#glamping">Glamping</a></li>
-              <li><a href="#ubytovani">Ubytování</a></li>
-              <li><a href="#lokalita">Lokalita & okolí</a></li>
-              <li><a href="#rezervace">Rezervace</a></li>
+              <li><RouteLink to="/vcelin-glamping">Včelín & apiterapie</RouteLink></li>
+              <li><RouteLink to="/vcelin-glamping">Glamping</RouteLink></li>
+              <li><RouteLink to="/ubytovani">Ubytování</RouteLink></li>
+              <li><RouteLink to="/vylety">Lokalita & okolí</RouteLink></li>
+              <li><RouteLink to="/rezervace">Rezervace</RouteLink></li>
               <li>
                 <button
                   onClick={onVoucherClick}

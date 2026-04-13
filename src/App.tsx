@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { cs } from "./i18n";
 import type { CookieConsentState, Promotion } from "./types/content";
 import { getCookieConsent, setCookieConsent } from "./utils/cookieConsent";
 import { initAnalytics, disableAnalytics, trackPageView } from "./utils/analytics";
 import { subscribePromotions } from "./utils/contentStorage";
+import { useCurrentLocation } from "./lib/router";
 
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -18,14 +18,14 @@ import { AccommodationPage } from "./pages/AccommodationPage";
 import { FishingPage } from "./pages/FishingPage";
 import { TripsPage } from "./pages/TripsPage";
 import { ApiaryGlampingPage } from "./pages/ApiaryGlampingPage";
+import { ReservationPage } from "./pages/ReservationPage";
 
 import "./styles/main.scss";
 
 const t = cs;
 
-// Vnitřní komponenta — má přístup k useLocation
-function AppInner() {
-  const location = useLocation();
+function App() {
+  const location = useCurrentLocation();
   const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 
   const [promotions, setPromotions] = useState<Promotion[]>([]);
@@ -51,12 +51,18 @@ function AppInner() {
     return () => unsub();
   }, []);
 
-  // Scroll na vrch při změně stránky
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [location.pathname]);
+    if (location.hash) {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return;
+    }
 
-  // Reveal animace — re-inicializace po navigaci
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname, location.hash]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -70,11 +76,13 @@ function AppInner() {
     );
     document
       .querySelectorAll<HTMLElement>(".reveal, .reveal-left, .reveal-right")
-      .forEach((el) => observer.observe(el));
+      .forEach((el) => {
+        el.classList.remove("visible");
+        observer.observe(el);
+      });
     return () => observer.disconnect();
-  });
+  }, [location.pathname]);
 
-  // Google Analytics
   useEffect(() => {
     if (!gaMeasurementId) return;
     if (cookieConsent === "accepted") initAnalytics(gaMeasurementId);
@@ -97,19 +105,24 @@ function AppInner() {
     onFishingClick: () => setShowFishing(true),
   };
 
+  let page = <HomePage {...sharedProps} />;
+  if (location.pathname === "/ubytovani") {
+    page = <AccommodationPage t={t} onVoucherClick={() => setShowVoucher(true)} />;
+  } else if (location.pathname === "/rybareni") {
+    page = <FishingPage t={t} onFishingClick={() => setShowFishing(true)} />;
+  } else if (location.pathname === "/vylety") {
+    page = <TripsPage t={t} />;
+  } else if (location.pathname === "/vcelin-glamping") {
+    page = <ApiaryGlampingPage t={t} />;
+  } else if (location.pathname === "/rezervace") {
+    page = <ReservationPage t={t} />;
+  }
+
   return (
     <>
       <Navbar t={t} onVoucherClick={() => setShowVoucher(true)} />
 
-      <Routes>
-        <Route path="/" element={<HomePage {...sharedProps} />} />
-        <Route path="/ubytovani" element={<AccommodationPage {...sharedProps} />} />
-        <Route path="/rybareni" element={<FishingPage {...sharedProps} />} />
-        <Route path="/vylety" element={<TripsPage t={t} />} />
-        <Route path="/vcelin-glamping" element={<ApiaryGlampingPage t={t} />} />
-        {/* Fallback */}
-        <Route path="*" element={<HomePage {...sharedProps} />} />
-      </Routes>
+      {page}
 
       <Footer t={t} onVoucherClick={() => setShowVoucher(true)} onFishingClick={() => setShowFishing(true)} />
 
@@ -128,11 +141,4 @@ function AppInner() {
     </>
   );
 }
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AppInner />
-    </BrowserRouter>
-  );
-}
+export default App;
