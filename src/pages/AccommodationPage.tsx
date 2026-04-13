@@ -19,71 +19,151 @@ export function AccommodationPage({ onVoucherClick, room }: Props) {
 
   return (
     <>
+      {/* ═══ HERO ═══ */}
       <section
-        className={`page-hero page-hero-accommodation${hasGallery ? " hero-clickable" : ""}`}
+        className="page-hero page-hero-accommodation"
         style={heroStyle}
-        onClick={hasGallery ? () => setShowModal(true) : undefined}
-        role={hasGallery ? "button" : undefined}
-        aria-label={hasGallery ? "Otevřít galerii" : undefined}
-        tabIndex={hasGallery ? 0 : undefined}
-        onKeyDown={hasGallery ? (e) => { if (e.key === "Enter" || e.key === " ") setShowModal(true); } : undefined}
       >
-        {hasGallery && (
-          <div className="hero-gallery-hint">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Zobrazit galerii
-          </div>
-        )}
         <div className="container page-hero-inner">
-          <div className="page-hero-copy reveal visible" onClick={(e) => e.stopPropagation()}>
+          <div className="page-hero-copy reveal visible">
             <div className="section-eyebrow">{room.heroEyebrow}</div>
             <h1 className="section-title">
               {room.heroTitle} <em>{room.heroHighlight}</em>
             </h1>
-            <p className="section-desc">
-              {room.heroDescription}
-            </p>
+            <p className="section-desc">{room.heroDescription}</p>
             <div className="page-hero-actions">
-              <RouteLink to="/rezervace" className="btn btn-primary">{room.reserveLabel}</RouteLink>
-              <button type="button" className="btn btn-outline" onClick={() => setShowModal(true)} disabled={!hasGallery}>
-                {room.galleryLabel}
-              </button>
-              <button type="button" className="btn btn-outline-honey" onClick={onVoucherClick}>
-                {room.voucherLabel}
-              </button>
+              {(room.buttonsOrder && room.buttonsOrder.length > 0
+                ? room.buttonsOrder
+                : (["reserve", "gallery", "voucher"] as const)
+              ).map((key) => {
+                if (key === "reserve" && room.showReserveBtn) {
+                  return <RouteLink key="reserve" to="/rezervace" className="btn btn-primary">{room.reserveLabel}</RouteLink>;
+                }
+                if (key === "gallery" && room.showGalleryBtn) {
+                  return (
+                    <button key="gallery" type="button" className="btn btn-outline" onClick={() => setShowModal(true)} disabled={!hasGallery}>
+                      {room.galleryLabel}
+                    </button>
+                  );
+                }
+                if (key === "voucher" && room.showVoucherBtn) {
+                  return (
+                    <button key="voucher" type="button" className="btn btn-outline-honey" onClick={onVoucherClick}>
+                      {room.voucherLabel}
+                    </button>
+                  );
+                }
+                return null;
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="detail-layout section-pad">
-        <div className="container">
-          <div className="detail-layout-grid">
-            <div className="detail-copy reveal-left">
-              <div className="section-eyebrow">{room.detailEyebrow}</div>
-              <h2 className="section-title">{room.title} <em>{room.detailHighlight}</em></h2>
+      {/* ═══ EQUIPMENT GRID ═══ */}
+      {room.equipment.length > 0 && (
+        <section className="accom-equipment section-pad">
+          <div className="container">
+            <div className="accom-section-head">
+              <div className="section-eyebrow">Vybavení</div>
+              <h2 className="section-title">Co v Hive House <em>najdete</em></h2>
               <p className="section-desc">
-                {room.description}
+                Vše, co potřebujete pro pohodlný pobyt uprostřed přírody — bez kompromisů.
               </p>
-              <div className="detail-checklist">
-                {room.labels.map((item) => (
-                  <div key={item} className="detail-checklist-item">
-                    <span>⬡</span>
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
             </div>
-
-            <div className="detail-gallery reveal-right">
-              {gallery.map((image, index) => (
-                <img key={`${image}-${index}`} src={image} alt={room.images[index]?.alt || `Ubytování ${index + 1}`} />
+            <div className="accom-equip-grid">
+              {room.equipment.map((item) => (
+                <div key={item.id} className="accom-equip-card reveal">
+                  <div className="accom-equip-icon">{item.icon}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
               ))}
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Story sections — two layout types */}
-          {room.sections.length > 0 && (
+      {/* ═══ FACILITIES + INTENTIONAL ═══ */}
+      {(room.facilities.length > 0 || room.intentional.length > 0) && (
+        <section className="accom-facilities section-pad" style={{ background: "var(--sunlight)" }}>
+          <div className="container">
+            <div className="accom-two-col">
+              {/* Left — zázemí */}
+              {room.facilities.length > 0 && (
+                <div className="accom-facility-block reveal-left">
+                  <div className="section-eyebrow">Zázemí a služby</div>
+                  <h2 className="section-title">Vše na <em>dosah</em></h2>
+                  <div className="accom-facility-list">
+                    {room.facilities.map((item) => (
+                      <div key={item.id} className="accom-facility-item">
+                        <div className="accom-facility-icon">{item.icon}</div>
+                        <div>
+                          <strong>{item.title}</strong>
+                          <p>{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Right — co tu nenajdete */}
+              {room.intentional.length > 0 && (
+                <div className="accom-intentional-block reveal-right">
+                  <div className="section-eyebrow">Co u nás nenajdete</div>
+                  <h2 className="section-title">A proč je to <em>záměr</em></h2>
+                  <div className="accom-facility-list">
+                    {room.intentional.map((item) => (
+                      <div key={item.id} className="accom-facility-item accom-facility-item--muted">
+                        <div className="accom-facility-icon">{item.icon}</div>
+                        <div>
+                          <strong>{item.title}</strong>
+                          <p>{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ GALLERY SHOWCASE ═══ */}
+      {hasGallery && (
+        <section className="accom-gallery-section section-pad">
+          <div className="container">
+            <div className="accom-section-head" style={{ textAlign: "center" }}>
+              <div className="section-eyebrow" style={{ justifyContent: "center" }}>Galerie</div>
+              <h2 className="section-title" style={{ textAlign: "center" }}>
+                Nahlédněte <em>dovnitř</em>
+              </h2>
+            </div>
+            <div className="accom-gallery-grid">
+              {gallery.slice(0, 4).map((image, index) => (
+                <button
+                  key={`${image}-${index}`}
+                  className="accom-gallery-thumb"
+                  onClick={() => setShowModal(true)}
+                  aria-label={`Fotografie ${index + 1}`}
+                >
+                  <img src={image} alt={room.images[index]?.alt || `Ubytování ${index + 1}`} />
+                  {index === 3 && gallery.length > 4 && (
+                    <div className="accom-gallery-more">+{gallery.length - 4} fotek</div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ STORY SECTIONS ═══ */}
+      {room.sections.length > 0 && (
+        <section className="accom-stories section-pad" style={{ background: "var(--sunlight)" }}>
+          <div className="container">
             <div className="detail-story-grid">
               {room.sections.map((section) => {
                 if (section.layout === "image-left" && section.image?.url) {
@@ -109,10 +189,11 @@ export function AccommodationPage({ onVoucherClick, room }: Props) {
                 );
               })}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
+      {/* ═══ MODAL ═══ */}
       {showModal && hasGallery && (
         <ExperienceModal
           title={room.modalTitle}

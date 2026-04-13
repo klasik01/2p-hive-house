@@ -1,9 +1,9 @@
-import type { T } from "../i18n";
+import type { HomepageTrustbar } from "../types/content";
 
-type Props = { t: T };
+type Props = { trustbar: HomepageTrustbar };
 
-export function TrustBar({ t }: Props) {
-  const items = [...t.trust, ...t.trust]; // duplikovat pro nekonečný marquee
+export function TrustBar({ trustbar }: Props) {
+  const items = [...trustbar.items, ...trustbar.items]; // duplikovat pro nekonečný marquee
 
   return (
     <div className="trust-bar">

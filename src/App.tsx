@@ -2,8 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { cs } from "./i18n";
 import type {
   ApiaryContent,
+  ContactContent,
   CookieConsentState,
   FishingContent,
+  HomepageApitherapy,
+  HomepageHero,
+  HomepageOfferings,
+  HomepageReviewsConfig,
+  HomepageTrustbar,
   PermitFormConfig,
   Promotion,
   RoomContent,
@@ -23,6 +29,17 @@ import {
   subscribeSurroundingPlaces,
   subscribeSurroundingsPageContent,
   subscribeVoucherFormConfig,
+  subscribeContactContent,
+  subscribeHomepageHero,
+  subscribeHomepageOfferings,
+  subscribeHomepageApitherapy,
+  subscribeHomepageTrustbar,
+  subscribeHomepageReviewsConfig,
+  defaultHomepageHero as defaultHomepageHeroFn,
+  defaultHomepageOfferings as defaultHomepageOfferingsFn,
+  defaultHomepageApitherapy as defaultHomepageApitherapyFn,
+  defaultHomepageTrustbar as defaultHomepageTrustbarFn,
+  defaultHomepageReviewsConfig as defaultHomepageReviewsConfigFn,
 } from "./utils/contentStorage";
 import { useCurrentLocation } from "./lib/router";
 
@@ -54,6 +71,7 @@ const defaultFishing: FishingContent = {
   infoCards: [],
   ctaLabel: "Objednat povolení",
   ctaHref: "#povoleni",
+  gallery: [],
 };
 
 const defaultVoucherConfig: VoucherFormConfig = {
@@ -83,6 +101,12 @@ const defaultPermitConfig: PermitFormConfig = {
   cancelButtonLabel: "Zrušit",
 };
 
+const defaultHomepageHero: HomepageHero = defaultHomepageHeroFn();
+const defaultHomepageOfferings: HomepageOfferings = defaultHomepageOfferingsFn();
+const defaultHomepageApitherapy: HomepageApitherapy = defaultHomepageApitherapyFn();
+const defaultHomepageTrustbar: HomepageTrustbar = defaultHomepageTrustbarFn();
+const defaultHomepageReviewsConfig: HomepageReviewsConfig = defaultHomepageReviewsConfigFn();
+
 const defaultSurroundingsPage: SurroundingsPageContent = {
   heroEyebrow: "Okolí",
   heroTitle: "Objevujte okolí",
@@ -90,6 +114,12 @@ const defaultSurroundingsPage: SurroundingsPageContent = {
   heroDescription: "Hojnovice a okolí nabízejí spoustu zážitků.",
   sectionTitle: "Tipy na výlety",
   sectionSubtitle: "",
+};
+
+const defaultContact: ContactContent = {
+  contactName: "", phone: "", email: "", companyName: "2P s.r.o.",
+  ico: "", address: "Hojnovice, Česká republika",
+  checkIn: "14:00", checkOut: "11:00", capacity: 2, notes: "", mapEmbedUrl: "",
 };
 
 const defaultApiary: ApiaryContent = {
@@ -120,6 +150,12 @@ function App() {
   const [apiaryContent, setApiaryContent] = useState<ApiaryContent>(defaultApiary);
   const [voucherConfig, setVoucherConfig] = useState<VoucherFormConfig>(defaultVoucherConfig);
   const [permitConfig, setPermitConfig] = useState<PermitFormConfig>(defaultPermitConfig);
+  const [contactContent, setContactContent] = useState<ContactContent>(defaultContact);
+  const [hpHero, setHpHero] = useState<HomepageHero>(defaultHomepageHero);
+  const [hpOfferings, setHpOfferings] = useState<HomepageOfferings>(defaultHomepageOfferings);
+  const [hpApitherapy, setHpApitherapy] = useState<HomepageApitherapy>(defaultHomepageApitherapy);
+  const [hpTrustbar, setHpTrustbar] = useState<HomepageTrustbar>(defaultHomepageTrustbar);
+  const [hpReviewsConfig, setHpReviewsConfig] = useState<HomepageReviewsConfig>(defaultHomepageReviewsConfig);
   const [cookieConsent, setCookieConsentState] = useState<CookieConsentState>(() => getCookieConsent());
   const [showVoucher, setShowVoucher] = useState(false);
   const [showFishing, setShowFishing] = useState(false);
@@ -199,6 +235,55 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const unsub = subscribeContactContent(
+      (content) => setContactContent(content),
+      () => setContactContent(defaultContact),
+    );
+    return () => unsub();
+  }, []);
+
+  // --- Homepage sekce ---
+  useEffect(() => {
+    const unsub = subscribeHomepageHero(
+      (data) => setHpHero(data),
+      () => setHpHero(defaultHomepageHero),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeHomepageOfferings(
+      (data) => setHpOfferings(data),
+      () => setHpOfferings(defaultHomepageOfferings),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeHomepageApitherapy(
+      (data) => setHpApitherapy(data),
+      () => setHpApitherapy(defaultHomepageApitherapy),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeHomepageTrustbar(
+      (data) => setHpTrustbar(data),
+      () => setHpTrustbar(defaultHomepageTrustbar),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = subscribeHomepageReviewsConfig(
+      (data) => setHpReviewsConfig(data),
+      () => setHpReviewsConfig(defaultHomepageReviewsConfig),
+    );
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
     if (location.hash) {
       requestAnimationFrame(() => {
         const target = document.getElementById(location.hash.slice(1));
@@ -246,13 +331,18 @@ function App() {
     document.body.classList.toggle("modal-open", showVoucher || showFishing);
   }, [showVoucher, showFishing]);
 
-  const sharedProps = {
-    t,
-    onVoucherClick: () => setShowVoucher(true),
-    onFishingClick: () => setShowFishing(true),
-  };
-
-  let page = <HomePage {...sharedProps} />;
+  let page = (
+    <HomePage
+      t={t}
+      onVoucherClick={() => setShowVoucher(true)}
+      hero={hpHero}
+      offerings={hpOfferings}
+      apitherapy={hpApitherapy}
+      trustbar={hpTrustbar}
+      reviewsConfig={hpReviewsConfig}
+      contact={contactContent}
+    />
+  );
   if (location.pathname === "/ubytovani") {
     page = <AccommodationPage onVoucherClick={() => setShowVoucher(true)} room={roomContent} />;
   } else if (location.pathname === "/rybareni") {
@@ -262,7 +352,7 @@ function App() {
   } else if (location.pathname === "/vcelin-glamping") {
     page = <ApiaryGlampingPage apiary={apiaryContent} />;
   } else if (location.pathname === "/rezervace") {
-    page = <ReservationPage t={t} />;
+    page = <ReservationPage t={t} contact={contactContent} />;
   }
 
   return (

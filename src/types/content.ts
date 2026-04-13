@@ -73,6 +73,20 @@ export type RoomStorySection = {
   image?: ManagedImage;
 };
 
+export type RoomEquipmentItem = {
+  id: string;
+  icon: string;
+  title: string;
+  desc: string;
+};
+
+export type RoomFacilityItem = {
+  id: string;
+  icon: string;
+  title: string;
+  desc: string;
+};
+
 export type RoomContent = {
   id: string;
   heroEyebrow: string;
@@ -90,9 +104,16 @@ export type RoomContent = {
   reserveLabel: string;
   galleryLabel: string;
   voucherLabel: string;
+  showReserveBtn: boolean;
+  showGalleryBtn: boolean;
+  showVoucherBtn: boolean;
+  buttonsOrder: Array<"reserve" | "gallery" | "voucher">;
   labels: string[];
   images: ManagedImage[];
   sections: RoomStorySection[];
+  equipment: RoomEquipmentItem[];
+  facilities: RoomFacilityItem[];
+  intentional: RoomFacilityItem[];
 };
 
 export type FishingStep = {
@@ -119,6 +140,7 @@ export type FishingContent = {
   infoCards: FishingInfoCard[];
   ctaLabel: string;
   ctaHref: string;
+  gallery: ManagedImage[];
 };
 
 export type SurroundingsPageContent = {
@@ -220,6 +242,81 @@ export type PermitFormConfig = {
 
 export type HiveHouseContent = {
   promotions: Promotion[];
+};
+
+// ── Homepage sekce (ukládané separátně do DB) ──────────────────────────────
+
+/** Hlavní banner / hero sekce na homepage */
+export type HomepageHero = {
+  title: string;
+  titleAccent: string;
+  subtitle: string;
+  text: string;
+  ctaReserveLabel: string;
+  ctaReserveHref: string;
+  ctaVoucherLabel: string;
+  stat1Num: string;
+  stat1Label: string;
+  stat2Num: string;
+  stat2Label: string;
+  stat3Num: string;
+  stat3Label: string;
+  images: ManagedImage[];
+};
+
+/** Jedna karta v sekci "Co nabízíme" */
+export type HomepageOfferingCard = {
+  id: string;
+  sortOrder: number;
+  title: string;
+  description: string;
+  eyebrow: string;
+  linkHref: string;
+  ctaLabel: string;
+  image?: ManagedImage;
+};
+
+/** Sekce "Co nabízíme" */
+export type HomepageOfferings = {
+  sectionEyebrow: string;
+  sectionTitle: string;
+  sectionTitleAccent: string;
+  sectionDesc: string;
+  cards: HomepageOfferingCard[];
+};
+
+/** Jeden benefit v sekci Apiterapie */
+export type HomepageApiBenefit = {
+  id: string;
+  icon: string;
+  text: string;
+};
+
+/** Sekce Apiterapie na homepage */
+export type HomepageApitherapy = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  text1: string;
+  text2: string;
+  benefits: HomepageApiBenefit[];
+  ctaPrimaryLabel: string;
+  ctaPrimaryHref: string;
+  ctaSecondaryLabel: string;
+  ctaSecondaryHref: string;
+  imageMain?: ManagedImage;
+  imageSmall1?: ManagedImage;
+  imageSmall2?: ManagedImage;
+};
+
+/** Trust bar (běžící badges) */
+export type HomepageTrustbar = {
+  items: string[];
+};
+
+/** Konfigurace recenzí na homepage */
+export type HomepageReviewsConfig = {
+  displayCount: number;
 };
 
 export type AppId = "hive-house";

@@ -1,12 +1,14 @@
-import type { T } from "../i18n";
+import type { ContactContent } from "../types/content";
 
 type Props = {
-  t: T;
+  contact: ContactContent;
   compact?: boolean;
 };
 
-export function ContactPanel({ t, compact = false }: Props) {
-  const tf = t.footer;
+export function ContactPanel({ contact, compact = false }: Props) {
+  const mapEmbedUrl =
+    contact.mapEmbedUrl ||
+    `https://maps.google.com/maps?q=${encodeURIComponent(contact.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <section className={`contact-panel section-pad-sm${compact ? " compact" : ""}`}>
@@ -24,24 +26,40 @@ export function ContactPanel({ t, compact = false }: Props) {
           </div>
 
           <div className="contact-panel-grid">
-            <a className="contact-panel-card" href={`tel:${tf.phone.replace(/\s/g, "")}`}>
-              <span className="contact-panel-icon">📞</span>
-              <span className="contact-panel-label">Telefon</span>
-              <strong>{tf.phone}</strong>
-            </a>
-
-            <a className="contact-panel-card" href={`mailto:${tf.email}`}>
-              <span className="contact-panel-icon">✉️</span>
-              <span className="contact-panel-label">E-mail</span>
-              <strong>{tf.email}</strong>
-            </a>
-
-            <div className="contact-panel-card">
-              <span className="contact-panel-icon">📍</span>
-              <span className="contact-panel-label">Lokalita</span>
-              <strong>{tf.address}</strong>
+            <div className="contact-panel-map-frame">
+              <iframe
+                title="Mapa lokality 2P Hive House"
+                src={mapEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="contact-panel-strip">
+        <div className="container contact-panel-strip-inner">
+          {contact.phone && (
+            <a className="contact-panel-strip-item" href={`tel:${contact.phone.replace(/\s/g, "")}`}>
+              <strong>{contact.phone}</strong>
+              <small>Telefon</small>
+            </a>
+          )}
+
+          {contact.email && (
+            <a className="contact-panel-strip-item" href={`mailto:${contact.email}`}>
+              <strong>{contact.email}</strong>
+              <small>E-mail</small>
+            </a>
+          )}
+
+          {contact.address && (
+            <div className="contact-panel-strip-item">
+              <strong>{contact.address}</strong>
+              <small>Lokalita</small>
+            </div>
+          )}
         </div>
       </div>
     </section>

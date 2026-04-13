@@ -1,42 +1,38 @@
 import { useEffect, useRef, useState } from "react";
-import type { T } from "../i18n";
+import type { HomepageHero } from "../types/content";
 import { RouteLink } from "../lib/router";
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=85&auto=format",
-  "https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=1920&q=85&auto=format",
-  "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=1920&q=85&auto=format",
-];
-
 type Props = {
-  t: T;
+  hero: HomepageHero;
   onVoucherClick: () => void;
 };
 
-export function HeroSection({ t, onVoucherClick }: Props) {
+export function HeroSection({ hero, onVoucherClick }: Props) {
+  const images = hero.images.map((img) => img.url);
   const [activeIdx, setActiveIdx] = useState(0);
   const [loadedImgs, setLoadedImgs] = useState<Set<number>>(new Set());
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
+    if (images.length === 0) return;
     timerRef.current = setInterval(() => {
-      setActiveIdx((i) => (i + 1) % HERO_IMAGES.length);
+      setActiveIdx((i) => (i + 1) % images.length);
     }, 6000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
+  }, [images.length]);
 
   useEffect(() => {
-    HERO_IMAGES.forEach((src, idx) => {
+    images.forEach((src, idx) => {
       const img = new Image();
       img.onload = () => setLoadedImgs((s) => new Set(s).add(idx));
       img.src = src;
     });
-  }, []);
+  }, [images]);
 
   return (
     <section id="uvod" className="hero">
       <div className="hero-bg-stack">
-        {HERO_IMAGES.map((src, idx) => (
+        {images.map((src, idx) => (
           <div
             key={src}
             className={`hero-bg${loadedImgs.has(idx) ? " loaded" : ""}${idx === activeIdx ? " is-active" : ""}`}
@@ -50,38 +46,38 @@ export function HeroSection({ t, onVoucherClick }: Props) {
         <div className="hero-content reveal visible">
           <div className="hero-eyebrow">
             <div className="hero-eyebrow-line" />
-            <span>{t.hero.eyebrow}</span>
+            <span>{hero.subtitle}</span>
           </div>
 
           <h1>
-            {t.hero.title}
+            {hero.title}
             <br />
-            <em>{t.hero.titleAccent}</em>
+            <em>{hero.titleAccent}</em>
           </h1>
 
-          <p className="hero-desc">{t.hero.desc}</p>
+          <p className="hero-desc">{hero.text}</p>
 
           <div className="hero-actions">
-            <RouteLink to="/rezervace" className="btn btn-primary">
-              🐝 {t.hero.cta_rezervace}
+            <RouteLink to={hero.ctaReserveHref} className="btn btn-primary">
+              {hero.ctaReserveLabel}
             </RouteLink>
-            <button className="btn btn-outline" onClick={onVoucherClick}>
-              🎁 {t.hero.cta_poukázka}
+            <button className="btn btn-white" onClick={onVoucherClick}>
+              {hero.ctaVoucherLabel}
             </button>
           </div>
 
           <div className="hero-stats">
             <div>
-              <div className="hero-stat-num">{t.hero.stat_1_num}</div>
-              <div className="hero-stat-label">{t.hero.stat_1_label}</div>
+              <div className="hero-stat-num">{hero.stat1Num}</div>
+              <div className="hero-stat-label">{hero.stat1Label}</div>
             </div>
             <div>
-              <div className="hero-stat-num">{t.hero.stat_2_num}</div>
-              <div className="hero-stat-label">{t.hero.stat_2_label}</div>
+              <div className="hero-stat-num">{hero.stat2Num}</div>
+              <div className="hero-stat-label">{hero.stat2Label}</div>
             </div>
             <div>
-              <div className="hero-stat-num">{t.hero.stat_3_num}</div>
-              <div className="hero-stat-label">{t.hero.stat_3_label}</div>
+              <div className="hero-stat-num">{hero.stat3Num}</div>
+              <div className="hero-stat-label">{hero.stat3Label}</div>
             </div>
           </div>
         </div>
@@ -92,7 +88,7 @@ export function HeroSection({ t, onVoucherClick }: Props) {
       </div>
 
       <div className="hero-dots">
-        {HERO_IMAGES.map((_, idx) => (
+        {images.map((_, idx) => (
           <button
             key={idx}
             className={idx === activeIdx ? "active" : ""}
@@ -100,7 +96,7 @@ export function HeroSection({ t, onVoucherClick }: Props) {
               setActiveIdx(idx);
               if (timerRef.current) clearInterval(timerRef.current);
               timerRef.current = setInterval(() => {
-                setActiveIdx((i) => (i + 1) % HERO_IMAGES.length);
+                setActiveIdx((i) => (i + 1) % images.length);
               }, 6000);
             }}
             aria-label={`Snímek ${idx + 1}`}

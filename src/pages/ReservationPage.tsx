@@ -1,11 +1,12 @@
 import type { T } from "../i18n";
+import type { ContactContent } from "../types/content";
 import { BookingSection } from "../components/BookingSection";
 import { ContactPanel } from "../components/ContactPanel";
 import { RouteLink } from "../lib/router";
 
-type Props = { t: T };
+type Props = { t: T; contact: ContactContent };
 
-export function ReservationPage({ t }: Props) {
+export function ReservationPage({ t, contact }: Props) {
   return (
     <>
       <section className="page-hero page-hero-reservation">
@@ -28,7 +29,7 @@ export function ReservationPage({ t }: Props) {
       </section>
 
       <BookingSection t={t} />
-      <ContactPanel t={t} compact />
+      <ContactPanel contact={contact} compact />
     </>
   );
 }

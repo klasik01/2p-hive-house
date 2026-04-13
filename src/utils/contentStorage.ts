@@ -12,12 +12,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import type {
-  Promotion, FishingPermit, GiftVoucher, RoomContent, RoomStorySection,
+  Promotion, FishingPermit, GiftVoucher, RoomContent, RoomStorySection, RoomEquipmentItem, RoomFacilityItem,
   FishingContent, FishingStep, FishingInfoCard,
   SurroundingsPageContent, SurroundingPlace,
   ApiaryContent, GlampingCard,
   Review, ContactContent,
   VoucherFormConfig, PermitFormConfig,
+  HomepageHero, HomepageOfferings, HomepageOfferingCard,
+  HomepageApitherapy, HomepageApiBenefit,
+  HomepageTrustbar, HomepageReviewsConfig,
+  ManagedImage,
 } from "../types/content";
 
 // --- Konstanty ---
@@ -41,22 +45,26 @@ export function newRoomContent(): RoomContent {
   return {
     id: ROOM_DOC_ID,
     heroEyebrow: "Ubytování",
-    heroTitle: "Pokoj Hive House",
-    heroHighlight: "na jedné stránce",
+    heroTitle: "Ubytování v",
+    heroHighlight: "Hive House",
     heroDescription:
-      "Tady najdou hosté konkrétní představu o interiéru, vybavení, soukromí i atmosféře pobytu. Hlavní stránka je navede, detail jim pomůže rozhodnout se.",
-    detailEyebrow: "Co hosté uvidí",
-    title: "Pokoj Hive House",
-    detailHighlight: "bez zbytečného chaosu",
+      "Jednoduché, přírodní a klidné ubytování navržené pro relaxaci. Včelín s kapacitou 2 lůžka — prostor, kde se zastavíte a necháte na sebe působit přírodu.",
+    detailEyebrow: "Vybavení",
+    title: "Včelín Hive House",
+    detailHighlight: "do detailu",
     description:
-      "Detail ubytování má jasně ukázat, že nejde jen o hezkou fotku. Hosté potřebují rozumět tomu, co je čeká, jaké mají zázemí a proč je pobyt v Hive House jiný než běžné ubytování.",
+      "Vše, co potřebujete pro pohodlný pobyt uprostřed přírody. Klimatizace, Wi-Fi, kvalitní postele — a kolem vás jen ticho, příroda a včely.",
     modalTitle: "Ubytování v Hive House",
-    modalSubtitle: "Fotky a základní informace",
+    modalSubtitle: "Včelín, 2 lůžka",
     modalDescription:
-      "Popup slouží jako rychlý náhled přímo z homepage nebo z detailu. Návštěvník si díky němu udělá rychlou představu, aniž by ztratil kontext.",
+      "Nahlédněte do interiéru našeho unikátního ubytování přímo nad včelími úly. Přírodní materiály, klidný prostor a vše pro váš komfort.",
     reserveLabel: "Rezervovat pobyt",
-    galleryLabel: "Otevřít popup s fotkami",
+    galleryLabel: "Zobrazit galerii",
     voucherLabel: "Koupit poukázku",
+    showReserveBtn: true,
+    showGalleryBtn: true,
+    showVoucherBtn: true,
+    buttonsOrder: ["reserve", "gallery", "voucher"],
     labels: [
       "Ložnice pro odpočinek ve dvou",
       "Soukromá terasa s výhledem do přírody",
@@ -83,16 +91,34 @@ export function newRoomContent(): RoomContent {
         text: "Komfortní interiér, klid a propojení s přírodou vytváří ideální prostor pro páry, které chtějí zpomalit a být chvíli mimo běžný provoz.",
       },
     ],
+    equipment: [
+      { id: "eq-1", icon: "🛏️", title: "Postel 140 cm + 90 cm", desc: "Dvojlůžko a jednolůžko s kvalitní matrací pro klidný spánek" },
+      { id: "eq-2", icon: "🗄️", title: "Skříň a stůl", desc: "Prostor pro osobní věci a pohodlné stolní zázemí" },
+      { id: "eq-3", icon: "🌡️", title: "Klimatizace", desc: "Příjemná teplota v létě i v zimě — plně regulovatelná" },
+      { id: "eq-4", icon: "💡", title: "Elektřina a osvětlení", desc: "Plnohodnotné elektrické rozvody a ambientní osvětlení" },
+      { id: "eq-5", icon: "📶", title: "Wi-Fi připojení", desc: "Stabilní internetové připojení pro práci i zábavu" },
+      { id: "eq-6", icon: "🔌", title: "Zásuvky pro nabíjení", desc: "Dostatek zásuvek pro mobily, notebooky a další elektroniku" },
+    ],
+    facilities: [
+      { id: "fac-1", icon: "🍳", title: "Kuchyňka a jídelní kout", desc: "Společný prostor cca 5 metrů od domku s možností vlastního vaření" },
+      { id: "fac-2", icon: "🚿", title: "Toaleta a umyvadlo", desc: "Samostatné sociální zařízení rovněž 5 metrů od ubytování" },
+    ],
+    intentional: [
+      { id: "int-1", icon: "🌿", title: "Stravování", desc: "Není součástí pobytu — můžete si vařit sami z lokálních surovin v naší kuchyňce" },
+      { id: "int-2", icon: "🌙", title: "Televize a rádio", desc: "Úmyslně. Pro zachování ticha a hlubšího vnímání přírody kolem vás" },
+    ],
   };
 }
 
 // Merge sekcí pokoje z více Firestore dokumentů do jednoho RoomContent objektu
 function buildRoomFromDocs(docs: Record<string, Record<string, unknown>>): RoomContent {
   const d = newRoomContent();
-  const hero    = docs["hero"]     ?? {};
-  const content = docs["content"]  ?? {};
-  const gallery = docs["gallery"]  ?? {};
-  const sections = docs["sections"] ?? {};
+  const hero      = docs["hero"]       ?? {};
+  const content   = docs["content"]    ?? {};
+  const gallery   = docs["gallery"]    ?? {};
+  const sections  = docs["sections"]   ?? {};
+  const equipment = docs["equipment"]  ?? {};
+  const facilities= docs["facilities"] ?? {};
 
   // Fallback na starý "main" dokument pokud sekční dokumenty chybí
   const main = docs["main"] ?? {};
@@ -119,6 +145,13 @@ function buildRoomFromDocs(docs: Record<string, Record<string, unknown>>): RoomC
     reserveLabel:     (c.reserveLabel as string)     ?? d.reserveLabel,
     galleryLabel:     (c.galleryLabel as string)     ?? d.galleryLabel,
     voucherLabel:     (c.voucherLabel as string)     ?? d.voucherLabel,
+    showReserveBtn: typeof c.showReserveBtn === "boolean" ? c.showReserveBtn : d.showReserveBtn,
+    showGalleryBtn: typeof c.showGalleryBtn === "boolean" ? c.showGalleryBtn : d.showGalleryBtn,
+    showVoucherBtn: typeof c.showVoucherBtn === "boolean" ? c.showVoucherBtn : d.showVoucherBtn,
+    buttonsOrder: Array.isArray(c.buttonsOrder)
+      ? ((c.buttonsOrder as string[]).filter((k): k is "reserve" | "gallery" | "voucher" =>
+          k === "reserve" || k === "gallery" || k === "voucher"))
+      : d.buttonsOrder,
     labels: Array.isArray(c.labels) ? (c.labels as string[]) : d.labels,
     images: Array.isArray(g.images)
       ? (g.images as Array<string | RoomContent["images"][number]>).map((img) =>
@@ -135,6 +168,30 @@ function buildRoomFromDocs(docs: Record<string, Record<string, unknown>>): RoomC
           image: sec.image,
         }))
       : d.sections,
+    equipment: Array.isArray(equipment.equipment)
+      ? (equipment.equipment as Array<Partial<RoomEquipmentItem>>).map((e, i) => ({
+          id: e.id || `eq-${i}`,
+          icon: e.icon || "🏠",
+          title: e.title || "",
+          desc: e.desc || "",
+        }))
+      : d.equipment,
+    facilities: Array.isArray(facilities.facilities)
+      ? (facilities.facilities as Array<Partial<RoomFacilityItem>>).map((f, i) => ({
+          id: f.id || `fac-${i}`,
+          icon: f.icon || "🏠",
+          title: f.title || "",
+          desc: f.desc || "",
+        }))
+      : d.facilities,
+    intentional: Array.isArray(facilities.intentional)
+      ? (facilities.intentional as Array<Partial<RoomFacilityItem>>).map((f, i) => ({
+          id: f.id || `int-${i}`,
+          icon: f.icon || "🌿",
+          title: f.title || "",
+          desc: f.desc || "",
+        }))
+      : d.intentional,
   } as RoomContent;
 }
 
@@ -144,10 +201,12 @@ function buildFishingFromDocs(docs: Record<string, Record<string, unknown>>): Fi
   const hero  = docs["hero"]  ?? {};
   const steps = docs["steps"] ?? {};
   const info  = docs["info"]  ?? {};
+  const gal   = docs["gallery"] ?? {};
   const main  = docs["main"]  ?? {};
   const h = Object.keys(hero).length  ? hero  : main;
   const st = Object.keys(steps).length ? steps : main;
   const inf = Object.keys(info).length ? info  : main;
+  const g = Object.keys(gal).length    ? gal   : main;
   return {
     heroEyebrow:     (h.heroEyebrow as string)     ?? d.heroEyebrow,
     heroTitle:       (h.heroTitle as string)       ?? d.heroTitle,
@@ -163,6 +222,9 @@ function buildFishingFromDocs(docs: Record<string, Record<string, unknown>>): Fi
     infoCards: Array.isArray(inf.infoCards)
       ? (inf.infoCards as Array<Partial<FishingInfoCard>>).map((c, i) => ({ id: c.id || `info-${i}`, label: c.label || "", value: c.value || "" }))
       : d.infoCards,
+    gallery: Array.isArray(g.gallery)
+      ? (g.gallery as Array<Partial<ManagedImage>>).map((img) => ({ url: img.url || "", storagePath: img.storagePath, alt: img.alt }))
+      : d.gallery,
   };
 }
 
@@ -326,6 +388,7 @@ function defaultFishingContent(): FishingContent {
     ],
     ctaLabel: "Objednat povolení",
     ctaHref: "#povoleni",
+    gallery: [],
   };
 }
 
@@ -512,6 +575,209 @@ export function subscribePermitFormConfig(
     (snap) => {
       if (!snap.exists()) { onData(DEFAULT_PERMIT_CONFIG); return; }
       onData({ ...DEFAULT_PERMIT_CONFIG, ...(snap.data() as Partial<PermitFormConfig>) });
+    },
+    () => onError?.(),
+  );
+}
+
+// =====================================================================
+// HOMEPAGE SEKCE — každá sekce ve vlastní kolekci
+// =====================================================================
+
+export const COLLECTION_HOMEPAGE = "hive-house-homepage";
+
+// --- Defaults ---
+
+export function defaultHomepageHero(): HomepageHero {
+  return {
+    title: "Usněte nad",
+    titleAccent: "včelími úly",
+    subtitle: "Glamping · Apiterapie · Příroda",
+    text: "Unikátní glamping nedaleko vodní nádrže Švihov. Apiterapie, vlastní med, soukromý rybník — maximální pohodlí v srdci přírody.",
+    ctaReserveLabel: "Rezervovat pobyt",
+    ctaReserveHref: "/rezervace",
+    ctaVoucherLabel: "Koupit poukázku",
+    stat1Num: "27", stat1Label: "m² luxusního prostoru",
+    stat2Num: "2",  stat2Label: "Osoby, naprosté soukromí",
+    stat3Num: "∞",  stat3Label: "Klidu a přírody",
+    images: [
+      { url: "https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=1920&q=85&auto=format", alt: "Hive House 1" },
+      { url: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=1920&q=85&auto=format", alt: "Hive House 2" },
+      { url: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1920&q=85&auto=format", alt: "Hive House 3" },
+    ],
+  };
+}
+
+export function defaultHomepageOfferings(): HomepageOfferings {
+  return {
+    sectionEyebrow: "Co nabízíme",
+    sectionTitle: "Zážitek, který si",
+    sectionTitleAccent: "zamilujete",
+    sectionDesc: "Každá část Hive House má jinou atmosféru. Vyberte si, jestli chcete spát nad úly, vypnout v soukromí, strávit ráno u vody nebo vyrazit do okolí.",
+    cards: [
+      { id: "offer-1", sortOrder: 0, title: "Ubytování", description: "Komfortní dům pro dva s terasou, koupelnou a výhledem do krajiny.", eyebrow: "Komfort v přírodě", linkHref: "/ubytovani", ctaLabel: "Zjistit více", image: { url: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80&auto=format" } },
+      { id: "offer-2", sortOrder: 1, title: "Rybaření", description: "Soukromý rybník u objektu. Kupte si povolenku a užijte si klid.", eyebrow: "Klid na vodě", linkHref: "/rybareni", ctaLabel: "Zjistit více", image: { url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&auto=format" } },
+      { id: "offer-3", sortOrder: 2, title: "Okolí & výlety", description: "Hrad Švihov, nádrž, cyklostezky a turistické trasy od prahu.", eyebrow: "Místa kolem", linkHref: "/vylety", ctaLabel: "Zjistit více", image: { url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80&auto=format" } },
+    ],
+  };
+}
+
+export function defaultHomepageApitherapy(): HomepageApitherapy {
+  return {
+    eyebrow: "Glamping se včelami",
+    title: "Apiterapie —",
+    titleAccent: "léčivá síla včel",
+    text1: "V Hive House spíte přímo nad živými včelími úly. Mikrovibrace a nízké frekvence, které včely přirozeně vytvářejí, procházejí podlahou do vašeho těla a navozují hluboký relaxační stav. Vůně propolisu, vosku a medu působí jako přirozená aromaterapie, která uklidňuje dýchací cesty a podporuje regeneraci organismu.",
+    text2: "Apiterapie je staletími ověřená metoda využívající produkty včel ke zlepšení zdraví. Lidé s astmatem, alergiemi, chronickým stresem nebo problémy se spánkem pravidelně hlásí výrazné zlepšení už po prvním pobytu. Biorezonanční pole včelstva harmonizuje nervový systém a pomáhá tělu i mysli najít přirozenou rovnováhu.",
+    benefits: [
+      { id: "b1", icon: "🫁", text: "Zlepšení dýchacích cest a astmatu" },
+      { id: "b2", icon: "😴", text: "Hlubší a kvalitnější spánek" },
+      { id: "b3", icon: "🧘", text: "Snížení stresu a úzkosti" },
+      { id: "b4", icon: "💪", text: "Posílení imunitního systému" },
+      { id: "b5", icon: "🩺", text: "Zmírnění chronických bolestí" },
+      { id: "b6", icon: "🧠", text: "Lepší soustředění a mentální klid" },
+    ],
+    ctaPrimaryLabel: "Více o apiterapii",
+    ctaPrimaryHref: "/vcelin-glamping",
+    ctaSecondaryLabel: "Rezervovat pobyt",
+    ctaSecondaryHref: "/rezervace",
+    imageMain: { url: "https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=1200&q=80&auto=format", alt: "Glamping se včelami" },
+    imageSmall1: { url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format", alt: "Včely a úly" },
+    imageSmall2: { url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80&auto=format", alt: "Příroda v okolí" },
+  };
+}
+
+export function defaultHomepageTrustbar(): HomepageTrustbar {
+  return {
+    items: [
+      "Apiterapie pod postelí",
+      "Soukromý rybník",
+      "Vlastní med",
+      "Blízko nádrže Švihov",
+      "Moderní technologie",
+      "Naprosté soukromí",
+    ],
+  };
+}
+
+export function defaultHomepageReviewsConfig(): HomepageReviewsConfig {
+  return { displayCount: 5 };
+}
+
+// --- Subscriptions ---
+
+export function subscribeHomepageHero(
+  onData: (data: HomepageHero) => void,
+  onError?: () => void,
+): Unsubscribe {
+  return onSnapshot(
+    doc(db, COLLECTION_HOMEPAGE, "hero"),
+    (snap) => {
+      if (!snap.exists()) { onData(defaultHomepageHero()); return; }
+      const raw = snap.data() as Partial<HomepageHero>;
+      const d = defaultHomepageHero();
+      onData({
+        ...d,
+        ...raw,
+        images: Array.isArray(raw.images)
+          ? (raw.images as Array<string | ManagedImage>).map((img) =>
+              typeof img === "string" ? { url: img } : { url: img.url, storagePath: img.storagePath, alt: img.alt },
+            )
+          : d.images,
+      });
+    },
+    () => onError?.(),
+  );
+}
+
+export function subscribeHomepageOfferings(
+  onData: (data: HomepageOfferings) => void,
+  onError?: () => void,
+): Unsubscribe {
+  return onSnapshot(
+    doc(db, COLLECTION_HOMEPAGE, "offerings"),
+    (snap) => {
+      if (!snap.exists()) { onData(defaultHomepageOfferings()); return; }
+      const raw = snap.data() as Partial<HomepageOfferings>;
+      const d = defaultHomepageOfferings();
+      onData({
+        ...d,
+        ...raw,
+        cards: Array.isArray(raw.cards)
+          ? (raw.cards as Array<Partial<HomepageOfferingCard>>)
+              .map((c, i) => ({
+                id: c.id || `offer-${i}`,
+                sortOrder: c.sortOrder ?? i,
+                title: c.title || "",
+                description: c.description || "",
+                eyebrow: c.eyebrow || "",
+                linkHref: c.linkHref || "",
+                ctaLabel: c.ctaLabel || "Zjistit více",
+                image: c.image,
+              }))
+              .sort((a, b) => a.sortOrder - b.sortOrder)
+          : d.cards,
+      });
+    },
+    () => onError?.(),
+  );
+}
+
+export function subscribeHomepageApitherapy(
+  onData: (data: HomepageApitherapy) => void,
+  onError?: () => void,
+): Unsubscribe {
+  return onSnapshot(
+    doc(db, COLLECTION_HOMEPAGE, "apitherapy"),
+    (snap) => {
+      if (!snap.exists()) { onData(defaultHomepageApitherapy()); return; }
+      const raw = snap.data() as Partial<HomepageApitherapy>;
+      const d = defaultHomepageApitherapy();
+      onData({
+        ...d,
+        ...raw,
+        benefits: Array.isArray(raw.benefits)
+          ? (raw.benefits as Array<Partial<HomepageApiBenefit>>).map((b, i) => ({
+              id: b.id || `b${i}`,
+              icon: b.icon || "",
+              text: b.text || "",
+            }))
+          : d.benefits,
+      });
+    },
+    () => onError?.(),
+  );
+}
+
+export function subscribeHomepageTrustbar(
+  onData: (data: HomepageTrustbar) => void,
+  onError?: () => void,
+): Unsubscribe {
+  return onSnapshot(
+    doc(db, COLLECTION_HOMEPAGE, "trustbar"),
+    (snap) => {
+      if (!snap.exists()) { onData(defaultHomepageTrustbar()); return; }
+      const raw = snap.data() as Partial<HomepageTrustbar>;
+      onData({
+        items: Array.isArray(raw.items) ? (raw.items as string[]).filter(Boolean) : defaultHomepageTrustbar().items,
+      });
+    },
+    () => onError?.(),
+  );
+}
+
+export function subscribeHomepageReviewsConfig(
+  onData: (data: HomepageReviewsConfig) => void,
+  onError?: () => void,
+): Unsubscribe {
+  return onSnapshot(
+    doc(db, COLLECTION_HOMEPAGE, "reviews-config"),
+    (snap) => {
+      if (!snap.exists()) { onData(defaultHomepageReviewsConfig()); return; }
+      const raw = snap.data() as Partial<HomepageReviewsConfig>;
+      onData({
+        displayCount: typeof raw.displayCount === "number" ? raw.displayCount : 5,
+      });
     },
     () => onError?.(),
   );
