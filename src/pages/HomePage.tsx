@@ -8,6 +8,7 @@ import { HowItWorksSection } from "../components/HowItWorksSection";
 import { AboutSection } from "../components/AboutSection";
 import { VideoSection } from "../components/VideoSection";
 import { ContactPanel } from "../components/ContactPanel";
+import { FishingCtaBand } from "../components/FishingCtaBand";
 
 type Props = {
   t: T;
@@ -34,16 +35,7 @@ export function HomePage({ t, data, onVoucherClick, onFishingClick }: Props) {
       <ContactPanel t={t} contact={data.contact} />
 
       {/* CTA band pro rybářskou povolenku — otevře popup */}
-      <section className="section-pad-sm fishing-cta" id="povolenka">
-        <div className="container">
-          <div className="section-eyebrow">{data.fishingCta.eyebrow}</div>
-          <h2>{data.fishingCta.title}</h2>
-          <p className="section-desc">{data.fishingCta.desc}</p>
-          <button type="button" className="btn btn-primary" onClick={onFishingClick}>
-            {t.common.orderPermit}
-          </button>
-        </div>
-      </section>
+      <FishingCtaBand t={t} data={data.fishingCta} onClick={onFishingClick} />
     </>
   );
 }

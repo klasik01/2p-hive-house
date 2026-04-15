@@ -19,6 +19,7 @@ import { PromoPopup } from "./components/PromoPopup";
 import { HomePage } from "./pages/HomePage";
 import { ReservationPage } from "./pages/ReservationPage";
 import { ContactPage } from "./pages/ContactPage";
+import { RybareniPage } from "./pages/RybareniPage";
 
 import homepageData from "./data/homepage.json";
 
@@ -67,9 +68,12 @@ function App() {
   const route = useHashRoute();
   const isReservation = route === "/rezervace";
   const isContact = route === "/kontakt";
+  const isRybareni = route === "/rybareni";
 
   useRevealOnScroll(
-    isReservation ? "reservation" : isContact ? "contact" : "home",
+    isReservation ? "reservation" :
+    isContact ? "contact" :
+    isRybareni ? "rybareni" : "home",
     isReady,
   );
   useAnalyticsPageView(route, cookieConsent, gaMeasurementId);
@@ -90,6 +94,8 @@ function App() {
           <ReservationPage data={data} />
         ) : isContact ? (
           <ContactPage />
+        ) : isRybareni ? (
+          <RybareniPage data={data} onFishingClick={() => setShowFishing(true)} />
         ) : (
           <HomePage
             t={t}

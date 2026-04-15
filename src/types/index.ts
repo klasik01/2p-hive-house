@@ -30,6 +30,25 @@ export type OfferingCard = {
   ctaLabel: string;
   linkHref: string;
   image: string;
+  /** Obsah článku pro modal (kliknutí na kartu otevře dialog). */
+  article?: OfferingArticle;
+};
+
+export type OfferingArticleHighlight = {
+  /** Klíč z <Icon />: shield, leaf, sparkles, heartbeat, bee, moon, trees… */
+  icon: string;
+  text: string;
+};
+
+export type OfferingArticle = {
+  image: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  paragraphs: string[];
+  highlights?: OfferingArticleHighlight[];
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export type VideoCard = {

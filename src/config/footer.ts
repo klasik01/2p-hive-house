@@ -54,9 +54,9 @@ export const footerConfig: FooterConfig = {
     {
       title: "Navigace",
       links: [
-        { label: "Úvod", href: "#/" },
-        { label: "Včelín & Glamping", href: "#/#vcelin" },
-        { label: "Rybaření", href: "#/#rybareni" },
+        { label: "Včelín & Glamping", href: "#/" },
+        { label: "Rybaření", href: "#/rybareni" },
+        { label: "Rezervace", href: "#/rezervace" },
         { label: "Kontakt", href: "#/kontakt" },
       ],
     },

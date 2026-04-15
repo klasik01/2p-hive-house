@@ -1,6 +1,6 @@
 @use "../partials/breakpoints" as *;
 @use "../partials/typography" as *;
-@use "../partials/honeycomb";
+@use "../partials/honeycomb" as *;
 
 // ============================================================
 // REZERVACE — full-bleed hero (obrázek jako pozadí + overlay)
@@ -14,118 +14,28 @@
   background:
     radial-gradient(ellipse at top, rgba(255, 209, 102, 0.15) 0%, transparent 55%),
     linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
-  @include honeycomb.honeycomb-bg("D4881A", 0.05);
+  @include honeycomb-bg("D4881A", 0.05);
 }
 
-// ---- HERO ----------------------------------------------------
-.reservation-hero {
-  position: relative;
-  min-height: 100svh;           // full viewport jako na homepage
-  display: flex;
-  align-items: center;
-  padding: 140px 0 280px;       // 280 dole → místo pro překryv embedu
-  overflow: hidden;
-  background: #2C2410;
-
-  @include md {
-    padding: 160px 0 300px;
-  }
-}
-
-.reservation-hero-bg,
-.reservation-hero-overlay {
-  position: absolute;
-  inset: 0;
-}
-
-.reservation-hero-bg {
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.02);
-}
-
-.reservation-hero-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(22, 16, 8, 0.72) 0%,
-    rgba(22, 16, 8, 0.5) 38%,
-    rgba(22, 16, 8, 0.3) 68%,
-    rgba(22, 16, 8, 0.18) 100%
-  );
-  z-index: 1;
-
-  @include md {
-    background: linear-gradient(
-      110deg,
-      rgba(22, 16, 8, 0.74) 0%,
-      rgba(22, 16, 8, 0.52) 34%,
-      rgba(22, 16, 8, 0.28) 64%,
-      rgba(22, 16, 8, 0.12) 100%
-    );
-  }
-}
-
-.reservation-hero .container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.reservation-hero-content {
-  max-width: 820px;
-  color: var(--white);
-
-  // Eyebrow přebírá styl z .hero-eyebrow (partial v _hero.scss),
-  // žádný přepis netřeba.
-
-  h1 {
-    font-family: $font-display;
-    font-weight: 700;
-    font-size: clamp(30px, 5.2vw, 64px);   // menší než na homepage
-    line-height: 1.05;
-    letter-spacing: 0.01em;
-    color: var(--white);
-    text-transform: uppercase;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    margin: 0 0 18px;
-
-    .hero-word { font-style: normal; display: inline; }
-    .hero-word-1 { color: var(--white); }
-    .hero-word-2 { color: var(--honey); }
-  }
-}
-
-.reservation-lead {
-  font-family: $font-body;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.65;
-  color: #FFFFFF;
-  max-width: 560px;
-  text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.6),
-    0 1px 3px rgba(0, 0, 0, 0.55);
-  margin: 0;
-
-  @include md { font-size: 17px; line-height: 1.7; }
-  @include lg { font-size: 18px; }
-}
+// Hero je sdílený přes <PageHero /> a CSS `_page-hero.scss`.
 
 // ---- EMBED PANEL --------------------------------------------
 .reservation-embed-wrap {
   position: relative;
-  z-index: 3;
-  margin-top: -260px;          // výraznější překryv do hero obrázku
+  overflow: hidden;
+  margin-top: 48px;            // panel sedí hezky pod hero bannerem
   background: #ffffff;
   border-radius: 24px;
   padding: 28px;
   box-shadow:
-    0 40px 80px rgba(40, 20, 0, 0.28),
-    0 8px 20px rgba(40, 20, 0, 0.10);
+    0 40px 80px rgba(40, 20, 0, 0.18),
+    0 8px 20px rgba(40, 20, 0, 0.08);
   border: 1px solid rgba(212, 136, 26, 0.18);
+  @include honeycomb-bg("D4881A", 0.05);
+
+  @include md { margin-top: 64px; padding: 32px; }
 
   @media (max-width: 767px) {
-    margin-top: -200px;
     padding: 18px;
     border-radius: 20px;
   }

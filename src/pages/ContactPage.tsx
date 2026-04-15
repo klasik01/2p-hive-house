@@ -1,5 +1,6 @@
 import { SEOHead } from "../components/SEOHead";
 import { Icon } from "../components/Icon";
+import { PageHero } from "../components/PageHero";
 import { asset } from "../utils/asset";
 import { contactPage } from "../config/contact";
 
@@ -24,29 +25,7 @@ export function ContactPage() {
       <SEOHead meta={c.seo} />
 
       <section className="contact-page" aria-labelledby="contact-title">
-        {/* ---------- HERO ---------- */}
-        <div className="contact-hero">
-          <div
-            className="contact-hero-bg"
-            style={{ backgroundImage: `url(${asset(c.hero.image)})` }}
-            role="img"
-            aria-label={c.hero.imageAlt}
-          />
-          <div className="contact-hero-overlay" aria-hidden="true" />
-          <div className="container">
-            <div className="contact-hero-content">
-              <div className="hero-eyebrow">
-                <span className="hero-eyebrow-line" />
-                <span>{c.hero.eyebrow}</span>
-              </div>
-              <h1 id="contact-title">
-                <span className="hero-word hero-word-1">{c.hero.title}</span>{" "}
-                <span className="hero-word hero-word-2">{c.hero.titleAccent}</span>
-              </h1>
-              <p className="contact-lead">{c.hero.lead}</p>
-            </div>
-          </div>
-        </div>
+        <PageHero titleId="contact-title" data={c.hero} />
 
         {/* ---------- LIDI + OBECNÝ KONTAKT ---------- */}
         <div className="container">
