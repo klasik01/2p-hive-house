@@ -1,0 +1,90 @@
+{
+  "seo": {
+    "title": "2P Hive House | Glamping se včelami u vodní nádrže Švihov",
+    "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov. Odpočiňte si v přírodě, spěte nad včelími úly, rybařte v soukromém rybníku.",
+    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov",
+    "ogImage": "/logo.png",
+    "canonical": "https://hivehouse.2pmoment.cz/"
+  },
+  "hero": {
+    "subtitle": "Glamping • Apiterapie • Rybaření",
+    "title": "Spěte nad úly,",
+    "titleAccent": "probuďte se v přírodě",
+    "text": "Unikátní ubytování u vodní nádrže Švihov. Vlastní med, soukromý rybník a klid, na který se nezapomíná.",
+    "images": [
+      "/logo.png"
+    ],
+    "ctaReserveLabel": "Rezervovat pobyt",
+    "ctaReserveHref": "#rezervace",
+    "ctaVoucherLabel": "Dárková poukázka",
+    "stats": [
+      { "num": "4.9★", "label": "Hodnocení hostů" },
+      { "num": "2", "label": "Osoby v domečku" },
+      { "num": "100%", "label": "Soukromí v přírodě" }
+    ]
+  },
+  "offerings": {
+    "sectionEyebrow": "Co nabízíme",
+    "sectionTitle": "Zážitky,",
+    "sectionTitleAccent": "na které nezapomenete",
+    "sectionDesc": "Tři pilíře 2P Hive House — ubytování nad včelami, soukromý rybník a celoroční gastronomie s vlastním medem.",
+    "cards": [
+      {
+        "id": "vcelin",
+        "eyebrow": "Glamping & Apiterapie",
+        "title": "Spaní nad úly",
+        "description": "Ojedinělý zážitek spánku přímo nad aktivními včelími úly. Apiterapeutické účinky, vůně medu a ticho lesa.",
+        "ctaLabel": "Prozkoumat",
+        "linkHref": "#vcelin",
+        "image": "/logo.png"
+      },
+      {
+        "id": "rybareni",
+        "eyebrow": "Soukromý rybník",
+        "title": "Rybaření u chalupy",
+        "description": "Klidné rybaření ve vlastním rybníku přímo u objektu. Povolenky pro hosty i veřejnost.",
+        "ctaLabel": "Prozkoumat",
+        "linkHref": "#rybareni",
+        "image": "/logo.png"
+      },
+      {
+        "id": "gastronomie",
+        "eyebrow": "Med a dobroty",
+        "title": "Chuť domácího medu",
+        "description": "Vlastní med, výrobky ze včelích produktů a snídaně z regionálních surovin přímo v ceně pobytu.",
+        "ctaLabel": "Prozkoumat",
+        "linkHref": "#gastronomie",
+        "image": "/logo.png"
+      }
+    ]
+  },
+  "videoSection": {
+    "sectionEyebrow": "Zažijte to na vlastní oči",
+    "sectionTitle": "Podívejte se,",
+    "sectionTitleAccent": "jak u nás vypadá čas",
+    "sectionDesc": "Krátká videa z prostředí 2P Hive House. Rozbalte kartu a přehrajte si záznam.",
+    "cards": [
+      {
+        "id": "vcelin-video",
+        "eyebrow": "Včelín",
+        "title": "Den na včelíně",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "poster": "/logo.png"
+      },
+      {
+        "id": "rybnik-video",
+        "eyebrow": "Rybník",
+        "title": "Rybaření u chalupy",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "poster": "/logo.png"
+      },
+      {
+        "id": "glamping-video",
+        "eyebrow": "Glamping",
+        "title": "Ráno v přírodě",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "poster": "/logo.png"
+      }
+    ]
+  }
+}

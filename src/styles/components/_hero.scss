@@ -1,0 +1,120 @@
+@use "../partials/breakpoints" as *;
+@use "../partials/typography" as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 96px;
+  background:
+    radial-gradient(ellipse at top, rgba(255,209,102,0.25), transparent 60%),
+    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
+}
+
+.hero-bg-stack {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+  &.is-active { opacity: 0.18; }
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+}
+
+.hero .container { position: relative; z-index: 2; }
+
+.hero-logo {
+  width: 140px; height: auto;
+  margin: 0 auto 20px;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(212,136,26,0.25));
+  @include md { width: 200px; margin-bottom: 28px; }
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--honey-dark);
+}
+.hero-eyebrow-line { width: 40px; height: 2px; background: var(--honey); }
+
+.hero h1 {
+  line-height: 1.05;
+  em { font-style: normal; color: var(--honey-dark); }
+}
+
+.hero-desc {
+  margin: 16px auto 28px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-medium);
+  max-width: 620px;
+  @include md { font-size: 18px; }
+}
+
+.hero-actions {
+  display: flex; flex-direction: column; gap: 12px;
+  justify-content: center;
+  @include sm { flex-direction: row; }
+}
+
+.hero-stats {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.06);
+  > div { text-align: center; }
+}
+
+.hero-stat-num {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: 22px;
+  color: var(--honey-dark);
+  @include md { font-size: 28px; }
+}
+.hero-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  margin-top: 4px;
+}
+
+.hero-dots {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 3;
+  button {
+    width: 8px; height: 8px; border-radius: 9999px;
+    background: rgba(92,74,42,0.3);
+    transition: width .25s ease, background .25s ease;
+    &.active { width: 26px; background: var(--honey-dark); }
+  }
+}
