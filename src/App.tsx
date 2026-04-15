@@ -18,6 +18,7 @@ import { CookieConsentBanner } from "./components/CookieConsentBanner";
 import { PromoPopup } from "./components/PromoPopup";
 import { HomePage } from "./pages/HomePage";
 import { ReservationPage } from "./pages/ReservationPage";
+import { ContactPage } from "./pages/ContactPage";
 
 import homepageData from "./data/homepage.json";
 
@@ -65,8 +66,12 @@ function App() {
   const isReady = useBootReady(loadedKeys, REQUIRED_KEYS, 4000);
   const route = useHashRoute();
   const isReservation = route === "/rezervace";
+  const isContact = route === "/kontakt";
 
-  useRevealOnScroll(isReservation ? "reservation" : "home", isReady);
+  useRevealOnScroll(
+    isReservation ? "reservation" : isContact ? "contact" : "home",
+    isReady,
+  );
   useAnalyticsPageView(route, cookieConsent, gaMeasurementId);
   useBodyModalLock(showFishing);
 
@@ -83,6 +88,8 @@ function App() {
       <main>
         {isReservation ? (
           <ReservationPage data={data} />
+        ) : isContact ? (
+          <ContactPage />
         ) : (
           <HomePage
             t={t}

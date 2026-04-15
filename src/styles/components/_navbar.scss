@@ -69,15 +69,18 @@
       width: 0; height: 2px; background: var(--honey);
       transition: width .25s ease;
     }
-    &:hover, &.active {
-      color: var(--white);
+    // Hover = jen rozsvítí, podtržení vyjede u aktivní stránky
+    &:hover { color: var(--white); }
+    &.is-active, &.active {
+      color: var(--honey);
       &::after { width: 100%; }
     }
   }
 }
 .navbar.scrolled .navbar-nav a {
   color: var(--text-medium);
-  &:hover, &.active { color: var(--text-dark); }
+  &:hover { color: var(--text-dark); }
+  &.is-active, &.active { color: var(--honey); }
 }
 
 // --- Akční tlačítka ---
@@ -138,7 +141,7 @@
     text-decoration: none;
     border: 0;
     padding: 0;
-    &:hover, &.active { color: var(--text-dark); }
+    &:hover, &.active, &.is-active { color: var(--honey); }
   }
 
   .mobile-actions {

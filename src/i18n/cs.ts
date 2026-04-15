@@ -5,11 +5,13 @@
 export const cs = {
   nav: {
     brandAlt: "2P Hive House",
+    uvod: "Úvod",
     vcelin: "Včelín & Glamping",
     ubytovani: "Ubytování",
     rybareni: "Rybaření",
     okoli: "Okolí",
     rezervace: "Rezervace",
+    kontakt: "Kontakt",
     poukazka: "Dárková poukázka",
     menu: "Menu",
   },
