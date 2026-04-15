@@ -1,5 +1,6 @@
-// České texty (default jazyk). Všechny labely tlačítek, hlášky a běžné fráze
-// se definují zde, nikoliv přímo v komponentách.
+// České texty (default jazyk).
+// Labely tlačítek, systémové / navigační hlášky, popisy modálů.
+// Obsah stránek (odstavce, seznamy, CTA na stránce) je v data/homepage.json.
 
 export const cs = {
   nav: {
@@ -14,6 +15,7 @@ export const cs = {
   },
   hero: {
     scrollHint: "Scroll",
+    logoAlt: "2P Hive House",
   },
   common: {
     close: "Zavřít",
@@ -40,8 +42,22 @@ export const cs = {
     soon: "Brzy k dispozici",
   },
   footer: {
+    heading: "Patička",
+    contactTitle: "Kontakt",
+    emailLabel: "E-mail",
+    phoneLabel: "Telefon",
+    addressLabel: "Adresa",
+    checkInLabel: "Check-in",
+    checkOutLabel: "Check-out",
+    icoLabel: "IČO",
     rights: "Všechna práva vyhrazena.",
     madeBy: "Vyrobeno s ♥ pro 2P Hive House.",
+  },
+  map: {
+    iframeTitle: "Mapa lokality 2P Hive House",
+  },
+  apitherapy: {
+    imageAlt: "Glamping se včelami",
   },
 } as const;
 

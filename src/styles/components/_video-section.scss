@@ -2,51 +2,59 @@
 
 .video-section { background: var(--sunlight, #FFF8E7); }
 
-// --- Dlaždice (používá .offerings-card styly + tyto overrides) ---
+// --- Video dlaždice: převrací se přes celý obraz, text na obrázku ---
 .video-tile {
-  // button reset — dědí z .offerings-card, ale button má defaulty
-  background: var(--cream);
+  // button reset
+  background: var(--dark);
   border: 0;
-  text-align: left;
   cursor: pointer;
   width: 100%;
   padding: 0;
   font: inherit;
-  color: inherit;
+  color: var(--white);
+  text-align: left;
 }
 
-.video-tile-media {
-  position: relative;
+// Media pokrývá celou kartu (přepíše .offerings-card-media defaulty)
+.video-tile .video-tile-media {
+  position: absolute; inset: 0;
+  z-index: 0;
   img {
     width: 100%; height: 100%;
     object-fit: cover;
-    padding: 0;
-    transition: transform .5s ease, filter .3s ease;
+    transition: transform .6s ease, filter .4s ease;
   }
 }
-
 .video-tile:hover .video-tile-media img {
-  transform: scale(1.04);
-  filter: brightness(0.85);
+  transform: scale(1.06);
+  filter: brightness(0.8);
 }
 
+// Play button uprostřed
 .video-tile-play {
   position: absolute;
-  left: 50%; top: 50%;
+  left: 50%; top: 42%;
   transform: translate(-50%, -50%);
-  width: 64px; height: 64px;
+  z-index: 3;
+  width: 68px; height: 68px;
   border-radius: 9999px;
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--dark);
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 22px;
   padding-left: 6px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
   transition: transform .25s ease, background .25s ease;
+  pointer-events: none;
 }
 .video-tile:hover .video-tile-play {
   background: var(--honey);
-  transform: translate(-50%, -50%) scale(1.08);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+// Text dole — shodné s offerings-card-body (dědí), jen lehká úprava CTA
+.video-tile .offerings-card-cta {
+  color: var(--honey-light);
 }
 
 // --- Lightbox ---

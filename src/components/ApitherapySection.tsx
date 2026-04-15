@@ -1,11 +1,13 @@
 import type { ApitherapyData } from "../types";
+import type { T } from "../i18n";
+import { asset } from "../utils/asset";
 
 /**
  * Sekce "Apiterapie — léčivá síla včel".
  * Strukturně + vizuálně shodná s hive-house (třídy hook-grid, hook-visual,
  * apitherapy-benefits). Data přijdou z homepage.json.
  */
-export function ApitherapySection({ data }: { data: ApitherapyData }) {
+export function ApitherapySection({ t, data }: { t: T; data: ApitherapyData }) {
   return (
     <section className="section-pad apitherapy-section" id="apiterapie" aria-labelledby="apitherapy-title">
       <div className="container">
@@ -39,10 +41,10 @@ export function ApitherapySection({ data }: { data: ApitherapyData }) {
           </div>
 
           <div className="hook-visual reveal-right">
-            <img src={data.imageMain} alt="Glamping se včelami" className="hook-visual-main" />
+            <img src={asset(data.imageMain)} alt={t.apitherapy.imageAlt} className="hook-visual-main" />
             <div className="hook-visual-stack">
-              {data.imageSmall1 && <img src={data.imageSmall1} alt="" />}
-              {data.imageSmall2 && <img src={data.imageSmall2} alt="" />}
+              {data.imageSmall1 && <img src={asset(data.imageSmall1)} alt="" />}
+              {data.imageSmall2 && <img src={asset(data.imageSmall2)} alt="" />}
             </div>
           </div>
         </div>

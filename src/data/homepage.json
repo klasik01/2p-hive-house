@@ -8,11 +8,11 @@
   },
   "hero": {
     "subtitle": "Glamping · Apiterapie · Příroda",
-    "title": "Usněte nad",
-    "titleAccent": "včelími úly",
-    "text": "Unikátní ubytování u vodní nádrže Švihov. Vlastní med, soukromý rybník a klid, na který se nezapomíná.",
+    "title": "Hive",
+    "titleAccent": "House",
+    "text": "Unikátní a jedinečné ubytování uprostřed přírody, kde můžete nasát energii pomocí apiterapie.",
     "images": [
-      "/main-banner-01.JPG"
+      "/picture_1.jpg"
     ],
     "ctaReserveLabel": "Rezervovat pobyt",
     "ctaReserveHref": "#rezervace",
@@ -36,7 +36,7 @@
         "description": "Ojedinělý zážitek spánku přímo nad aktivními včelími úly. Apiterapeutické účinky, vůně medu a ticho lesa.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#vcelin",
-        "image": "/logo.png"
+        "image": "/picture_1.jpg"
       },
       {
         "id": "rybareni",
@@ -45,7 +45,7 @@
         "description": "Klidné rybaření ve vlastním rybníku přímo u objektu. Povolenky pro hosty i veřejnost.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#rybareni",
-        "image": "/logo.png"
+        "image": "/picture_2.jpg"
       },
       {
         "id": "gastronomie",
@@ -54,9 +54,14 @@
         "description": "Vlastní med, výrobky ze včelích produktů a snídaně z regionálních surovin přímo v ceně pobytu.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#gastronomie",
-        "image": "/logo.png"
+        "image": "/picture_3.jpg"
       }
     ]
+  },
+  "fishingCta": {
+    "eyebrow": "Rybník přímo u chalupy",
+    "title": "Chcete si zarybařit?",
+    "desc": "Objednejte si povolenku na soukromý rybník u 2P Hive House."
   },
   "contact": {
     "eyebrow": "Kontakt",
@@ -70,6 +75,68 @@
     "address": "Hojnovice, Česká republika",
     "addressLabel": "Lokalita",
     "mapEmbedUrl": ""
+  },
+  "howItWorks": {
+    "eyebrow": "Jak to funguje",
+    "title": "Cesta k",
+    "titleAccent": "vašemu pobytu",
+    "desc": "Od první návštěvy webu až po probuzení nad úly — čtyři jednoduché kroky a staráme se o zbytek.",
+    "steps": [
+      {
+        "id": "s1",
+        "number": "01",
+        "icon": "📅",
+        "title": "Vyberte termín",
+        "text": "Projděte si dostupné termíny a zvolte si, kdy se k nám chcete vydat. Rezervace je jednoduchá a rychlá."
+      },
+      {
+        "id": "s2",
+        "number": "02",
+        "icon": "✉️",
+        "title": "Potvrďte rezervaci",
+        "text": "Pošleme vám potvrzení e-mailem se všemi detaily pobytu a pokyny k příjezdu. Žádné dohadování."
+      },
+      {
+        "id": "s3",
+        "number": "03",
+        "icon": "🌲",
+        "title": "Přijeďte do přírody",
+        "text": "Po příjezdu si vás převezmeme a ukážeme vám včelín, rybník i zázemí. Vše potřebné je připraveno."
+      },
+      {
+        "id": "s4",
+        "number": "04",
+        "icon": "🐝",
+        "title": "Zažijte apiterapii",
+        "text": "Uvolněte se, spěte nad živými úly, ochutnejte vlastní med a nasajte energii z prostředí včelstva."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "O Hive House",
+    "title": "Ubytování, které vás",
+    "titleAccent": "doslova nabije",
+    "lead": "Slyšeli jste už o ubytování, které vás doslova „nabije\" energií? Představujeme vám náš Hive House — unikátní apidomek v srdci Hojanovic.",
+    "blocks": [
+      {
+        "id": "a1",
+        "icon": "🏡",
+        "question": "O co se vlastně jedná?",
+        "answer": "Hive House představuje unikátní spojení moderního glampingu (luxusního ubytování v přírodě) a tradiční síly včel."
+      },
+      {
+        "id": "a2",
+        "icon": "🔒",
+        "question": "Jak to celé funguje?",
+        "answer": "Včelstva jsou umístěna přímo v konstrukci stěn a pod vašimi lůžky. Díky speciálnímu zabezpečení a vchodům do úlů, které jsou pouze z venkovní strany domku, se k vám včely dovnitř nedostanou. Vy tak můžete v naprostém klidu a bezpečí vnímat jejich přítomnost všemi smysly."
+      },
+      {
+        "id": "a3",
+        "icon": "✨",
+        "question": "Proč se u nás ubytovat?",
+        "answer": "Hive House není obyčejným ubytováním, je o prožitku, který pocítíte na vlastním těle již po jedné noci. Jemný včelí bzukot, přirozené teplo a čistý úlový vzduch posilují imunitu, podporují kvalitní spánek a mnoho dalšího."
+      }
+    ]
   },
   "apitherapy": {
     "eyebrow": "Glamping se včelami",
@@ -89,9 +156,9 @@
     "ctaPrimaryHref": "#vcelin",
     "ctaSecondaryLabel": "Rezervovat pobyt",
     "ctaSecondaryHref": "#rezervace",
-    "imageMain": "/main-banner-01.JPG",
-    "imageSmall1": "/logo.png",
-    "imageSmall2": "/main-banner-01.JPG"
+    "imageMain": "/picture_1.jpg",
+    "imageSmall1": "/picture_2.jpg",
+    "imageSmall2": "/picture_3.jpg"
   },
   "videoSection": {
     "sectionEyebrow": "Zažijte to na vlastní oči",
@@ -104,21 +171,21 @@
         "eyebrow": "Včelín",
         "title": "Den na včelíně",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        "poster": "/logo.png"
+        "poster": "/picture_2.jpg"
       },
       {
         "id": "rybnik-video",
         "eyebrow": "Rybník",
         "title": "Rybaření u chalupy",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        "poster": "/logo.png"
+        "poster": "/picture_3.jpg"
       },
       {
         "id": "glamping-video",
         "eyebrow": "Glamping",
         "title": "Ráno v přírodě",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        "poster": "/logo.png"
+        "poster": "/picture_1.jpg"
       }
     ]
   }

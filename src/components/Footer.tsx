@@ -1,5 +1,6 @@
 import type { T } from "../i18n";
 import { footerConfig } from "../config/footer";
+import { asset } from "../utils/asset";
 
 export function Footer({ t }: { t: T }) {
   const c = footerConfig;
@@ -7,11 +8,13 @@ export function Footer({ t }: { t: T }) {
 
   return (
     <footer className="footer" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="visually-hidden">Patička</h2>
+      <h2 id="footer-heading" className="visually-hidden">{t.footer.heading}</h2>
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <img src={c.logoSrc} alt={c.brandName} className="footer-logo" />
+            <span className="footer-logo-badge">
+              <img src={asset(c.logoSrc)} alt={c.brandName} className="footer-logo" />
+            </span>
             <p>{c.tagline}</p>
             <div className="footer-socials">
               {c.socials.map((s) => (
@@ -34,16 +37,21 @@ export function Footer({ t }: { t: T }) {
           ))}
 
           <div className="footer-col footer-contact">
-            <h4>Kontakt</h4>
-            <p><strong>E-mail:</strong> {c.contact.email}</p>
-            <p><strong>Telefon:</strong> {c.contact.phone}</p>
-            <p><strong>Adresa:</strong> {c.company.address}</p>
-            <p><strong>Check-in:</strong> {c.checkInOut.checkIn} · <strong>Check-out:</strong> {c.checkInOut.checkOut}</p>
+            <h4>{t.footer.contactTitle}</h4>
+            <p><strong>{t.footer.emailLabel}:</strong> {c.contact.email}</p>
+            <p><strong>{t.footer.phoneLabel}:</strong> {c.contact.phone}</p>
+            <p><strong>{t.footer.addressLabel}:</strong> {c.company.address}</p>
+            <p>
+              <strong>{t.footer.checkInLabel}:</strong> {c.checkInOut.checkIn} ·{" "}
+              <strong>{t.footer.checkOutLabel}:</strong> {c.checkInOut.checkOut}
+            </p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <div>© {year} {c.company.name}, IČO {c.company.ico}. {t.footer.rights}</div>
+          <div>
+            © {year} {c.company.name}, {t.footer.icoLabel} {c.company.ico}. {t.footer.rights}
+          </div>
           <div className="footer-legal">
             {c.legalLinks.map((l) => (
               <a key={l.href} href={l.href}>{l.label}</a>

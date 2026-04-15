@@ -1,10 +1,11 @@
 import type { ContactData } from "../types";
+import type { T } from "../i18n";
 
 /**
  * Kontaktní sekce s mapou a medovým pruhem s údaji.
  * Vizuálně shodná s hive-house (.contact-panel).
  */
-export function ContactPanel({ contact }: { contact: ContactData }) {
+export function ContactPanel({ t, contact }: { t: T; contact: ContactData }) {
   const mapEmbedUrl =
     contact.mapEmbedUrl ||
     `https://maps.google.com/maps?q=${encodeURIComponent(contact.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
@@ -24,7 +25,7 @@ export function ContactPanel({ contact }: { contact: ContactData }) {
           <div className="contact-panel-grid">
             <div className="contact-panel-map-frame">
               <iframe
-                title="Mapa lokality 2P Hive House"
+                title={t.map.iframeTitle}
                 src={mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

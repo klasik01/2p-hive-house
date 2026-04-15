@@ -12,6 +12,8 @@
 
 @use "components/navbar";
 @use "components/hero";
+@use "components/how-it-works";
+@use "components/about";
 @use "components/offerings";
 @use "components/apitherapy";
 @use "components/video-section";
@@ -21,3 +23,10 @@
 @use "components/loader";
 @use "components/cookie";
 @use "components/promo";
+
+// --- Drobné ad-hoc styly, které nemají vlastní partial ---
+.fishing-cta {
+  background: var(--white);
+  text-align: center;
+  .section-desc { margin: 0 auto 24px; }
+}

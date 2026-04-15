@@ -61,12 +61,30 @@
   @include md { padding-top: 88px; }
 }
 
+// Badge = bílý kruh s medovým rámečkem, uvnitř logo
+.hero-logo-badge {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 4px solid var(--honey);
+  border-radius: 9999px;
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.08),
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    inset 0 2px 8px rgba(245, 166, 35, 0.15);
+  padding: 16px;
+  @include md { width: 230px; height: 230px; padding: 22px; margin-bottom: 36px; }
+}
+
 .hero-logo {
-  width: 140px; height: auto;
-  margin: 0 auto 24px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
-  @include md { width: 210px; margin-bottom: 28px; }
 }
 
 // Eyebrow nad hero h1 — styl jako v hive-house: krátká medová čárka + malé caps
@@ -94,14 +112,18 @@
 
 .hero h1 {
   font-family: $font-display;
-  font-weight: 600;
-  font-size: clamp(40px, 8vw, 82px);
+  font-weight: 700;
+  font-size: clamp(48px, 10vw, 110px);
   line-height: 1.02;
+  letter-spacing: 0.01em;
   color: var(--white);
   text-transform: uppercase;
   text-shadow: 0 10px 30px rgba(0,0,0,0.35);
   margin-bottom: 20px;
-  em { font-style: normal; color: var(--honey-light); }
+
+  .hero-word { font-style: normal; }
+  .hero-word-1 { color: var(--white); }
+  .hero-word-2 { color: var(--honey); }
 }
 
 .hero-desc {

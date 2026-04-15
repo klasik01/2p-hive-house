@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { VideoSectionData, VideoCard } from "../types";
 import type { T } from "../i18n";
+import { asset } from "../utils/asset";
 
 type Props = {
   t: T;
@@ -51,7 +52,7 @@ export function VideoSection({ t, data }: Props) {
             >
               <div className="offerings-card-media video-tile-media">
                 <img
-                  src={card.poster || "/logo.png"}
+                  src={asset(card.poster || "/logo.png")}
                   alt={card.title}
                   loading="lazy"
                 />
@@ -85,8 +86,8 @@ function VideoLightbox({ card, t, onClose }: { card: VideoCard; t: T; onClose: (
       <button className="video-lightbox-close" onClick={onClose} aria-label={t.common.close}>✕</button>
       <div className="video-lightbox-frame" onClick={(e) => e.stopPropagation()}>
         {isMp4 ? (
-          <video controls autoPlay poster={card.poster}>
-            <source src={card.videoUrl} type="video/mp4" />
+          <video controls autoPlay poster={card.poster ? asset(card.poster) : undefined}>
+            <source src={asset(card.videoUrl)} type="video/mp4" />
           </video>
         ) : (
           <iframe

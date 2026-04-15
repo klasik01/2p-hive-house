@@ -106,11 +106,51 @@ export type ContactData = {
   mapEmbedUrl?: string;
 };
 
+export type HowItWorksStep = {
+  id: string;
+  number: string;
+  icon: string;
+  title: string;
+  text: string;
+};
+
+export type HowItWorksData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  desc: string;
+  steps: HowItWorksStep[];
+};
+
+export type AboutBlock = {
+  id: string;
+  icon: string;
+  question: string;
+  answer: string;
+};
+
+export type AboutData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  lead: string;
+  blocks: AboutBlock[];
+};
+
+export type FishingCtaData = {
+  eyebrow: string;
+  title: string;
+  desc: string;
+};
+
 export type HomepageData = {
   seo: SeoMeta;
   hero: HeroData;
+  howItWorks: HowItWorksData;
+  about: AboutData;
   offerings: OfferingsData;
   apitherapy: ApitherapyData;
   videoSection: VideoSectionData;
+  fishingCta: FishingCtaData;
   contact: ContactData;
 };

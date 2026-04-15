@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { HeroData } from "../types";
+import { asset } from "../utils/asset";
 
 type Props = {
   hero: HeroData;
@@ -10,7 +11,7 @@ type Props = {
 };
 
 export function HeroSection({ hero, onVoucherClick, logoSrc = "/logo.png", logoAlt = "2P Hive House" }: Props) {
-  const images = hero.images;
+  const images = hero.images.map(asset);
   const [activeIdx, setActiveIdx] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -37,7 +38,9 @@ export function HeroSection({ hero, onVoucherClick, logoSrc = "/logo.png", logoA
 
       <div className="container">
         <div className="hero-content reveal visible">
-          <img src={logoSrc} alt={logoAlt} className="hero-logo" />
+          <div className="hero-logo-badge">
+            <img src={asset(logoSrc)} alt={logoAlt} className="hero-logo" />
+          </div>
 
           <div className="hero-eyebrow">
             <span className="hero-eyebrow-line" aria-hidden="true" />
@@ -45,9 +48,8 @@ export function HeroSection({ hero, onVoucherClick, logoSrc = "/logo.png", logoA
           </div>
 
           <h1 id="hero-title">
-            {hero.title}
-            <br />
-            <em>{hero.titleAccent}</em>
+            <span className="hero-word hero-word-1">{hero.title}</span>{" "}
+            <em className="hero-word hero-word-2">{hero.titleAccent}</em>
           </h1>
 
           <p className="hero-desc">{hero.text}</p>

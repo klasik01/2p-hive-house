@@ -4,6 +4,8 @@ import { SEOHead } from "../components/SEOHead";
 import { HeroSection } from "../components/HeroSection";
 import { OfferingsSection } from "../components/OfferingsSection";
 import { ApitherapySection } from "../components/ApitherapySection";
+import { HowItWorksSection } from "../components/HowItWorksSection";
+import { AboutSection } from "../components/AboutSection";
 import { VideoSection } from "../components/VideoSection";
 import { ContactPanel } from "../components/ContactPanel";
 
@@ -24,19 +26,19 @@ export function HomePage({ t, data, onVoucherClick, onFishingClick }: Props) {
     <>
       <SEOHead meta={data.seo} />
       <HeroSection hero={data.hero} onVoucherClick={onVoucherClick} />
+      <HowItWorksSection data={data.howItWorks} />
+      <AboutSection data={data.about} />
+      <ApitherapySection t={t} data={data.apitherapy} />
       <OfferingsSection data={data.offerings} />
-      <ApitherapySection data={data.apitherapy} />
       <VideoSection t={t} data={data.videoSection} />
-      <ContactPanel contact={data.contact} />
+      <ContactPanel t={t} contact={data.contact} />
 
       {/* CTA band pro rybářskou povolenku — otevře popup */}
-      <section className="section-pad-sm" id="povolenka" style={{ background: "var(--white)" }}>
-        <div className="container" style={{ textAlign: "center" }}>
-          <div className="section-eyebrow">Rybník přímo u chalupy</div>
-          <h2>Chcete si zarybařit?</h2>
-          <p className="section-desc" style={{ margin: "0 auto 24px" }}>
-            Objednejte si povolenku na soukromý rybník u 2P Hive House.
-          </p>
+      <section className="section-pad-sm fishing-cta" id="povolenka">
+        <div className="container">
+          <div className="section-eyebrow">{data.fishingCta.eyebrow}</div>
+          <h2>{data.fishingCta.title}</h2>
+          <p className="section-desc">{data.fishingCta.desc}</p>
           <button type="button" className="btn btn-primary" onClick={onFishingClick}>
             {t.common.orderPermit}
           </button>

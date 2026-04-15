@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { T } from "../i18n";
+import { asset } from "../utils/asset";
 
 type Props = {
   t: T;
@@ -37,7 +38,9 @@ export function Navbar({ t, onVoucherClick }: Props) {
         <div className="container">
           <div className="navbar-inner">
             <a href="#uvod" className="navbar-brand" onClick={close} aria-label={t.nav.brandAlt}>
-              <img src="/logo.png" alt={t.nav.brandAlt} className="navbar-logo" />
+              <span className="navbar-logo-badge">
+                <img src={asset("/logo.png")} alt={t.nav.brandAlt} className="navbar-logo" />
+              </span>
             </a>
 
             <ul className="navbar-nav">

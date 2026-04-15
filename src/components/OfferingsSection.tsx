@@ -1,4 +1,5 @@
 import type { OfferingsData } from "../types";
+import { asset } from "../utils/asset";
 
 export function OfferingsSection({ data }: { data: OfferingsData }) {
   return (
@@ -23,7 +24,7 @@ export function OfferingsSection({ data }: { data: OfferingsData }) {
               style={{ transitionDelay: `${i * 0.08}s` }}
             >
               <div className="offerings-card-media">
-                <img src={card.image} alt={card.title} loading="lazy" />
+                <img src={asset(card.image)} alt={card.title} loading="lazy" />
               </div>
               <div className="offerings-card-body">
                 <div className="offerings-card-eyebrow">{card.eyebrow}</div>
