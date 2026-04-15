@@ -1,6 +1,7 @@
 import type { ApitherapyData } from "../types";
 import type { T } from "../i18n";
 import { asset } from "../utils/asset";
+import { Icon } from "./Icon";
 
 /**
  * Sekce "Apiterapie — léčivá síla včel".
@@ -24,7 +25,9 @@ export function ApitherapySection({ t, data }: { t: T; data: ApitherapyData }) {
             <div className="apitherapy-benefits">
               {data.benefits.map((b) => (
                 <div key={b.id} className="apitherapy-benefit-card">
-                  <div className="apitherapy-benefit-icon" aria-hidden="true">{b.icon}</div>
+                  <div className="apitherapy-benefit-icon" aria-hidden="true">
+                    <Icon name={b.icon} size={22} />
+                  </div>
                   <p>{b.text}</p>
                 </div>
               ))}

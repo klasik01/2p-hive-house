@@ -1,4 +1,5 @@
 import type { HowItWorksData } from "../types";
+import { Icon } from "./Icon";
 
 /**
  * Sekce „Jak to u nás funguje" — 4 kroky v medové časové ose.
@@ -27,7 +28,9 @@ export function HowItWorksSection({ data }: { data: HowItWorksData }) {
           {data.steps.map((s, i) => (
             <li key={s.id} className="how-step reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
               <div className="how-step-badge" aria-hidden="true">
-                <span className="how-step-icon">{s.icon}</span>
+                <span className="how-step-icon">
+                  <Icon name={s.icon} size={28} />
+                </span>
                 <span className="how-step-num">{s.number}</span>
               </div>
               <div className="how-step-body">

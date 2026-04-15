@@ -1,6 +1,11 @@
 @use "../partials/breakpoints" as *;
+@use "../partials/honeycomb" as *;
 
-.offerings { background: var(--white); }
+.offerings {
+  background: var(--white);
+  overflow: hidden;
+  @include honeycomb-bg("D4881A", 0.05);
+}
 
 .offerings-head {
   display: grid; gap: 20px; margin-bottom: 40px;

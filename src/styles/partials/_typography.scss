@@ -97,8 +97,14 @@ p { margin: 0 0 1em; line-height: $lh-normal; }
   color: var(--honey-dark);
 }
 
+// Popis pod nadpisem sekce — editorial, prodyšný, lehká váha
 .section-desc {
-  font-size: $fs-lg;
+  font-family: $font-body;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
   color: var(--text-medium);
   max-width: 640px;
+  @include md { font-size: 19px; line-height: 1.75; }
 }

@@ -1,5 +1,6 @@
 @use "../partials/breakpoints" as *;
 @use "../partials/typography" as *;
+@use "../partials/honeycomb" as *;
 
 // =============================================================
 // „Jak to funguje" — navazuje na hero (medové tóny), dekorace
@@ -10,9 +11,8 @@
 .how-it-works {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at top, rgba(255, 209, 102, 0.35) 0%, transparent 55%),
-    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
+  background: var(--white);
+  @include honeycomb-bg("D4881A", 0.05);
 }
 
 // Dekorativní hexagony v pozadí
@@ -138,10 +138,11 @@
 }
 
 .how-step-icon {
-  font-size: 28px;
-  line-height: 1;
-  @include lg { font-size: 32px; }
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--honey-dark);
+  transition: transform .3s ease;
 }
+.how-step:hover .how-step-icon { transform: scale(1.08); }
 
 .how-step-num {
   position: absolute;

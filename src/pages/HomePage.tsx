@@ -25,10 +25,10 @@ export function HomePage({ t, data, onVoucherClick, onFishingClick }: Props) {
   return (
     <>
       <SEOHead meta={data.seo} />
-      <HeroSection hero={data.hero} onVoucherClick={onVoucherClick} />
-      <HowItWorksSection data={data.howItWorks} />
+      <HeroSection t={t} hero={data.hero} onVoucherClick={onVoucherClick} />
       <AboutSection data={data.about} />
       <ApitherapySection t={t} data={data.apitherapy} />
+      <HowItWorksSection data={data.howItWorks} />
       <OfferingsSection data={data.offerings} />
       <VideoSection t={t} data={data.videoSection} />
       <ContactPanel t={t} contact={data.contact} />

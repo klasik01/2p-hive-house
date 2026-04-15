@@ -1,10 +1,13 @@
 @use "../partials/breakpoints" as *;
 @use "../partials/typography" as *;
+@use "../partials/honeycomb" as *;
 
 // Kontakt sekce 1:1 dle hive-house
 .contact-panel {
   background: var(--white);
   padding-bottom: 0 !important;
+  overflow: hidden;
+  @include honeycomb-bg("D4881A", 0.05);
 }
 
 .contact-panel-inner {

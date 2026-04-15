@@ -14,6 +14,8 @@
     "images": [
       "/picture_1.jpg"
     ],
+    "introVideoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "introVideoLabel": "Přehrát prohlídku",
     "ctaReserveLabel": "Rezervovat pobyt",
     "ctaReserveHref": "#rezervace",
     "ctaVoucherLabel": "Dárková poukázka",
@@ -85,28 +87,28 @@
       {
         "id": "s1",
         "number": "01",
-        "icon": "📅",
+        "icon": "calendar",
         "title": "Vyberte termín",
         "text": "Projděte si dostupné termíny a zvolte si, kdy se k nám chcete vydat. Rezervace je jednoduchá a rychlá."
       },
       {
         "id": "s2",
         "number": "02",
-        "icon": "✉️",
+        "icon": "envelope",
         "title": "Potvrďte rezervaci",
         "text": "Pošleme vám potvrzení e-mailem se všemi detaily pobytu a pokyny k příjezdu. Žádné dohadování."
       },
       {
         "id": "s3",
         "number": "03",
-        "icon": "🌲",
+        "icon": "trees",
         "title": "Přijeďte do přírody",
         "text": "Po příjezdu si vás převezmeme a ukážeme vám včelín, rybník i zázemí. Vše potřebné je připraveno."
       },
       {
         "id": "s4",
         "number": "04",
-        "icon": "🐝",
+        "icon": "bee",
         "title": "Zažijte apiterapii",
         "text": "Uvolněte se, spěte nad živými úly, ochutnejte vlastní med a nasajte energii z prostředí včelstva."
       }
@@ -120,19 +122,19 @@
     "blocks": [
       {
         "id": "a1",
-        "icon": "🏡",
+        "icon": "home",
         "question": "O co se vlastně jedná?",
         "answer": "Hive House představuje unikátní spojení moderního glampingu (luxusního ubytování v přírodě) a tradiční síly včel."
       },
       {
         "id": "a2",
-        "icon": "🔒",
+        "icon": "shield",
         "question": "Jak to celé funguje?",
         "answer": "Včelstva jsou umístěna přímo v konstrukci stěn a pod vašimi lůžky. Díky speciálnímu zabezpečení a vchodům do úlů, které jsou pouze z venkovní strany domku, se k vám včely dovnitř nedostanou. Vy tak můžete v naprostém klidu a bezpečí vnímat jejich přítomnost všemi smysly."
       },
       {
         "id": "a3",
-        "icon": "✨",
+        "icon": "sparkles",
         "question": "Proč se u nás ubytovat?",
         "answer": "Hive House není obyčejným ubytováním, je o prožitku, který pocítíte na vlastním těle již po jedné noci. Jemný včelí bzukot, přirozené teplo a čistý úlový vzduch posilují imunitu, podporují kvalitní spánek a mnoho dalšího."
       }
@@ -145,12 +147,12 @@
     "text1": "V Hive House spíte přímo nad živými včelími úly. Mikrovibrace a nízké frekvence, které včely přirozeně vytvářejí, procházejí podlahou do vašeho těla a navozují hluboký relaxační stav. Vůně propolisu, vosku a medu působí jako přirozená aromaterapie, která uklidňuje dýchací cesty a podporuje regeneraci organismu.",
     "text2": "Apiterapie je staletími ověřená metoda využívající produkty včel ke zlepšení zdraví. Lidé s astmatem, alergiemi, chronickým stresem nebo problémy se spánkem pravidelně hlásí výrazné zlepšení už po prvním pobytu. Biorezonanční pole včelstva harmonizuje nervový systém a pomáhá tělu i mysli najít přirozenou rovnováhu.",
     "benefits": [
-      { "id": "b1", "icon": "🫁", "text": "Zlepšení dýchacích cest a astmatu" },
-      { "id": "b2", "icon": "😴", "text": "Hlubší a kvalitnější spánek" },
-      { "id": "b3", "icon": "🧘", "text": "Snížení stresu a úzkosti" },
-      { "id": "b4", "icon": "💪", "text": "Posílení imunitního systému" },
-      { "id": "b5", "icon": "🩺", "text": "Zmírnění chronických bolestí" },
-      { "id": "b6", "icon": "🧠", "text": "Lepší soustředění a mentální klid" }
+      { "id": "b1", "icon": "lungs",        "text": "Zlepšení dýchacích cest a astmatu" },
+      { "id": "b2", "icon": "moon",         "text": "Hlubší a kvalitnější spánek" },
+      { "id": "b3", "icon": "leaf",         "text": "Snížení stresu a úzkosti" },
+      { "id": "b4", "icon": "shield-check", "text": "Posílení imunitního systému" },
+      { "id": "b5", "icon": "heartbeat",    "text": "Zmírnění chronických bolestí" },
+      { "id": "b6", "icon": "brain",        "text": "Lepší soustředění a mentální klid" }
     ],
     "ctaPrimaryLabel": "Více o apiterapii",
     "ctaPrimaryHref": "#vcelin",

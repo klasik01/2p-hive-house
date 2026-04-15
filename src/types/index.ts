@@ -48,6 +48,10 @@ export type HeroData = {
   titleAccent: string;
   text: string;
   images: string[];
+  /** Volitelné: URL intro videa (YouTube/Vimeo embed nebo MP4).
+   * Pokud vyplněno, logo v hero se chová jako play tlačítko. */
+  introVideoUrl?: string;
+  introVideoLabel?: string;
   ctaReserveLabel: string;
   ctaReserveHref: string;
   ctaVoucherLabel: string;

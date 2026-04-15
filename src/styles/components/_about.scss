@@ -10,7 +10,9 @@
 .about-section {
   position: relative;
   overflow: hidden;
-  background: var(--white);
+  background:
+    radial-gradient(ellipse at top, rgba(255, 209, 102, 0.35) 0%, transparent 55%),
+    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
 }
 
 .about-section-bg {
@@ -109,15 +111,22 @@
 }
 
 .about-card-icon {
-  width: 56px; height: 56px;
-  margin-bottom: 18px;
-  background: rgba(245, 166, 35, 0.12);
+  width: 58px; height: 58px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.18) 0%, rgba(255, 209, 102, 0.06) 100%);
+  border: 1px solid rgba(245, 166, 35, 0.28);
   border-radius: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
   color: var(--honey-dark);
+  transition: transform .4s ease, background .4s ease, color .4s ease;
+}
+.about-card:hover .about-card-icon {
+  transform: rotate(-6deg) scale(1.06);
+  background: linear-gradient(135deg, var(--honey) 0%, var(--amber) 100%);
+  border-color: var(--honey-dark);
+  color: var(--white);
 }
 
 .about-card-question {

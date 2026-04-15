@@ -1,6 +1,11 @@
 @use "../partials/breakpoints" as *;
+@use "../partials/honeycomb" as *;
 
-.video-section { background: var(--sunlight, #FFF8E7); }
+.video-section {
+  background: var(--sunlight, #FFF8E7);
+  overflow: hidden;
+  @include honeycomb-bg("D4881A", 0.06);
+}
 
 // --- Video dlaždice: převrací se přes celý obraz, text na obrázku ---
 .video-tile {

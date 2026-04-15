@@ -72,13 +72,20 @@
 }
 
 .apitherapy-benefit-icon {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(245, 166, 35, 0.12);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.18) 0%, rgba(255, 209, 102, 0.08) 100%);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  border-radius: 14px;
   color: var(--honey-dark);
-  font-size: 22px;
   flex-shrink: 0;
+  transition: transform .3s ease, background .3s ease, border-color .3s ease;
+}
+.apitherapy-benefit-card:hover .apitherapy-benefit-icon {
+  transform: scale(1.08) rotate(-4deg);
+  background: linear-gradient(135deg, var(--honey) 0%, var(--amber) 100%);
+  border-color: var(--honey-dark);
+  color: var(--white);
 }
 
 // --- CTA řádek ---

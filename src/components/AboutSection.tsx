@@ -1,4 +1,5 @@
 import type { AboutData } from "../types";
+import { Icon } from "./Icon";
 
 /**
  * Sekce „O Hive House" — editorial intro + 3 Q&A bloky.
@@ -25,7 +26,9 @@ export function AboutSection({ data }: { data: AboutData }) {
         <div className="about-grid">
           {data.blocks.map((b, i) => (
             <article key={b.id} className="about-card reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-              <div className="about-card-icon" aria-hidden="true">{b.icon}</div>
+              <div className="about-card-icon" aria-hidden="true">
+                <Icon name={b.icon} size={28} />
+              </div>
               <h3 className="about-card-question">{b.question}</h3>
               <p className="about-card-answer">{b.answer}</p>
             </article>
