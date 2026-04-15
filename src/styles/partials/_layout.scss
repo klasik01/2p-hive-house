@@ -19,6 +19,18 @@ body {
   overflow-x: hidden;
 }
 
+// --- Globální zoom na desktopu ---
+// Mobil je už doladěný, tablet + desktop vypadají subjektivně nafouknutě.
+// CSS `zoom` škáluje layout i fixed prvky (navbar, modály) a je podporovaný
+// v Chrome/Edge/Safari i v moderním Firefoxu (≥ 126). Pod mobilní breakpoint
+// neškáluje — držíme plné rozměry.
+@media (min-width: #{$bp-md}) {
+  html { zoom: 0.85; }
+}
+@media (min-width: #{$bp-lg}) {
+  html { zoom: 0.8; }
+}
+
 body.modal-open { overflow: hidden; }
 
 // --- Container ---
