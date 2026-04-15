@@ -1,9 +1,9 @@
 {
   "seo": {
     "title": "2P Hive House | Glamping se včelami u vodní nádrže Švihov",
-    "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov. Odpočiňte si v přírodě, spěte nad včelími úly, rybařte v soukromém rybníku.",
-    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov",
-    "ogImage": "/logo.png",
+    "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov. Spěte nad včelími úly, rybařte v soukromém rybníku, ochutnejte vlastní med.",
+    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov, glamping Česko, spaní ve včelíně, netradiční ubytování",
+    "ogImage": "https://hivehouse.2pmoment.cz/og-image.jpg",
     "canonical": "https://hivehouse.2pmoment.cz/"
   },
   "hero": {
@@ -20,9 +20,18 @@
     "ctaReserveHref": "#rezervace",
     "ctaVoucherLabel": "Dárková poukázka",
     "stats": [
-      { "num": "4.9★", "label": "Hodnocení hostů" },
-      { "num": "2", "label": "Osoby v domečku" },
-      { "num": "100%", "label": "Soukromí v přírodě" }
+      {
+        "num": "4.9★",
+        "label": "Hodnocení hostů"
+      },
+      {
+        "num": "2",
+        "label": "Osoby v domečku"
+      },
+      {
+        "num": "100%",
+        "label": "Soukromí v přírodě"
+      }
     ]
   },
   "offerings": {
@@ -147,12 +156,36 @@
     "text1": "V Hive House spíte přímo nad živými včelími úly. Mikrovibrace a nízké frekvence, které včely přirozeně vytvářejí, procházejí podlahou do vašeho těla a navozují hluboký relaxační stav. Vůně propolisu, vosku a medu působí jako přirozená aromaterapie, která uklidňuje dýchací cesty a podporuje regeneraci organismu.",
     "text2": "Apiterapie je staletími ověřená metoda využívající produkty včel ke zlepšení zdraví. Lidé s astmatem, alergiemi, chronickým stresem nebo problémy se spánkem pravidelně hlásí výrazné zlepšení už po prvním pobytu. Biorezonanční pole včelstva harmonizuje nervový systém a pomáhá tělu i mysli najít přirozenou rovnováhu.",
     "benefits": [
-      { "id": "b1", "icon": "lungs",        "text": "Zlepšení dýchacích cest a astmatu" },
-      { "id": "b2", "icon": "moon",         "text": "Hlubší a kvalitnější spánek" },
-      { "id": "b3", "icon": "leaf",         "text": "Snížení stresu a úzkosti" },
-      { "id": "b4", "icon": "shield-check", "text": "Posílení imunitního systému" },
-      { "id": "b5", "icon": "heartbeat",    "text": "Zmírnění chronických bolestí" },
-      { "id": "b6", "icon": "brain",        "text": "Lepší soustředění a mentální klid" }
+      {
+        "id": "b1",
+        "icon": "lungs",
+        "text": "Zlepšení dýchacích cest a astmatu"
+      },
+      {
+        "id": "b2",
+        "icon": "moon",
+        "text": "Hlubší a kvalitnější spánek"
+      },
+      {
+        "id": "b3",
+        "icon": "leaf",
+        "text": "Snížení stresu a úzkosti"
+      },
+      {
+        "id": "b4",
+        "icon": "shield-check",
+        "text": "Posílení imunitního systému"
+      },
+      {
+        "id": "b5",
+        "icon": "heartbeat",
+        "text": "Zmírnění chronických bolestí"
+      },
+      {
+        "id": "b6",
+        "icon": "brain",
+        "text": "Lepší soustředění a mentální klid"
+      }
     ],
     "ctaPrimaryLabel": "Více o apiterapii",
     "ctaPrimaryHref": "#vcelin",

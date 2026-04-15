@@ -13,28 +13,47 @@
     />
     <meta
       name="keywords"
-      content="glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov, příroda ubytování"
+      content="glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov, příroda ubytování, glamping Česko, spaní ve včelíně"
     />
     <meta name="author" content="2P Moment s.r.o." />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="CZ-VY" />
+    <meta name="geo.placename" content="Hojanovice" />
+    <meta name="geo.position" content="49.5630;15.1620" />
+    <meta name="ICBM" content="49.5630, 15.1620" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="2P Hive House" />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:title" content="2P Hive House | Glamping se včelami" />
     <meta
       property="og:description"
       content="Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov."
     />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="https://hivehouse.2pmoment.cz/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="2P Hive House — glamping se včelami u nádrže Švihov" />
     <meta property="og:url" content="https://hivehouse.2pmoment.cz/" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="2P Hive House" />
-    <meta name="twitter:description" content="Unikátní glamping ubytování s apiterapií." />
+    <meta name="twitter:title" content="2P Hive House | Glamping se včelami" />
+    <meta name="twitter:description" content="Unikátní glamping ubytování s apiterapií u nádrže Švihov." />
+    <meta name="twitter:image" content="https://hivehouse.2pmoment.cz/og-image.jpg" />
+    <meta name="twitter:image:alt" content="2P Hive House — glamping se včelami" />
 
     <link rel="canonical" href="https://hivehouse.2pmoment.cz/" />
+    <link rel="alternate" hreflang="cs" href="https://hivehouse.2pmoment.cz/" />
+    <link rel="alternate" hreflang="x-default" href="https://hivehouse.2pmoment.cz/" />
+
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,21 +62,78 @@
       rel="stylesheet"
     />
 
-    <!-- Structured data pro vyhledávače (LodgingBusiness) -->
+    <!-- Structured data: LodgingBusiness -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LodgingBusiness",
+        "@id": "https://hivehouse.2pmoment.cz/#lodging",
         "name": "2P Hive House",
         "url": "https://hivehouse.2pmoment.cz/",
+        "logo": "https://hivehouse.2pmoment.cz/logo.png",
+        "image": [
+          "https://hivehouse.2pmoment.cz/main-banner-01.JPG",
+          "https://hivehouse.2pmoment.cz/picture_1.jpg",
+          "https://hivehouse.2pmoment.cz/picture_2.jpg",
+          "https://hivehouse.2pmoment.cz/picture_3.jpg"
+        ],
         "telephone": "+420774110224",
-        "email": "hivehouse@2pmoment.cz",
+        "email": "info@hivehouse.cz",
+        "priceRange": "$$",
+        "currenciesAccepted": "CZK",
+        "paymentAccepted": "Cash, Credit Card, Bank transfer",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Hojanovice",
+          "addressRegion": "Vysočina",
           "addressCountry": "CZ"
         },
-        "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov"
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.5630,
+          "longitude": 15.1620
+        },
+        "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov. Spaní nad včelími úly, soukromý rybník, vlastní med.",
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Apiterapie", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Soukromý rybník", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Vlastní med", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "WiFi zdarma", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Parkování zdarma", "value": true }
+        ],
+        "sameAs": []
+      }
+    </script>
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://hivehouse.2pmoment.cz/#org",
+        "name": "2P Moment s.r.o.",
+        "url": "https://hivehouse.2pmoment.cz/",
+        "logo": "https://hivehouse.2pmoment.cz/logo.png",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+420774110224",
+          "contactType": "reservations",
+          "email": "info@hivehouse.cz",
+          "areaServed": "CZ",
+          "availableLanguage": ["cs","en"]
+        }]
+      }
+    </script>
+
+    <!-- Structured data: WebSite (sitelinks search box – volitelné) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://hivehouse.2pmoment.cz/#website",
+        "url": "https://hivehouse.2pmoment.cz/",
+        "name": "2P Hive House",
+        "inLanguage": "cs-CZ"
       }
     </script>
   </head>
