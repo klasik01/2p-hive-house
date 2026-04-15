@@ -70,9 +70,47 @@ export type VideoSectionData = {
   cards: VideoCard[];
 };
 
+export type ApitherapyBenefit = {
+  id: string;
+  icon: string;
+  text: string;
+};
+
+export type ApitherapyData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  text1: string;
+  text2: string;
+  benefits: ApitherapyBenefit[];
+  ctaPrimaryLabel: string;
+  ctaPrimaryHref: string;
+  ctaSecondaryLabel: string;
+  ctaSecondaryHref: string;
+  imageMain: string;
+  imageSmall1?: string;
+  imageSmall2?: string;
+};
+
+export type ContactData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  desc: string;
+  phone: string;
+  phoneLabel: string;
+  email: string;
+  emailLabel: string;
+  address: string;
+  addressLabel: string;
+  mapEmbedUrl?: string;
+};
+
 export type HomepageData = {
   seo: SeoMeta;
   hero: HeroData;
   offerings: OfferingsData;
+  apitherapy: ApitherapyData;
   videoSection: VideoSectionData;
+  contact: ContactData;
 };

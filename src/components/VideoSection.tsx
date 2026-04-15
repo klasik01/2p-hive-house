@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { VideoSectionData, VideoCard } from "../types";
+import type { T } from "../i18n";
+
+type Props = {
+  t: T;
+  data: VideoSectionData;
+};
 
 /**
- * Stejný layout jako Offerings (3 karty), ale každá karta je rozbalovací
- * a obsahuje pouze video. Žádný popis uvnitř.
+ * Stejná 3-sloupcová mřížka jako OfferingsSection (vizuálně shodné karty).
+ * Klik na kartu otevře lightbox s přehrávačem.
  */
-export function VideoSection({ data }: { data: VideoSectionData }) {
-  const [openId, setOpenId] = useState<string | null>(null);
+export function VideoSection({ t, data }: Props) {
+  const [active, setActive] = useState<VideoCard | null>(null);
+
+  // Zamknutí scrollu při otevřeném lightboxu + ESC zavření
+  useEffect(() => {
+    if (!active) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActive(null); };
+    document.body.classList.add("modal-open");
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.classList.remove("modal-open");
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [active]);
 
   return (
     <section className="video-section section-pad" id="videa" aria-labelledby="videos-title">
@@ -21,52 +39,64 @@ export function VideoSection({ data }: { data: VideoSectionData }) {
           <p className="section-desc">{data.sectionDesc}</p>
         </div>
 
-        <div className="video-grid">
-          {data.cards.map((card) => {
-            const isOpen = openId === card.id;
-            return (
-              <article key={card.id} className={`video-card${isOpen ? " open" : ""}`}>
-                <button
-                  className="video-card-header"
-                  onClick={() => setOpenId(isOpen ? null : card.id)}
-                  aria-expanded={isOpen}
-                  aria-controls={`video-body-${card.id}`}
-                >
-                  <div className="video-card-header-title">
-                    <span className="eyebrow">{card.eyebrow}</span>
-                    <h3>{card.title}</h3>
-                  </div>
-                  <span className="video-card-toggle" aria-hidden="true">+</span>
-                </button>
-                <div id={`video-body-${card.id}`} className="video-card-body">
-                  <div className="video-card-frame">
-                    {isOpen && <VideoFrame card={card} />}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+        <div className="offerings-grid">
+          {data.cards.map((card, i) => (
+            <button
+              key={card.id}
+              type="button"
+              className="offerings-card video-tile reveal"
+              style={{ transitionDelay: `${i * 0.08}s` }}
+              onClick={() => setActive(card)}
+              aria-label={`${card.title} — ${t.common.watchVideo}`}
+            >
+              <div className="offerings-card-media video-tile-media">
+                <img
+                  src={card.poster || "/logo.png"}
+                  alt={card.title}
+                  loading="lazy"
+                />
+                <span className="video-tile-play" aria-hidden="true">▶</span>
+              </div>
+              <div className="offerings-card-body">
+                <div className="offerings-card-eyebrow">{card.eyebrow}</div>
+                <h3>{card.title}</h3>
+                <span className="offerings-card-cta">{t.common.watchVideo}</span>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
+
+      {active && <VideoLightbox card={active} t={t} onClose={() => setActive(null)} />}
     </section>
   );
 }
 
-function VideoFrame({ card }: { card: VideoCard }) {
+function VideoLightbox({ card, t, onClose }: { card: VideoCard; t: T; onClose: () => void }) {
   const isMp4 = /\.mp4($|\?)/i.test(card.videoUrl);
-  if (isMp4) {
-    return (
-      <video controls autoPlay poster={card.poster}>
-        <source src={card.videoUrl} type="video/mp4" />
-      </video>
-    );
-  }
   return (
-    <iframe
-      src={card.videoUrl}
-      title={card.title}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
+    <div
+      className="video-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={card.title}
+      onClick={onClose}
+    >
+      <button className="video-lightbox-close" onClick={onClose} aria-label={t.common.close}>✕</button>
+      <div className="video-lightbox-frame" onClick={(e) => e.stopPropagation()}>
+        {isMp4 ? (
+          <video controls autoPlay poster={card.poster}>
+            <source src={card.videoUrl} type="video/mp4" />
+          </video>
+        ) : (
+          <iframe
+            src={`${card.videoUrl}${card.videoUrl.includes("?") ? "&" : "?"}autoplay=1`}
+            title={card.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+    </div>
   );
 }

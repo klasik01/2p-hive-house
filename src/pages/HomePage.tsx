@@ -3,7 +3,9 @@ import type { T } from "../i18n";
 import { SEOHead } from "../components/SEOHead";
 import { HeroSection } from "../components/HeroSection";
 import { OfferingsSection } from "../components/OfferingsSection";
+import { ApitherapySection } from "../components/ApitherapySection";
 import { VideoSection } from "../components/VideoSection";
+import { ContactPanel } from "../components/ContactPanel";
 
 type Props = {
   t: T;
@@ -23,7 +25,9 @@ export function HomePage({ t, data, onVoucherClick, onFishingClick }: Props) {
       <SEOHead meta={data.seo} />
       <HeroSection hero={data.hero} onVoucherClick={onVoucherClick} />
       <OfferingsSection data={data.offerings} />
-      <VideoSection data={data.videoSection} />
+      <ApitherapySection data={data.apitherapy} />
+      <VideoSection t={t} data={data.videoSection} />
+      <ContactPanel contact={data.contact} />
 
       {/* CTA band pro rybářskou povolenku — otevře popup */}
       <section className="section-pad-sm" id="povolenka" style={{ background: "var(--white)" }}>

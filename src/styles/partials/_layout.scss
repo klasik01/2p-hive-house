@@ -73,6 +73,13 @@ body.modal-open { overflow: hidden; }
   &:hover { background: var(--sunlight, #FFF8E7); }
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--text-dark);
+  border: 2px solid rgba(44, 36, 16, 0.15);
+  &:hover { border-color: var(--text-dark); background: rgba(0,0,0,0.04); }
+}
+
 // --- Utility ---
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;

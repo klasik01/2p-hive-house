@@ -7,12 +7,12 @@
     "canonical": "https://hivehouse.2pmoment.cz/"
   },
   "hero": {
-    "subtitle": "Glamping • Apiterapie • Rybaření",
-    "title": "Spěte nad úly,",
-    "titleAccent": "probuďte se v přírodě",
+    "subtitle": "Glamping · Apiterapie · Příroda",
+    "title": "Usněte nad",
+    "titleAccent": "včelími úly",
     "text": "Unikátní ubytování u vodní nádrže Švihov. Vlastní med, soukromý rybník a klid, na který se nezapomíná.",
     "images": [
-      "/logo.png"
+      "/main-banner-01.JPG"
     ],
     "ctaReserveLabel": "Rezervovat pobyt",
     "ctaReserveHref": "#rezervace",
@@ -57,6 +57,41 @@
         "image": "/logo.png"
       }
     ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Chceš se nejdřív doptat?",
+    "titleAccent": "Ozvi se nám přímo.",
+    "desc": "Pokud si chce host před rezervací potvrdit termín, zeptat se na včelín, rybaření nebo průběh pobytu, všechno důležité najde hned tady.",
+    "phone": "+420 774 110 224",
+    "phoneLabel": "Telefon",
+    "email": "info@hivehouse.cz",
+    "emailLabel": "E-mail",
+    "address": "Hojnovice, Česká republika",
+    "addressLabel": "Lokalita",
+    "mapEmbedUrl": ""
+  },
+  "apitherapy": {
+    "eyebrow": "Glamping se včelami",
+    "title": "Apiterapie —",
+    "titleAccent": "léčivá síla včel",
+    "text1": "V Hive House spíte přímo nad živými včelími úly. Mikrovibrace a nízké frekvence, které včely přirozeně vytvářejí, procházejí podlahou do vašeho těla a navozují hluboký relaxační stav. Vůně propolisu, vosku a medu působí jako přirozená aromaterapie, která uklidňuje dýchací cesty a podporuje regeneraci organismu.",
+    "text2": "Apiterapie je staletími ověřená metoda využívající produkty včel ke zlepšení zdraví. Lidé s astmatem, alergiemi, chronickým stresem nebo problémy se spánkem pravidelně hlásí výrazné zlepšení už po prvním pobytu. Biorezonanční pole včelstva harmonizuje nervový systém a pomáhá tělu i mysli najít přirozenou rovnováhu.",
+    "benefits": [
+      { "id": "b1", "icon": "🫁", "text": "Zlepšení dýchacích cest a astmatu" },
+      { "id": "b2", "icon": "😴", "text": "Hlubší a kvalitnější spánek" },
+      { "id": "b3", "icon": "🧘", "text": "Snížení stresu a úzkosti" },
+      { "id": "b4", "icon": "💪", "text": "Posílení imunitního systému" },
+      { "id": "b5", "icon": "🩺", "text": "Zmírnění chronických bolestí" },
+      { "id": "b6", "icon": "🧠", "text": "Lepší soustředění a mentální klid" }
+    ],
+    "ctaPrimaryLabel": "Více o apiterapii",
+    "ctaPrimaryHref": "#vcelin",
+    "ctaSecondaryLabel": "Rezervovat pobyt",
+    "ctaSecondaryHref": "#rezervace",
+    "imageMain": "/main-banner-01.JPG",
+    "imageSmall1": "/logo.png",
+    "imageSmall2": "/main-banner-01.JPG"
   },
   "videoSection": {
     "sectionEyebrow": "Zažijte to na vlastní oči",
