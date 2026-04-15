@@ -147,6 +147,17 @@ export type FishingCtaData = {
   desc: string;
 };
 
+export type ReservationData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  text: string;
+  image: string;
+  imageAlt: string;
+  /** Raw HTML / embed snippet z rezervační služby (iframe, script widget apod.). */
+  embedHtml: string;
+};
+
 export type HomepageData = {
   seo: SeoMeta;
   hero: HeroData;
@@ -156,5 +167,6 @@ export type HomepageData = {
   apitherapy: ApitherapyData;
   videoSection: VideoSectionData;
   fishingCta: FishingCtaData;
+  reservation: ReservationData;
   contact: ContactData;
 };

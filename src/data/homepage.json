@@ -17,7 +17,7 @@
     "introVideoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "introVideoLabel": "Přehrát prohlídku",
     "ctaReserveLabel": "Rezervovat pobyt",
-    "ctaReserveHref": "#rezervace",
+    "ctaReserveHref": "#/rezervace",
     "ctaVoucherLabel": "Dárková poukázka",
     "stats": [
       {
@@ -190,7 +190,7 @@
     "ctaPrimaryLabel": "Více o apiterapii",
     "ctaPrimaryHref": "#vcelin",
     "ctaSecondaryLabel": "Rezervovat pobyt",
-    "ctaSecondaryHref": "#rezervace",
+    "ctaSecondaryHref": "#/rezervace",
     "imageMain": "/picture_1.jpg",
     "imageSmall1": "/picture_2.jpg",
     "imageSmall2": "/picture_3.jpg"
@@ -223,5 +223,14 @@
         "poster": "/picture_1.jpg"
       }
     ]
+  },
+  "reservation": {
+    "eyebrow": "Rezervace",
+    "title": "Hive House",
+    "titleAccent": "rezervace termínu",
+    "text": "Vyberte si volný termín v našem glampingu se včelami u nádrže Švihov. Rezervace probíhá online přes zabezpečený systém — po potvrzení obdržíte e-mail s pokyny k pobytu.",
+    "image": "/main-banner-01.JPG",
+    "imageAlt": "2P Hive House — glamping se včelami",
+    "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
   }
 }

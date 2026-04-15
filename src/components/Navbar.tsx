@@ -13,7 +13,7 @@ const navLinks = [
   { label: "ubytovani" as const, href: "#ubytovani" },
   { label: "rybareni" as const, href: "#rybareni" },
   { label: "okoli" as const, href: "#okoli" },
-  { label: "rezervace" as const, href: "#rezervace" },
+  { label: "rezervace" as const, href: "#/rezervace" },
 ];
 
 export function Navbar({ t, onVoucherClick }: Props) {
@@ -55,7 +55,7 @@ export function Navbar({ t, onVoucherClick }: Props) {
               <button className="btn btn-outline-honey navbar-voucher" onClick={onVoucherClick}>
                 {t.nav.poukazka}
               </button>
-              <a href="#rezervace" className="btn btn-primary navbar-cta">
+              <a href="#/rezervace" className="btn btn-primary navbar-cta">
                 {t.nav.rezervace}
               </a>
               <button
@@ -82,7 +82,7 @@ export function Navbar({ t, onVoucherClick }: Props) {
           >
             {t.nav.poukazka}
           </button>
-          <a href="#rezervace" className="btn btn-primary" onClick={close}>
+          <a href="#/rezervace" className="btn btn-primary" onClick={close}>
             {t.nav.rezervace}
           </a>
         </div>

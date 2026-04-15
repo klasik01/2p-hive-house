@@ -8,6 +8,7 @@ import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
 import { useBootReady } from "./hooks/useBootReady";
 import { useBodyModalLock } from "./hooks/useBodyModalLock";
+import { useHashRoute } from "./hooks/useHashRoute";
 
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -16,6 +17,7 @@ import { FishingModal } from "./components/FishingModal";
 import { CookieConsentBanner } from "./components/CookieConsentBanner";
 import { PromoPopup } from "./components/PromoPopup";
 import { HomePage } from "./pages/HomePage";
+import { ReservationPage } from "./pages/ReservationPage";
 
 import homepageData from "./data/homepage.json";
 
@@ -61,9 +63,11 @@ function App() {
   }, [promotions]);
 
   const isReady = useBootReady(loadedKeys, REQUIRED_KEYS, 4000);
+  const route = useHashRoute();
+  const isReservation = route === "/rezervace";
 
-  useRevealOnScroll("home", isReady);
-  useAnalyticsPageView("/", cookieConsent, gaMeasurementId);
+  useRevealOnScroll(isReservation ? "reservation" : "home", isReady);
+  useAnalyticsPageView(route, cookieConsent, gaMeasurementId);
   useBodyModalLock(showFishing);
 
   if (!isReady) return <Loader t={t} />;
@@ -77,12 +81,16 @@ function App() {
       <Navbar t={t} onVoucherClick={onVoucherClick} />
 
       <main>
-        <HomePage
-          t={t}
-          data={data}
-          onVoucherClick={onVoucherClick}
-          onFishingClick={() => setShowFishing(true)}
-        />
+        {isReservation ? (
+          <ReservationPage data={data} />
+        ) : (
+          <HomePage
+            t={t}
+            data={data}
+            onVoucherClick={onVoucherClick}
+            onFishingClick={() => setShowFishing(true)}
+          />
+        )}
       </main>
 
       <Footer t={t} />

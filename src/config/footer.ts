@@ -63,7 +63,7 @@ export const footerConfig: FooterConfig = {
     {
       title: "Služby",
       links: [
-        { label: "Rezervace pobytu", href: "#rezervace" },
+        { label: "Rezervace pobytu", href: "#/rezervace" },
         { label: "Dárková poukázka", href: "#poukazka" },
         { label: "Rybářská povolenka", href: "#povolenka" },
       ],
