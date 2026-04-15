@@ -1,14 +1,22 @@
 import type { AboutData } from "../types";
 import { Icon } from "./Icon";
+import { aboutData as defaultData } from "../data/homepage";
+
+type Props = {
+  /** Přepsání dat; nepovinné — výchozí data jdou z homepage.json. */
+  data?: AboutData;
+  /** Override ID sekce (pro případ více instancí na stránce). */
+  id?: string;
+};
 
 /**
  * Sekce „O Hive House" — editorial intro + 3 Q&A bloky.
- * Vizuálně laděná do palety hero (bílé pozadí, medové akcenty,
- * dekorativní hexagonální vzor v rohu).
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
  */
-export function AboutSection({ data }: { data: AboutData }) {
+export function AboutSection({ data = defaultData, id = "o-nas" }: Props) {
+  const titleId = `${id}-title`;
   return (
-    <section className="about-section section-pad" id="o-nas" aria-labelledby="about-title">
+    <section className="about-section section-pad" id={id} aria-labelledby={titleId}>
       <div className="about-section-bg" aria-hidden="true">
         <span className="hex hex-a" />
         <span className="hex hex-b" />
@@ -17,7 +25,7 @@ export function AboutSection({ data }: { data: AboutData }) {
       <div className="container">
         <div className="about-head reveal">
           <div className="section-eyebrow">{data.eyebrow}</div>
-          <h2 id="about-title" className="section-title big-title">
+          <h2 id={titleId} className="section-title big-title">
             {data.title} <em>{data.titleAccent}</em>
           </h2>
           <p className="about-lead">{data.lead}</p>

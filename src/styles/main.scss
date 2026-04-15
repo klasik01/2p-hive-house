@@ -8,7 +8,9 @@
 @use "partials/breakpoints";
 @use "partials/colors";
 @use "partials/typography";
+@use "partials/tokens";
 @use "partials/honeycomb";
+@use "partials/cards";
 @use "partials/layout";
 
 @use "components/navbar";
@@ -18,6 +20,7 @@
 @use "components/offerings";
 @use "components/apitherapy";
 @use "components/video-section";
+@use "components/gallery";
 @use "components/contact";
 @use "components/page-hero";
 @use "components/reservation";

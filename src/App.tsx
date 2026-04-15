@@ -7,7 +7,6 @@ import { subscribePromotions } from "./api/promotions";
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
 import { useBootReady } from "./hooks/useBootReady";
-import { useBodyModalLock } from "./hooks/useBodyModalLock";
 import { useHashRoute } from "./hooks/useHashRoute";
 
 import { Navbar } from "./components/Navbar";
@@ -77,7 +76,6 @@ function App() {
     isReady,
   );
   useAnalyticsPageView(route, cookieConsent, gaMeasurementId);
-  useBodyModalLock(showFishing);
 
   if (!isReady) return <Loader t={t} />;
 
@@ -95,7 +93,7 @@ function App() {
         ) : isContact ? (
           <ContactPage />
         ) : isRybareni ? (
-          <RybareniPage data={data} onFishingClick={() => setShowFishing(true)} />
+          <RybareniPage onFishingClick={() => setShowFishing(true)} />
         ) : (
           <HomePage
             t={t}

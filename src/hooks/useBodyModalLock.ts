@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-
-export function useBodyModalLock(locked: boolean) {
-  useEffect(() => {
-    document.body.classList.toggle("modal-open", locked);
-    return () => { document.body.classList.remove("modal-open"); };
-  }, [locked]);
-}
+// Ponecháno pro zpětnou kompatibilitu. Nová logika je v `./useModalOpen`
+// (stejný body-lock + Escape). Tato re-exportní fasáda bude v příštím
+// úklidu smazána.
+export { useModalOpen as useBodyModalLock } from "./useModalOpen";

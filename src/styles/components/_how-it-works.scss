@@ -41,16 +41,8 @@
   text-align: center;
   margin-bottom: 48px;
   .section-eyebrow { justify-content: center; }
-  .big-title {
-    font-family: $font-display;
-    font-weight: 700;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.05;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    margin-bottom: 16px;
-    em { font-style: normal; color: var(--honey-dark); }
-  }
+  // .big-title styl je globální; tady jen zkracujeme spodní margin
+  .big-title { margin: 4px 0 16px; }
   .section-desc {
     margin: 0 auto;
     max-width: 620px;

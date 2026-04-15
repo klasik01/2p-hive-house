@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import type { OfferingArticle } from "../types";
 import { asset } from "../utils/asset";
 import { Icon } from "./Icon";
+import { useModalOpen } from "../hooks/useModalOpen";
 
 type Props = {
   article: OfferingArticle;
@@ -9,24 +9,11 @@ type Props = {
 };
 
 /**
- * Dialog s článkem o konkrétní nabídce (Glamping / Rybaření / Gastronomie).
- *
- * Design:
- *  - Velký hero obrázek nahoře (cover).
- *  - Editorial typografie v duchu homepage .about-section.
- *  - Highlights v honey-tónovaných chipech.
- *  - Volitelný CTA button.
- *  - Mobile-first, na telefonu full-screen, na desktopu centrovaný panel.
- *  - Esc + klik mimo + křížek = zavřít.
+ * Dialog s článkem pro kartu z nabídky.
+ * Mobile-first, editorial typografie, plástvový subtle background.
  */
 export function OfferingArticleModal({ article, onClose }: Props) {
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  useModalOpen(true, onClose);
 
   return (
     <div

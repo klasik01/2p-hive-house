@@ -1,21 +1,29 @@
 import type { ApitherapyData } from "../types";
 import type { T } from "../i18n";
+import { cs } from "../i18n";
 import { asset } from "../utils/asset";
 import { Icon } from "./Icon";
+import { apitherapyData as defaultData } from "../data/homepage";
+
+type Props = {
+  data?: ApitherapyData;
+  t?: T;
+  id?: string;
+};
 
 /**
  * Sekce "Apiterapie — léčivá síla včel".
- * Strukturně + vizuálně shodná s hive-house (třídy hook-grid, hook-visual,
- * apitherapy-benefits). Data přijdou z homepage.json.
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
  */
-export function ApitherapySection({ t, data }: { t: T; data: ApitherapyData }) {
+export function ApitherapySection({ data = defaultData, t = cs, id = "apiterapie" }: Props) {
+  const titleId = `${id}-title`;
   return (
-    <section className="section-pad apitherapy-section" id="apiterapie" aria-labelledby="apitherapy-title">
+    <section className="section-pad apitherapy-section" id={id} aria-labelledby={titleId}>
       <div className="container">
         <div className="hook-grid">
           <div className="reveal-left">
             <div className="section-eyebrow">{data.eyebrow}</div>
-            <h2 id="apitherapy-title" className="section-title apitherapy-title">
+            <h2 id={titleId} className="section-title apitherapy-title">
               {data.title} <em>{data.titleAccent}</em>
             </h2>
 

@@ -177,6 +177,19 @@ export type ReservationData = {
   embedHtml: string;
 };
 
+export type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+export type GalleryData = {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  desc?: string;
+  images: GalleryImage[];
+};
+
 export type HomepageData = {
   seo: SeoMeta;
   hero: HeroData;
@@ -185,6 +198,7 @@ export type HomepageData = {
   offerings: OfferingsData;
   apitherapy: ApitherapyData;
   videoSection: VideoSectionData;
+  gallery: GalleryData;
   fishingCta: FishingCtaData;
   reservation: ReservationData;
   contact: ContactData;

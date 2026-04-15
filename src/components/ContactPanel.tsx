@@ -1,22 +1,31 @@
 import type { ContactData } from "../types";
 import type { T } from "../i18n";
+import { cs } from "../i18n";
+import { contactData as defaultData } from "../data/homepage";
+
+type Props = {
+  contact?: ContactData;
+  t?: T;
+  id?: string;
+};
 
 /**
  * Kontaktní sekce s mapou a medovým pruhem s údaji.
- * Vizuálně shodná s hive-house (.contact-panel).
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
  */
-export function ContactPanel({ t, contact }: { t: T; contact: ContactData }) {
+export function ContactPanel({ contact = defaultData, t = cs, id = "kontakt" }: Props) {
+  const titleId = `${id}-title`;
   const mapEmbedUrl =
     contact.mapEmbedUrl ||
     `https://maps.google.com/maps?q=${encodeURIComponent(contact.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <section className="contact-panel section-pad-sm" id="kontakt" aria-labelledby="contact-title">
+    <section className="contact-panel section-pad-sm" id={id} aria-labelledby={titleId}>
       <div className="container">
         <div className="contact-panel-inner reveal">
           <div className="contact-panel-copy">
             <div className="section-eyebrow">{contact.eyebrow}</div>
-            <h2 id="contact-title" className="section-title big-title">
+            <h2 id={titleId} className="section-title big-title">
               {contact.title} <em>{contact.titleAccent}</em>
             </h2>
             <p className="section-desc">{contact.desc}</p>

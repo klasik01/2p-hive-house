@@ -1,11 +1,13 @@
 import type { T } from "../i18n";
+import { useModalOpen } from "../hooks/useModalOpen";
 
 /**
  * Prázdný popup pro rybářskou povolenku.
- * Formulář se dopíše později — zatím jen vizuální placeholder,
- * aby bylo vidět, že je napojený a stylovaný.
+ * Formulář se dopíše později — zatím jen vizuální placeholder.
  */
 export function FishingModal({ t, onClose }: { t: T; onClose: () => void }) {
+  useModalOpen(true, onClose);
+
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="fishing-title" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>

@@ -313,5 +313,29 @@
     "image": "/main-banner-01.JPG",
     "imageAlt": "2P Hive House — glamping se včelami",
     "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
+  },
+  "gallery": {
+    "eyebrow": "Galerie",
+    "title": "Pohled do",
+    "titleAccent": "Hive House",
+    "desc": "Jak to u nás vypadá — ubytování, rybník, včely, okolí.",
+    "images": [
+      {
+        "src": "/main-banner-01.JPG",
+        "alt": "2P Hive House — hlavní pohled"
+      },
+      {
+        "src": "/picture_1.jpg",
+        "alt": "Glamping se včelami"
+      },
+      {
+        "src": "/picture_2.jpg",
+        "alt": "Soukromý rybník"
+      },
+      {
+        "src": "/picture_3.jpg",
+        "alt": "Domácí med"
+      }
+    ]
   }
 }

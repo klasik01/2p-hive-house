@@ -97,6 +97,20 @@ p { margin: 0 0 1em; line-height: $lh-normal; }
   color: var(--honey-dark);
 }
 
+// Velký display nadpis používaný napříč sekcemi (about, how-it-works,
+// fishing-about, contact). Komponenty si ho jen zapnou přes class.
+.big-title {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 4px 0 20px;
+
+  em { font-style: normal; color: var(--honey-dark); }
+}
+
 // Popis pod nadpisem sekce — editorial, prodyšný, lehká váha
 .section-desc {
   font-family: $font-body;

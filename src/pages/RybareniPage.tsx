@@ -1,22 +1,21 @@
 import { SEOHead } from "../components/SEOHead";
 import { Icon } from "../components/Icon";
-import { PageHero } from "../components/PageHero";
-import { FishingCtaBand } from "../components/FishingCtaBand";
-import { ContactPanel } from "../components/ContactPanel";
-import { cs } from "../i18n";
-import type { HomepageData } from "../types";
+import {
+  PageHero,
+  FishingCtaBand,
+  ContactPanel,
+} from "../components/sections";
 import { fishingPage } from "../config/fishing";
 
 type Props = {
-  data: HomepageData;
   onFishingClick: () => void;
 };
 
 /**
- * Stránka RYBAŘENÍ — sdílený PageHero + info sekce v duchu homepage
- * (editorial intro + 3 karty) + CTA.
+ * Stránka RYBAŘENÍ — skládá se ze sdíleného PageHero, vlastní info sekce,
+ * společného CTA bandu pro povolenku a sdíleného kontaktu.
  */
-export function RybareniPage({ data, onFishingClick }: Props) {
+export function RybareniPage({ onFishingClick }: Props) {
   const p = fishingPage;
 
   return (
@@ -68,15 +67,14 @@ export function RybareniPage({ data, onFishingClick }: Props) {
           </div>
         </section>
 
-        {/* CTA band — stejná komponenta jako na homepage */}
+        {/* Povolenka — společný band z homepage */}
         <FishingCtaBand
-          t={cs}
           data={{ eyebrow: p.cta.eyebrow, title: p.cta.title, desc: p.cta.desc }}
           onClick={onFishingClick}
         />
 
         {/* Kontakt — sdílená komponenta z homepage */}
-        <ContactPanel t={cs} contact={data.contact} />
+        <ContactPanel />
       </section>
     </>
   );

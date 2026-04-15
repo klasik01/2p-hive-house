@@ -1,39 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { VideoSectionData, VideoCard } from "../types";
 import type { T } from "../i18n";
+import { cs } from "../i18n";
 import { asset } from "../utils/asset";
+import { useModalOpen } from "../hooks/useModalOpen";
+import { videoSectionData as defaultData } from "../data/homepage";
 
 type Props = {
-  t: T;
-  data: VideoSectionData;
+  data?: VideoSectionData;
+  t?: T;
+  id?: string;
 };
 
 /**
- * Stejná 3-sloupcová mřížka jako OfferingsSection (vizuálně shodné karty).
- * Klik na kartu otevře lightbox s přehrávačem.
+ * 3-sloupcová mřížka video karet. Klik otevře lightbox s přehrávačem.
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
  */
-export function VideoSection({ t, data }: Props) {
+export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props) {
+  const titleId = `${id}-title`;
   const [active, setActive] = useState<VideoCard | null>(null);
 
-  // Zamknutí scrollu při otevřeném lightboxu + ESC zavření
-  useEffect(() => {
-    if (!active) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActive(null); };
-    document.body.classList.add("modal-open");
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.classList.remove("modal-open");
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [active]);
-
   return (
-    <section className="video-section section-pad" id="videa" aria-labelledby="videos-title">
+    <section className="video-section section-pad" id={id} aria-labelledby={titleId}>
       <div className="container">
         <div className="offerings-head reveal">
           <div>
             <div className="section-eyebrow">{data.sectionEyebrow}</div>
-            <h2 id="videos-title" className="section-title">
+            <h2 id={titleId} className="section-title">
               {data.sectionTitle} <em>{data.sectionTitleAccent}</em>
             </h2>
           </div>
@@ -74,7 +67,9 @@ export function VideoSection({ t, data }: Props) {
 }
 
 function VideoLightbox({ card, t, onClose }: { card: VideoCard; t: T; onClose: () => void }) {
+  useModalOpen(true, onClose);
   const isMp4 = /\.mp4($|\?)/i.test(card.videoUrl);
+
   return (
     <div
       className="video-lightbox"

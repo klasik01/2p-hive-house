@@ -1,32 +1,20 @@
 @use "../partials/breakpoints" as *;
 @use "../partials/typography" as *;
+@use "../partials/tokens" as *;
+@use "../partials/cards" as *;
 
 // =============================================================
 // O Hive House — editorial intro + 3 Q&A karty.
-// Komplementární k .how-it-works: bílé pozadí, medové akcenty,
-// dekorativní hex v rohu, velký citační intro odstavec.
+// Karty i dekorace používají sdílené mixiny z partials/_cards.scss.
 // =============================================================
 
 .about-section {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at top, rgba(255, 209, 102, 0.35) 0%, transparent 55%),
-    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
+  background: cream-bg(0.35);
 }
 
-.about-section-bg {
-  position: absolute; inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  .hex {
-    position: absolute;
-    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-    opacity: 0.07;
-  }
-  .hex-a { top: -40px; right: -60px; width: 240px; height: 240px; background: var(--honey); }
-  .hex-b { bottom: -80px; left: -70px; width: 300px; height: 300px; background: var(--amber); opacity: 0.06; }
-}
+.about-section-bg { @include hex-decor-bg; }
 
 .about-section .container { position: relative; z-index: 2; }
 
@@ -38,16 +26,7 @@
 
   .section-eyebrow { justify-content: center; }
 
-  .big-title {
-    font-family: $font-display;
-    font-weight: 700;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.05;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    margin: 4px 0 20px;
-    em { font-style: normal; color: var(--honey-dark); }
-  }
+  // .big-title styl je globální (viz partials/_typography.scss)
 }
 
 .about-lead {
@@ -70,13 +49,10 @@
     margin: 0 14px;
   }
 
-  @include md {
-    font-size: 20px;
-    padding: 0 40px;
-  }
+  @include md { font-size: 20px; padding: 0 40px; }
 }
 
-// --- Q&A karty ---
+// --- Q&A karty (sdílený honey-card mixin) ---
 .about-grid {
   display: grid;
   gap: 20px;
@@ -85,48 +61,14 @@
 }
 
 .about-card {
-  position: relative;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFFBF0 100%);
-  border: 1px solid rgba(245, 166, 35, 0.15);
-  border-radius: 20px;
-  padding: 32px 26px 28px;
-  box-shadow: 0 8px 24px rgba(25, 19, 7, 0.05);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  overflow: hidden;
-
-  // Zdobný medový proužek nahoře
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--honey) 0%, var(--amber) 100%);
-  }
-
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 48px rgba(212, 136, 26, 0.18);
-    border-color: rgba(245, 166, 35, 0.35);
-  }
+  @include honey-card;
 }
 
 .about-card-icon {
-  width: 58px; height: 58px;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, rgba(245, 166, 35, 0.18) 0%, rgba(255, 209, 102, 0.06) 100%);
-  border: 1px solid rgba(245, 166, 35, 0.28);
-  border-radius: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--honey-dark);
-  transition: transform .4s ease, background .4s ease, color .4s ease;
+  @include honey-card-icon;
 }
 .about-card:hover .about-card-icon {
-  transform: rotate(-6deg) scale(1.06);
-  background: linear-gradient(135deg, var(--honey) 0%, var(--amber) 100%);
-  border-color: var(--honey-dark);
-  color: var(--white);
+  @include honey-card-icon-active;
 }
 
 .about-card-question {

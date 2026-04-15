@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { OfferingArticle, OfferingsData } from "../types";
 import { asset } from "../utils/asset";
 import { OfferingArticleModal } from "./OfferingArticleModal";
+import { offeringsData as defaultData } from "../data/homepage";
 
-export function OfferingsSection({ data }: { data: OfferingsData }) {
+type Props = {
+  data?: OfferingsData;
+  id?: string;
+};
+
+/**
+ * Karty nabídek (Glamping / Rybaření / Gastro). Klik otevře modal
+ * s článkem, pokud karta má pole `article`.
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
+ */
+export function OfferingsSection({ data = defaultData, id = "nabidka" }: Props) {
+  const titleId = `${id}-title`;
+  // Body lock + ESC řeší <OfferingArticleModal /> přes useModalOpen.
   const [activeArticle, setActiveArticle] = useState<OfferingArticle | null>(null);
 
-  // Body lock při otevřené modálce — zabrání skrollu stránky za ní.
-  useEffect(() => {
-    document.body.classList.toggle("modal-open", !!activeArticle);
-    return () => document.body.classList.remove("modal-open");
-  }, [activeArticle]);
-
   return (
-    <section className="offerings section-pad" id="nabidka" aria-labelledby="offerings-title">
+    <section className="offerings section-pad" id={id} aria-labelledby={titleId}>
       <div className="container">
         <div className="offerings-head reveal">
           <div>
             <div className="section-eyebrow">{data.sectionEyebrow}</div>
-            <h2 id="offerings-title" className="section-title">
+            <h2 id={titleId} className="section-title">
               {data.sectionTitle} <em>{data.sectionTitleAccent}</em>
             </h2>
           </div>
@@ -45,8 +52,6 @@ export function OfferingsSection({ data }: { data: OfferingsData }) {
               </>
             );
 
-            // Karta s `article` se chová jako tlačítko a otevře modal.
-            // Bez článku se chová jako klasický odkaz (fallback).
             return hasArticle ? (
               <button
                 key={card.id}

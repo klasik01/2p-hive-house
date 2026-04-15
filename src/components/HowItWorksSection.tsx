@@ -1,14 +1,20 @@
 import type { HowItWorksData } from "../types";
 import { Icon } from "./Icon";
+import { howItWorksData as defaultData } from "../data/homepage";
+
+type Props = {
+  data?: HowItWorksData;
+  id?: string;
+};
 
 /**
  * Sekce „Jak to u nás funguje" — 4 kroky v medové časové ose.
- * Mobile: vertikální timeline, každý krok karta s kolečkem vlevo.
- * Desktop: 4 sloupce s propojovací čarou mezi kroky.
+ * Plug-and-play: bez props vykreslí defaultní obsah z homepage.json.
  */
-export function HowItWorksSection({ data }: { data: HowItWorksData }) {
+export function HowItWorksSection({ data = defaultData, id = "jak-to-funguje" }: Props) {
+  const titleId = `${id}-title`;
   return (
-    <section className="how-it-works section-pad" id="jak-to-funguje" aria-labelledby="how-title">
+    <section className="how-it-works section-pad" id={id} aria-labelledby={titleId}>
       <div className="how-it-works-bg" aria-hidden="true">
         <span className="hex hex-1" />
         <span className="hex hex-2" />
@@ -18,7 +24,7 @@ export function HowItWorksSection({ data }: { data: HowItWorksData }) {
       <div className="container">
         <div className="how-it-works-head reveal">
           <div className="section-eyebrow">{data.eyebrow}</div>
-          <h2 id="how-title" className="section-title big-title">
+          <h2 id={titleId} className="section-title big-title">
             {data.title} <em>{data.titleAccent}</em>
           </h2>
           <p className="section-desc">{data.desc}</p>
