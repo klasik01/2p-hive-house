@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { VideoSectionData, VideoCard } from "../../types";
 import type { T } from "../../i18n";
 import { cs } from "../../i18n";
 import { asset } from "../../utils/asset";
 import { useModalOpen } from "../../hooks/useModalOpen";
+import { useCarouselAutoRotate } from "../../hooks/useCarouselAutoRotate";
 import { videoSectionData as defaultData } from "../../data/homepage";
 
 type Props = {
@@ -20,6 +21,10 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
   const titleId = `${id}-title`;
   const [active, setActive] = useState<VideoCard | null>(null);
 
+  // Auto-rotace karet na tabletu (768–1023 px). Ping-pong, žádné duplikáty.
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const carousel = useCarouselAutoRotate(gridRef, [data.cards.length]);
+
   return (
     <section className="video-section section-pad" id={id} aria-labelledby={titleId}>
       <div className="container">
@@ -33,7 +38,7 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
           <p className="section-desc">{data.sectionDesc}</p>
         </div>
 
-        <div className="offerings-grid">
+        <div className="offerings-grid" ref={gridRef}>
           {data.cards.map((card, i) => (
             <button
               key={card.id}
@@ -59,6 +64,22 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
             </button>
           ))}
         </div>
+
+        {carousel.isActive && carousel.count > 1 && (
+          <div className="carousel-dots" role="tablist" aria-label="Navigace videi">
+            {Array.from({ length: carousel.count }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === carousel.activeIndex}
+                aria-label={`Video ${i + 1}`}
+                className={`carousel-dot${i === carousel.activeIndex ? " is-active" : ""}`}
+                onClick={() => carousel.goTo(i)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {active && <VideoLightbox card={active} t={t} onClose={() => setActive(null)} />}

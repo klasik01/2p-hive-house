@@ -43,12 +43,25 @@ export function Navbar({ t, onVoucherClick }: Props) {
 
   const isActive = (match: string) => route === match;
 
+  /**
+   * Klik na odkaz, který směřuje na aktuální routu (typicky logo nebo
+   * "Včelín" vedoucí na homepage): hash se nezmění, takže useHashRoute
+   * nescrollne. Ručně tedy zajistíme posun na začátek.
+   */
+  const onNavClick = (match: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    close();
+    if (route === match) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} aria-label="Hlavní navigace">
         <div className="container">
           <div className="navbar-inner">
-            <a href="#/" className="navbar-brand" onClick={close} aria-label={t.nav.brandAlt}>
+            <a href="#/" className="navbar-brand" onClick={onNavClick("/")} aria-label={t.nav.brandAlt}>
               <span className="navbar-logo-badge">
                 <img src={asset("/logo.png")} alt={t.nav.brandAlt} className="navbar-logo" />
               </span>
@@ -59,6 +72,7 @@ export function Navbar({ t, onVoucherClick }: Props) {
                 <li key={key}>
                   <a
                     href={href}
+                    onClick={onNavClick(match)}
                     className={isActive(match) ? "is-active" : undefined}
                     aria-current={isActive(match) ? "page" : undefined}
                   >
@@ -89,11 +103,20 @@ export function Navbar({ t, onVoucherClick }: Props) {
       </nav>
 
       <div className={`navbar-mobile${mobileOpen ? " open" : ""}`}>
+        <button
+          type="button"
+          className="navbar-mobile-close"
+          onClick={close}
+          aria-label={t.common.close}
+        >
+          ✕
+        </button>
+
         {navLinks.map(({ key, href, match }) => (
           <a
             key={key}
             href={href}
-            onClick={close}
+            onClick={onNavClick(match)}
             className={isActive(match) ? "is-active" : undefined}
             aria-current={isActive(match) ? "page" : undefined}
           >

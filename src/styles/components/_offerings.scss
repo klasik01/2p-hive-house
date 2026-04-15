@@ -15,8 +15,58 @@
 .offerings-grid {
   display: grid; gap: 20px;
   grid-template-columns: 1fr;
-  @include md { grid-template-columns: repeat(2, 1fr); }
   @include lg { grid-template-columns: repeat(3, 1fr); }
+}
+
+// ---- TABLET: horizontal scroll-snap slider -----------------
+// Zobrazí dvě karty; třetí se rotuje "dokolečka" auto-rotate hookem.
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .offerings-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-inline: 16px;
+    padding: 8px 16px 16px;
+    margin: 0 -16px;              // bleed z containeru, aby šla karta "zajet" ven
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    > .offerings-card {
+      flex: 0 0 calc((100% - 16px) / 2);   // přesně 2 karty + gap
+      scroll-snap-align: start;
+    }
+  }
+}
+
+// ---- Dots (pagination) pod carouselem -----------------------
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: 0;
+  padding: 0;
+  background: rgba(40, 20, 0, 0.22);
+  cursor: pointer;
+  transition: width .25s ease, background .25s ease;
+
+  &:hover { background: rgba(40, 20, 0, 0.45); }
+
+  &.is-active {
+    width: 28px;
+    background: var(--honey, #D4881A);
+  }
 }
 
 // --- Karta: obraz přes celou plochu + text překrývá obrázek ---
