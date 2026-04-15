@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import type { HeroData } from "../types";
-import type { T } from "../i18n";
-import { asset } from "../utils/asset";
+import type { HeroData } from "../../types";
+import type { T } from "../../i18n";
+import { asset } from "../../utils/asset";
 import { VideoLightbox } from "./VideoLightbox";
 
 type Props = {

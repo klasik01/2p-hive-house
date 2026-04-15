@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { asset } from "../utils/asset";
+import { asset } from "../../utils/asset";
 
 /**
  * Znovupoužitelný fullscreen lightbox pro přehrání jednoho videa.

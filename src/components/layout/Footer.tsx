@@ -1,7 +1,7 @@
-import type { T } from "../i18n";
-import { footerConfig } from "../config/footer";
-import { asset } from "../utils/asset";
-import { Icon } from "./Icon";
+import type { T } from "../../i18n";
+import { footerConfig } from "../../config/footer";
+import { asset } from "../../utils/asset";
+import { Icon } from "../ui/Icon";
 
 export function Footer({ t }: { t: T }) {
   const c = footerConfig;

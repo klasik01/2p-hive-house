@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { asset } from "../utils/asset";
+import { asset } from "../../utils/asset";
 
 export type PageHeroData = {
   eyebrow: string;

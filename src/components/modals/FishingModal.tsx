@@ -1,5 +1,5 @@
-import type { T } from "../i18n";
-import { useModalOpen } from "../hooks/useModalOpen";
+import type { T } from "../../i18n";
+import { useModalOpen } from "../../hooks/useModalOpen";
 
 /**
  * Prázdný popup pro rybářskou povolenku.

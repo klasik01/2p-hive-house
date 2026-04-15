@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import type { T } from "../i18n";
-import { asset } from "../utils/asset";
-import { useHashRoute } from "../hooks/useHashRoute";
+import type { T } from "../../i18n";
+import { asset } from "../../utils/asset";
+import { useHashRoute } from "../../hooks/useHashRoute";
 
 type Props = {
   t: T;

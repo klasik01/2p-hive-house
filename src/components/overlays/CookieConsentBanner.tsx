@@ -1,4 +1,4 @@
-import type { T } from "../i18n";
+import type { T } from "../../i18n";
 
 type Props = {
   t: T;

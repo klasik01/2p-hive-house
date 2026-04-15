@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import type { SeoMeta } from "../types";
-import { applySeo } from "../utils/seo";
+import type { SeoMeta } from "../../types";
+import { applySeo } from "../../utils/seo";
 
 /**
  * Renderless komponenta — při připojení nastaví <title> a meta tagy

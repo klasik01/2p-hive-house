@@ -1,5 +1,5 @@
-import { SEOHead } from "../components/SEOHead";
-import { Icon } from "../components/Icon";
+import { SEOHead } from "../components/ui/SEOHead";
+import { Icon } from "../components/ui/Icon";
 import {
   PageHero,
   FishingCtaBand,

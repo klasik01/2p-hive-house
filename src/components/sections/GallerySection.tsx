@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import type { GalleryData } from "../types";
-import { asset } from "../utils/asset";
-import { useModalOpen } from "../hooks/useModalOpen";
-import { galleryData as defaultData } from "../data/homepage";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { GalleryData } from "../../types";
+import { asset } from "../../utils/asset";
+import { useModalOpen } from "../../hooks/useModalOpen";
+import { galleryData as defaultData } from "../../data/homepage";
 
 type Props = {
   data?: GalleryData;
@@ -81,7 +81,7 @@ type LightboxProps = {
 function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxProps) {
   useModalOpen(true, onClose);
 
-  // Šipky pro navigaci
+  // Klávesové šipky
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") onPrev();
@@ -90,6 +90,28 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxPro
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onPrev, onNext]);
+
+  // Swipe na mobilu — horizontální tah ≥ 50 px přepíná obrázek
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStartX.current = t.clientX;
+    touchStartY.current = t.clientY;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX.current;
+    const dy = t.clientY - touchStartY.current;
+    touchStartX.current = null;
+    touchStartY.current = null;
+    // Ignoruj vertikální gesto (scroll / zavření)
+    if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return;
+    if (dx > 0) onPrev();
+    else onNext();
+  };
 
   const img = images[index];
 
@@ -100,6 +122,8 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxPro
       aria-modal="true"
       aria-label={img.alt}
       onClick={onClose}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <button
         className="gallery-lightbox-close"

@@ -1,6 +1,6 @@
-import { SEOHead } from "../components/SEOHead";
-import { Icon } from "../components/Icon";
-import { PageHero } from "../components/PageHero";
+import { SEOHead } from "../components/ui/SEOHead";
+import { Icon } from "../components/ui/Icon";
+import { PageHero } from "../components/layout/PageHero";
 import { asset } from "../utils/asset";
 import { contactPage } from "../config/contact";
 

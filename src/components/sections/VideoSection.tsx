@@ -1,10 +1,10 @@
 import { useState } from "react";
-import type { VideoSectionData, VideoCard } from "../types";
-import type { T } from "../i18n";
-import { cs } from "../i18n";
-import { asset } from "../utils/asset";
-import { useModalOpen } from "../hooks/useModalOpen";
-import { videoSectionData as defaultData } from "../data/homepage";
+import type { VideoSectionData, VideoCard } from "../../types";
+import type { T } from "../../i18n";
+import { cs } from "../../i18n";
+import { asset } from "../../utils/asset";
+import { useModalOpen } from "../../hooks/useModalOpen";
+import { videoSectionData as defaultData } from "../../data/homepage";
 
 type Props = {
   data?: VideoSectionData;

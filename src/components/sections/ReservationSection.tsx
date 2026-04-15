@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import type { ReservationData } from "../types";
-import { PageHero } from "./PageHero";
+import type { ReservationData } from "../../types";
+import { PageHero } from "../layout/PageHero";
 
 type Props = {
   data: ReservationData;
@@ -21,14 +21,24 @@ export function ReservationSection({ data }: Props) {
   useEffect(() => {
     const root = embedRef.current;
     if (!root) return;
+    // Pokud nejsou žádné skripty, nic neřeš — ušetří to i runtime chyby
+    // u embedů, které obsahují třeba jen <iframe>.
     const scripts = Array.from(root.querySelectorAll("script"));
+    if (scripts.length === 0) return;
+
     scripts.forEach((oldScript) => {
-      const s = document.createElement("script");
-      Array.from(oldScript.attributes).forEach((attr) => {
-        s.setAttribute(attr.name, attr.value);
-      });
-      s.text = oldScript.text;
-      oldScript.parentNode?.replaceChild(s, oldScript);
+      try {
+        const s = document.createElement("script");
+        Array.from(oldScript.attributes).forEach((attr) => {
+          s.setAttribute(attr.name, attr.value);
+        });
+        // Inline skripty převezmou obsah, externí jen src atribut.
+        if (oldScript.textContent) s.appendChild(document.createTextNode(oldScript.textContent));
+        oldScript.parentNode?.replaceChild(s, oldScript);
+      } catch (err) {
+        // Chybný embed kód nesmí shodit stránku — jen logneme do konzole.
+        console.warn("[Reservation] embed script failed to load:", err);
+      }
     });
   }, [data.embedHtml]);
 

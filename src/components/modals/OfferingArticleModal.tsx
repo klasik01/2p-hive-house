@@ -1,7 +1,7 @@
-import type { OfferingArticle } from "../types";
-import { asset } from "../utils/asset";
-import { Icon } from "./Icon";
-import { useModalOpen } from "../hooks/useModalOpen";
+import type { OfferingArticle } from "../../types";
+import { asset } from "../../utils/asset";
+import { Icon } from "../ui/Icon";
+import { useModalOpen } from "../../hooks/useModalOpen";
 
 type Props = {
   article: OfferingArticle;

@@ -1,6 +1,6 @@
-import type { AboutData } from "../types";
-import { Icon } from "./Icon";
-import { aboutData as defaultData } from "../data/homepage";
+import type { AboutData } from "../../types";
+import { Icon } from "../ui/Icon";
+import { aboutData as defaultData } from "../../data/homepage";
 
 type Props = {
   /** Přepsání dat; nepovinné — výchozí data jdou z homepage.json. */

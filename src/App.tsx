@@ -9,12 +9,12 @@ import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
 import { useBootReady } from "./hooks/useBootReady";
 import { useHashRoute } from "./hooks/useHashRoute";
 
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
-import { Loader } from "./components/Loader";
-import { FishingModal } from "./components/FishingModal";
-import { CookieConsentBanner } from "./components/CookieConsentBanner";
-import { PromoPopup } from "./components/PromoPopup";
+import { Navbar } from "./components/layout/Navbar";
+import { Footer } from "./components/layout/Footer";
+import { Loader } from "./components/ui/Loader";
+import { FishingModal } from "./components/modals/FishingModal";
+import { CookieConsentBanner } from "./components/overlays/CookieConsentBanner";
+import { PromoPopup } from "./components/overlays/PromoPopup";
 import { HomePage } from "./pages/HomePage";
 import { ReservationPage } from "./pages/ReservationPage";
 import { ContactPage } from "./pages/ContactPage";

@@ -1,6 +1,6 @@
 import type { HomepageData } from "../types";
-import { SEOHead } from "../components/SEOHead";
-import { ReservationSection } from "../components/ReservationSection";
+import { SEOHead } from "../components/ui/SEOHead";
+import { ReservationSection } from "../components/sections/ReservationSection";
 
 type Props = {
   data: HomepageData;

@@ -1,5 +1,5 @@
-import type { T } from "../i18n";
-import { asset } from "../utils/asset";
+import type { T } from "../../i18n";
+import { asset } from "../../utils/asset";
 
 export function Loader({ t }: { t: T }) {
   return (

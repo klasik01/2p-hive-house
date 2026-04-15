@@ -1,7 +1,7 @@
-import type { ContactData } from "../types";
-import type { T } from "../i18n";
-import { cs } from "../i18n";
-import { contactData as defaultData } from "../data/homepage";
+import type { ContactData } from "../../types";
+import type { T } from "../../i18n";
+import { cs } from "../../i18n";
+import { contactData as defaultData } from "../../data/homepage";
 
 type Props = {
   contact?: ContactData;

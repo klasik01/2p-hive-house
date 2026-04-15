@@ -1,7 +1,7 @@
 import type { HomepageData } from "../types";
 import type { T } from "../i18n";
-import { SEOHead } from "../components/SEOHead";
-import { HeroSection } from "../components/HeroSection";
+import { SEOHead } from "../components/ui/SEOHead";
+import { HeroSection } from "../components/layout/HeroSection";
 import {
   AboutSection,
   ApitherapySection,

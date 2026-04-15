@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { Promotion } from "../types";
-import type { T } from "../i18n";
+import type { Promotion } from "../../types";
+import type { T } from "../../i18n";
 
 /**
  * Popup se sezónními akcemi načítanými z Firestore.

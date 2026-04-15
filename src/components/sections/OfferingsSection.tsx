@@ -1,8 +1,8 @@
 import { useState } from "react";
-import type { OfferingArticle, OfferingsData } from "../types";
-import { asset } from "../utils/asset";
-import { OfferingArticleModal } from "./OfferingArticleModal";
-import { offeringsData as defaultData } from "../data/homepage";
+import type { OfferingArticle, OfferingsData } from "../../types";
+import { asset } from "../../utils/asset";
+import { OfferingArticleModal } from "../modals/OfferingArticleModal";
+import { offeringsData as defaultData } from "../../data/homepage";
 
 type Props = {
   data?: OfferingsData;

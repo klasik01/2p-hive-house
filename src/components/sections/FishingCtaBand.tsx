@@ -1,7 +1,7 @@
-import type { T } from "../i18n";
-import { cs } from "../i18n";
-import type { FishingCtaData } from "../types";
-import { fishingCtaData as defaultData } from "../data/homepage";
+import type { T } from "../../i18n";
+import { cs } from "../../i18n";
+import type { FishingCtaData } from "../../types";
+import { fishingCtaData as defaultData } from "../../data/homepage";
 
 type Props = {
   data?: FishingCtaData;

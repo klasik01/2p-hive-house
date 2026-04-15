@@ -1,6 +1,6 @@
-import type { HowItWorksData } from "../types";
-import { Icon } from "./Icon";
-import { howItWorksData as defaultData } from "../data/homepage";
+import { Icon } from "../ui/Icon";
+import { howItWorksData as defaultData } from "../../data/homepage";
+import {HowItWorksData} from "../../types";
 
 type Props = {
   data?: HowItWorksData;

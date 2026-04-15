@@ -1,9 +1,9 @@
-import type { ApitherapyData } from "../types";
-import type { T } from "../i18n";
-import { cs } from "../i18n";
-import { asset } from "../utils/asset";
-import { Icon } from "./Icon";
-import { apitherapyData as defaultData } from "../data/homepage";
+import type { ApitherapyData } from "../../types";
+import type { T } from "../../i18n";
+import { cs } from "../../i18n";
+import { asset } from "../../utils/asset";
+import { Icon } from "../ui/Icon";
+import { apitherapyData as defaultData } from "../../data/homepage";
 
 type Props = {
   data?: ApitherapyData;

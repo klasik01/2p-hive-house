@@ -113,7 +113,7 @@
   }
 }
 
-// Zavírací křížek
+// Zavírací křížek — nad obrázkem
 .gallery-lightbox-close {
   position: fixed;
   top: 18px; right: 18px;
@@ -130,6 +130,7 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   transition: background .2s ease, transform .2s ease;
+  z-index: 1210;
 
   &:hover {
     background: var(--honey, #D4881A);
@@ -137,7 +138,7 @@
   }
 }
 
-// Šipky
+// Šipky — vždy nad obrázkem
 .gallery-lightbox-nav {
   position: fixed;
   top: 50%;
@@ -156,6 +157,7 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   transition: background .2s ease;
+  z-index: 1210;
 
   &:hover { background: var(--honey, #D4881A); }
 
@@ -178,6 +180,7 @@
   border-radius: 9999px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  z-index: 1210;
 }
 
 @keyframes galleryZoom {
