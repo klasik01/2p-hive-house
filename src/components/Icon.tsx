@@ -20,7 +20,13 @@ type IconName =
   | "calendar"
   | "envelope"
   | "trees"
-  | "bee";
+  | "bee"
+  | "facebook"
+  | "instagram"
+  | "phone"
+  | "mail"
+  | "map-pin"
+  | "clock";
 
 type Props = {
   name: IconName | string;
@@ -108,6 +114,45 @@ const ICONS: Record<string, ReactNode> = {
       <ellipse cx="12" cy="14" rx="5" ry="6" />
       <path d="M7 12h10M7 16h10" />
       <path d="M9 8c-3-2-6-1-6-1s2 3 5 3M15 8c3-2 6-1 6-1s-2 3-5 3" />
+    </>
+  ),
+
+  // --- Sociální sítě (filled-ish line style) ---
+  facebook: (
+    <path
+      d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3h3v7h3v-7h3l1-3h-4V9.5c0-.3.2-.5.5-.5H14Z"
+      fill="currentColor"
+      stroke="none"
+    />
+  ),
+  instagram: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+
+  // --- Kontakty ---
+  phone: (
+    <path d="M5 4h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 7 9-7" />
+    </>
+  ),
+  "map-pin": (
+    <>
+      <path d="M12 21s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12Z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </>
+  ),
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
     </>
   ),
 };

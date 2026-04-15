@@ -1,9 +1,12 @@
 @use "../partials/breakpoints" as *;
 @use "../partials/typography" as *;
+@use "../partials/honeycomb" as *;
 
-// Sekce Apiterapie — převzatá vizuálně 1:1 z hive-house.
+// Sekce Apiterapie — bílé pozadí s jemným plástvovým patternem
 .apitherapy-section {
   background: var(--white);
+  overflow: hidden;
+  @include honeycomb-bg("D4881A", 0.05);
 }
 
 .hook-grid {

@@ -27,7 +27,12 @@
 
 // --- Drobné ad-hoc styly, které nemají vlastní partial ---
 .fishing-cta {
-  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top, rgba(255, 209, 102, 0.22) 0%, transparent 55%),
+    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
   text-align: center;
+  @include honeycomb.honeycomb-bg("D4881A", 0.06);
   .section-desc { margin: 0 auto 24px; }
 }

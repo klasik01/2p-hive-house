@@ -8,11 +8,14 @@
 // Mobile-first: vertikální timeline; desktop: 4 sloupce s čárou.
 // =============================================================
 
+// HowItWorks = cream varianta (alternuje s bílými sekcemi)
 .how-it-works {
   position: relative;
   overflow: hidden;
-  background: var(--white);
-  @include honeycomb-bg("D4881A", 0.05);
+  background:
+    radial-gradient(ellipse at top, rgba(255, 209, 102, 0.28) 0%, transparent 55%),
+    linear-gradient(180deg, #FDF4E3 0%, #F7EDD8 100%);
+  @include honeycomb-bg("D4881A", 0.06);
 }
 
 // Dekorativní hexagony v pozadí

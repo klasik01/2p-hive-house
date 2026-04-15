@@ -23,6 +23,7 @@ export type FooterConfig = {
     checkIn: string;
     checkOut: string;
   };
+  /** `icon` musí odpovídat klíči v `src/components/Icon.tsx` (facebook, instagram). */
   socials: { label: string; href: string; icon: string }[];
   columns: FooterColumn[];
   legalLinks: FooterLink[];
@@ -46,8 +47,8 @@ export const footerConfig: FooterConfig = {
     checkOut: "11:00",
   },
   socials: [
-    { label: "Instagram", href: "https://instagram.com/", icon: "IG" },
-    { label: "Facebook", href: "https://facebook.com/", icon: "FB" },
+    { label: "Instagram", href: "https://instagram.com/", icon: "instagram" },
+    { label: "Facebook", href: "https://facebook.com/", icon: "facebook" },
   ],
   columns: [
     {

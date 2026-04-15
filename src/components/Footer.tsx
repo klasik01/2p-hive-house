@@ -1,6 +1,7 @@
 import type { T } from "../i18n";
 import { footerConfig } from "../config/footer";
 import { asset } from "../utils/asset";
+import { Icon } from "./Icon";
 
 export function Footer({ t }: { t: T }) {
   const c = footerConfig;
@@ -18,8 +19,14 @@ export function Footer({ t }: { t: T }) {
             <p>{c.tagline}</p>
             <div className="footer-socials">
               {c.socials.map((s) => (
-                <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
-                  {s.icon}
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={s.icon} size={18} />
                 </a>
               ))}
             </div>
@@ -38,13 +45,26 @@ export function Footer({ t }: { t: T }) {
 
           <div className="footer-col footer-contact">
             <h4>{t.footer.contactTitle}</h4>
-            <p><strong>{t.footer.emailLabel}:</strong> {c.contact.email}</p>
-            <p><strong>{t.footer.phoneLabel}:</strong> {c.contact.phone}</p>
-            <p><strong>{t.footer.addressLabel}:</strong> {c.company.address}</p>
-            <p>
-              <strong>{t.footer.checkInLabel}:</strong> {c.checkInOut.checkIn} ·{" "}
-              <strong>{t.footer.checkOutLabel}:</strong> {c.checkInOut.checkOut}
-            </p>
+            <ul className="footer-contact-list">
+              <li>
+                <span className="footer-contact-icon" aria-hidden="true"><Icon name="mail" size={16} /></span>
+                <a href={`mailto:${c.contact.email}`}>{c.contact.email}</a>
+              </li>
+              <li>
+                <span className="footer-contact-icon" aria-hidden="true"><Icon name="phone" size={16} /></span>
+                <a href={`tel:${c.contact.phone.replace(/\s/g, "")}`}>{c.contact.phone}</a>
+              </li>
+              <li>
+                <span className="footer-contact-icon" aria-hidden="true"><Icon name="map-pin" size={16} /></span>
+                <span>{c.company.address}</span>
+              </li>
+              <li>
+                <span className="footer-contact-icon" aria-hidden="true"><Icon name="clock" size={16} /></span>
+                <span>
+                  {t.footer.checkInLabel} {c.checkInOut.checkIn} · {t.footer.checkOutLabel} {c.checkInOut.checkOut}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 

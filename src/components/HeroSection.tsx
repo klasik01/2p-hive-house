@@ -93,15 +93,6 @@ export function HeroSection({
               {hero.ctaVoucherLabel}
             </button>
           </div>
-
-          <div className="hero-stats" role="list">
-            {hero.stats.map((s, i) => (
-              <div key={i} role="listitem">
-                <div className="hero-stat-num">{s.num}</div>
-                <div className="hero-stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
