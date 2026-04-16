@@ -24,14 +24,16 @@ export function OfferingArticleModal({ article, onClose }: Props) {
       onClick={onClose}
     >
       <div className="article-modal" onClick={(e) => e.stopPropagation()}>
-        <button
-          className="article-modal-close"
-          onClick={onClose}
-          aria-label="Zavřít"
-          type="button"
-        >
-          ✕
-        </button>
+        <div className="article-modal-sticky-bar">
+          <button
+            className="article-modal-close"
+            onClick={onClose}
+            aria-label="Zavřít"
+            type="button"
+          >
+            ✕
+          </button>
+        </div>
 
         <div
           className="article-modal-hero"

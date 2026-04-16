@@ -53,10 +53,22 @@
   }
 }
 
+// Sticky bar drží zavírací tlačítko vždy viditelné při scrollování.
+.article-modal-sticky-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1210;
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 14px 0;
+  pointer-events: none;    // propouští klik na hero pod sebou
+  height: 0;               // nezabírá prostor v layout
+
+  @include md { padding: 18px 18px 0; }
+}
+
 .article-modal-close {
-  // Fixed → křížek zůstává viditelný i při scrollování obsahu.
-  position: fixed;
-  top: 14px; right: 14px;
+  pointer-events: auto;    // tlačítko samotné klik zachytí
   width: 44px; height: 44px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.92);
@@ -71,16 +83,14 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 1210;
   transition: background .2s ease, transform .2s ease;
+  flex-shrink: 0;
 
   &:hover {
     background: var(--honey, #D4881A);
     color: #fff;
     transform: rotate(90deg);
   }
-
-  @include md { top: 18px; right: 18px; }
 }
 
 // ---- Hero (cover obrázek + dark overlay + title) ------------
