@@ -21,9 +21,15 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
   const titleId = `${id}-title`;
   const [active, setActive] = useState<VideoCard | null>(null);
 
+  // Filtruj karty podle visible (default true).
+  const visibleCards = data.cards.filter((c) => c.visible !== false);
+
   // Auto-rotace karet na tabletu (768–1023 px). Ping-pong, žádné duplikáty.
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const carousel = useCarouselAutoRotate(gridRef, [data.cards.length]);
+  const carousel = useCarouselAutoRotate(gridRef, [visibleCards.length]);
+
+  // Pokud žádná karta není viditelná, celou sekci skryj.
+  if (visibleCards.length === 0) return null;
 
   return (
     <section className="video-section section-pad" id={id} aria-labelledby={titleId}>
@@ -39,7 +45,7 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
         </div>
 
         <div className="offerings-grid" ref={gridRef}>
-          {data.cards.map((card, i) => (
+          {visibleCards.map((card, i) => (
             <button
               key={card.id}
               type="button"

@@ -59,11 +59,11 @@ export type ContactPageConfig = {
 
 export const contactPage: ContactPageConfig = {
   seo: {
-    title: "Kontakt | 2P Hive House — Hojanovice",
+    title: "Kontakt | Hive House — Hojanovice",
     description:
-      "Kontakt na 2P Hive House — glamping se včelami u nádrže Švihov. Pavel Pinkas, Jan Pinkas, telefon, e-mail, mapa a fakturační údaje.",
+      "Kontakt na Hive House — glamping se včelami u nádrže Švihov. Pavel Pinkas, Jan Pinkas, telefon, e-mail, mapa a fakturační údaje.",
     keywords:
-      "kontakt Hive House, 2P Hive House kontakt, Pavel Pinkas, Jan Pinkas, glamping Hojanovice kontakt",
+      "kontakt Hive House, Hive House kontakt, Pavel Pinkas, Jan Pinkas, glamping Hojanovice kontakt",
     canonical: "https://hivehouse.2pmoment.cz/kontakt",
     ogImage: "https://hivehouse.2pmoment.cz/og-image.jpg",
   },
@@ -74,7 +74,7 @@ export const contactPage: ContactPageConfig = {
     lead:
       "Jsme tu pro vás. Napište, zavolejte, nebo se rovnou stavte — poradíme s termínem, apiterapií i rybařením.",
     image: "/picture_2.jpg",
-    imageAlt: "2P Hive House — kontakt",
+    imageAlt: "Hive House — kontakt",
   },
   people: [
     {
@@ -82,14 +82,14 @@ export const contactPage: ContactPageConfig = {
       name: "Pavel Pinkas",
       role: "Majitel · provoz & rezervace",
       phone: "+420 774 110 224",
-      email: "pavel@hivehouse.cz",
+      email: "pinkas@2pmoment.cz",
     },
     {
       id: "jan",
       name: "Jan Pinkas",
-      role: "Provoz · apiterapie & rybaření",
-      phone: "+420 774 110 225",
-      email: "jan@hivehouse.cz",
+      role: "Provoz & rezervace",
+      phone: "+420 737 050 583",
+      email: "jan.pinkas@2pmoment.cz",
     },
   ],
   general: {
@@ -97,25 +97,24 @@ export const contactPage: ContactPageConfig = {
     title: "Všeobecné dotazy",
     email: "info@hivehouse.cz",
     phone: "+420 774 110 224",
-    address: "Hojanovice, 396 01",
+    address: "Hojanovice 17, 396 01 Hojanovice",
     checkIn: "14:00",
     checkOut: "11:00",
   },
   company: {
     eyebrow: "Fakturace",
     title: "Fakturační údaje",
-    name: "2P Moment s.r.o.",
-    ico: "00000000",
-    dic: "CZ00000000",
-    addressLines: ["Hojanovice", "396 01 Hojanovice", "Česká republika"],
+    name: "2P moment s.r.o.",
+    ico: "22395512",
+    addressLines: ["Hojanovice", "Hojanovice 17, 396 01 Hojanovice", "Česká republika"],
     note: "Společnost zapsaná v obchodním rejstříku.",
   },
   map: {
     // Výchozí embed na Hojanovice — po upřesnění polohy přepiš.
     embedSrc:
-      "https://www.google.com/maps?q=Hojanovice&hl=cs&output=embed",
-    title: "Mapa — 2P Hive House, Hojanovice",
+      "https://www.google.com/maps?q=Hojanovice+17&hl=cs&output=embed",
+    title: "Mapa — Hive House, Hojanovice",
     externalHref:
-      "https://www.google.com/maps/search/?api=1&query=Hojanovice",
+      "https://www.google.com/maps/place/Hojanovice+17,+396+01+Hojanovice/@49.5976165,15.2625111,17z/data=!3m1!4b1!4m6!3m5!1s0x470cf9e5b0c0939d:0xba2f1be012dbbc4e!8m2!3d49.5976131!4d15.265086!16s%2Fg%2F11c4jwcxtf?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D",
   },
 };

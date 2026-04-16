@@ -1,8 +1,8 @@
 {
   "seo": {
-    "title": "2P Hive House | Glamping se včelami u vodní nádrže Švihov",
-    "description": "Unikátní glamping ubytování s apiterapií nedaleko vodní nádrže Švihov. Spěte nad včelími úly, rybařte v soukromém rybníku, ochutnejte vlastní med.",
-    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, 2P Hive House, Hojanovice, nádrž Švihov, glamping Česko, spaní ve včelíně, netradiční ubytování",
+    "title": "Hive House | Glamping se včelami v srdci České republiky",
+    "description": "Unikátní glamping ubytování s apiterapií v srdci České republiky. Spěte nad včelími úly, rybařte v soukromém rybníku, ochutnejte vlastní med.",
+    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, Hive House, Hojanovice, glamping Česko, spaní ve včelíně, netradiční ubytování",
     "ogImage": "https://hivehouse.2pmoment.cz/og-image.jpg",
     "canonical": "https://hivehouse.2pmoment.cz/"
   },
@@ -38,13 +38,14 @@
     "sectionEyebrow": "Co nabízíme",
     "sectionTitle": "Zážitky,",
     "sectionTitleAccent": "na které nezapomenete",
-    "sectionDesc": "Tři pilíře 2P Hive House — ubytování nad včelami, soukromý rybník a celoroční gastronomie s vlastním medem.",
+    "sectionDesc": "Zážitek ve včelíně, sociální zařízení u objektu, rybník na rybaření a workoutové hřiště na posilování.",
     "cards": [
       {
         "id": "vcelin",
+        "visible": true,
         "eyebrow": "Glamping & Apiterapie",
         "title": "Spaní nad úly",
-        "description": "Ojedinělý zážitek spánku přímo nad aktivními včelími úly. Apiterapeutické účinky, vůně medu a ticho lesa.",
+        "description": "Ojedinělý zážitek spánku — včelí úly jsou umístěné přímo pod postelemi. Apiterapeutické účinky, vůně medu a ticho lesa.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#vcelin",
         "image": "/picture_1.jpg",
@@ -52,9 +53,9 @@
           "image": "/picture_1.jpg",
           "eyebrow": "Glamping & Apiterapie",
           "title": "Spaní nad úly",
-          "lead": "Ojedinělý zážitek — usínání za vůně medu a tiché bzučení včel, co léčí tělo i mysl.",
+          "lead": "Ojedinělý zážitek — usínání za vůně medu a tiché bzučení včel, které léčí tělo i mysl.",
           "paragraphs": [
-            "V Hive House spíte doslova nad aktivními včelími úly. Včelstva jsou umístěna pod podlahou v izolovaném prostoru, takže jejich ruch neruší — naopak. Jemné vibrace a charakteristické aroma medu a včelího vosku vytvářejí atmosféru, která uklidňuje nervový systém.",
+            "V Hive House spíte doslova nad aktivními včelími úly. Včelstva jsou umístěna přímo pod postelemi v izolovaném prostoru, takže jejich ruch neruší — naopak. Jemné vibrace a charakteristické aroma medu a včelího vosku vytvářejí atmosféru, která uklidňuje nervový systém.",
             "Apiterapie je tradiční metoda, kdy kontakt s včelím prostředím pomáhá s dýcháním, regenerací a spánkem. Nemusíte věřit na zázraky — stačí to zkusit a tělo vám poděkuje.",
             "Pokoj je navržený tak, aby dýchal přírodou. Dřevo, vlna, teplé odstíny medu a velká okna do korun stromů. Ráno vás probudí slunce, ne budík."
           ],
@@ -78,6 +79,7 @@
       },
       {
         "id": "rybareni",
+        "visible": true,
         "eyebrow": "Soukromý rybník",
         "title": "Rybaření u chalupy",
         "description": "Klidné rybaření ve vlastním rybníku přímo u objektu. Povolenky pro hosty i veřejnost.",
@@ -114,21 +116,22 @@
       },
       {
         "id": "gastronomie",
-        "eyebrow": "Med a dobroty",
+        "visible": false,
+        "eyebrow": "Vlastní med",
         "title": "Chuť domácího medu",
-        "description": "Vlastní med, výrobky ze včelích produktů a snídaně z regionálních surovin přímo v ceně pobytu.",
+        "description": "Vyrábíme vlastní med z našich včel. Zákazníci si ho mohou objednat k ubytování, nebo dokoupit na místě.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#gastronomie",
         "image": "/picture_3.jpg",
         "article": {
           "image": "/picture_3.jpg",
-          "eyebrow": "Med a dobroty",
+          "eyebrow": "Vlastní med",
           "title": "Chuť domácího medu",
-          "lead": "Všechno dobré začíná u snídaně. U nás to platí dvojnásob.",
+          "lead": "Vyrábíme vlastní med přímo z úlů, nad kterými spíte. Čerstvější to být nemůže.",
           "paragraphs": [
-            "Med do snídaní stáčíme přímo z úlů, nad kterými spíte. Čerstvější už to být nemůže. K tomu regionální sýry, domácí pečivo a sezonní ovoce — většinou od sousedů, kteří jsou za to rádi.",
-            "Součástí pobytu je snídaně v ceně. Chystáme ji ručně a podle ročního období, takže každý měsíc vypadá trochu jinak.",
-            "Kromě medu vyrábíme i medovinu, medové bonbony a voskové svíčky. Můžete si je koupit na místě jako suvenýr — nebo vyzkoušet během pobytu."
+            "Med stáčíme přímo z úlů, které jsou součástí Hive House. Zákazníci si ho mohou objednat k ubytování předem, nebo ho dokoupit na místě při pobytu.",
+            "Na ochutnávku dostanete med zdarma — ať si vyzkoušíte, jaký je. Pokud vás nadchne, vezmete si ho domů jako suvenýr z pobytu.",
+            "Kromě medu vyrábíme i medovinu, medové bonbony a voskové svíčky. Všechno z vlastních včel, všechno ručně."
           ],
           "highlights": [
             {
@@ -136,12 +139,49 @@
               "text": "Vlastní med přímo z úlů"
             },
             {
-              "icon": "heartbeat",
-              "text": "Regionální suroviny"
+              "icon": "sparkles",
+              "text": "Ochutnávka medu zdarma"
             },
             {
-              "icon": "sparkles",
-              "text": "Sezonní menu snídaní"
+              "icon": "heartbeat",
+              "text": "Možnost dokoupit na místě"
+            }
+          ],
+          "ctaLabel": "Rezervovat pobyt",
+          "ctaHref": "#/rezervace"
+        }
+      },
+      {
+        "id": "workout",
+        "visible": true,
+        "eyebrow": "Aktivní odpočinek",
+        "title": "Workoutové hřiště",
+        "description": "Venkovní workout hřiště přímo u objektu. Posilování na čerstvém vzduchu uprostřed přírody pro lepší zážitek a zdraví.",
+        "ctaLabel": "Prozkoumat",
+        "linkHref": "#workout",
+        "image": "/picture_1.jpg",
+        "article": {
+          "image": "/picture_1.jpg",
+          "eyebrow": "Aktivní odpočinek",
+          "title": "Workoutové hřiště",
+          "lead": "Posilování na čerstvém vzduchu — protože odpočinek a pohyb k sobě patří.",
+          "paragraphs": [
+            "Součástí areálu Hive House je venkovní workoutové hřiště s cvičebními prvky pro posilování celého těla. Cvičit můžete kdykoliv během pobytu — ráno i večer.",
+            "Kombinace spánku nad úly, přírody a pohybu na čerstvém vzduchu vytváří jedinečný zážitek, který přispívá k lepšímu zdraví a celkové regeneraci.",
+            "Hřiště je volně přístupné všem hostům. Nemusíte si nic přivážet — všechny prvky jsou pevně instalované a připravené k použití."
+          ],
+          "highlights": [
+            {
+              "icon": "heartbeat",
+              "text": "Cvičení na čerstvém vzduchu"
+            },
+            {
+              "icon": "shield",
+              "text": "Přispívá k regeneraci a zdraví"
+            },
+            {
+              "icon": "trees",
+              "text": "Uprostřed přírody"
             }
           ],
           "ctaLabel": "Rezervovat pobyt",
@@ -153,7 +193,7 @@
   "fishingCta": {
     "eyebrow": "Rybník přímo u chalupy",
     "title": "Chcete si zarybařit?",
-    "desc": "Objednejte si povolenku na soukromý rybník u 2P Hive House."
+    "desc": "Objednejte si povolenku na soukromý rybník u Hive House."
   },
   "contact": {
     "eyebrow": "Kontakt",
@@ -192,8 +232,8 @@
         "id": "s3",
         "number": "03",
         "icon": "trees",
-        "title": "Přijeďte do přírody",
-        "text": "Po příjezdu si vás převezmeme a ukážeme vám včelín, rybník i zázemí. Vše potřebné je připraveno."
+        "title": "Přijeďte a ubytujte se",
+        "text": "Používáme moderní systém pro self check-in a check-out — po příjezdu se pohodlně ubytujete sami, bez čekání. Vše potřebné dostanete předem e-mailem."
       },
       {
         "id": "s4",
@@ -220,7 +260,7 @@
         "id": "a2",
         "icon": "shield",
         "question": "Jak to celé funguje?",
-        "answer": "Včelstva jsou umístěna přímo v konstrukci stěn a pod vašimi lůžky. Díky speciálnímu zabezpečení a vchodům do úlů, které jsou pouze z venkovní strany domku, se k vám včely dovnitř nedostanou. Vy tak můžete v naprostém klidu a bezpečí vnímat jejich přítomnost všemi smysly."
+        "answer": "Včelstva jsou umístěna přímo pod postelemi. Díky speciálnímu zabezpečení a vchodům do úlů, které jsou pouze z venkovní strany domku, se k vám včely dovnitř nedostanou. Vy tak můžete v naprostém klidu a bezpečí vnímat jejich přítomnost všemi smysly."
       },
       {
         "id": "a3",
@@ -277,13 +317,16 @@
     "imageSmall2": "/picture_3.jpg"
   },
   "videoSection": {
-    "sectionEyebrow": "Zažijte to na vlastní oči",
+    "sectionEyebrow": "Zažijte to na vlastní kůži",
     "sectionTitle": "Podívejte se,",
-    "sectionTitleAccent": "jak u nás vypadá čas",
-    "sectionDesc": "Krátká videa z prostředí 2P Hive House. Rozbalte kartu a přehrajte si záznam.",
+    "sectionTitleAccent": "co vás u nás čeká",
+    "sectionDesc": "Krátká videa přímo z Hive House — podívejte se, jak to u nás vypadá, a zjistěte, proč si nás zákazníci vybírají. Lepší představu vám nedá nic jiného.",
     "cards": [
       {
         "id": "vcelin-video",
+        "visible": false,
+        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa včelína",
+        "_posterStatus": "✅ picture_2.jpg — existuje",
         "eyebrow": "Včelín",
         "title": "Den na včelíně",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -291,6 +334,9 @@
       },
       {
         "id": "rybnik-video",
+        "visible": false,
+        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa rybníku",
+        "_posterStatus": "✅ picture_3.jpg — existuje",
         "eyebrow": "Rybník",
         "title": "Rybaření u chalupy",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -298,6 +344,9 @@
       },
       {
         "id": "glamping-video",
+        "visible": false,
+        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa glampingu",
+        "_posterStatus": "✅ picture_1.jpg — existuje",
         "eyebrow": "Glamping",
         "title": "Ráno v přírodě",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -311,7 +360,7 @@
     "titleAccent": "rezervace termínu",
     "text": "Vyberte si volný termín v našem glampingu se včelami u nádrže Švihov. Rezervace probíhá online přes zabezpečený systém — po potvrzení obdržíte e-mail s pokyny k pobytu.",
     "image": "/main-banner-01.JPG",
-    "imageAlt": "2P Hive House — glamping se včelami",
+    "imageAlt": "Hive House — glamping se včelami",
     "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
   },
   "gallery": {
@@ -322,7 +371,7 @@
     "images": [
       {
         "src": "/main-banner-01.JPG",
-        "alt": "2P Hive House — hlavní pohled"
+        "alt": "Hive House — hlavní pohled"
       },
       {
         "src": "/picture_1.jpg",

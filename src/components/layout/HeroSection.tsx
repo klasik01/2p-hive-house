@@ -17,7 +17,7 @@ export function HeroSection({
   hero,
   onVoucherClick,
   logoSrc = "/logo.png",
-  logoAlt = "2P Hive House",
+  logoAlt = "Hive House",
 }: Props) {
   const images = hero.images.map(asset);
   const [activeIdx, setActiveIdx] = useState(0);

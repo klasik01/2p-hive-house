@@ -30,16 +30,16 @@ export type FooterConfig = {
 };
 
 export const footerConfig: FooterConfig = {
-  brandName: "2P Hive House",
-  tagline: "Glamping se včelami a soukromým rybníkem u nádrže Švihov.",
+  brandName: "Hive House",
+  tagline: "Hive House je unikátní glamping ve včelíně uprostřed přírody v srdci České republiky. Spěte nad živými včelími úly, rybařte v soukromém rybníku a nabijte se energií díky apiterapii. Zážitek, který jinde nenajdete.",
   logoSrc: "/logo.png",
   company: {
-    name: "2P Moment s.r.o.",
-    ico: "00000000",
-    address: "Hojanovice, Česká republika",
+    name: "2P moment s.r.o.",
+    ico: "22395512",
+    address: "Hojanovice 17, 396 01 Hojanovice, Česká republika",
   },
   contact: {
-    email: "hivehouse@2pmoment.cz",
+    email: "info@2pmoment.cz",
     phone: "+420 774 110 224",
   },
   checkInOut: {
@@ -47,8 +47,7 @@ export const footerConfig: FooterConfig = {
     checkOut: "11:00",
   },
   socials: [
-    { label: "Instagram", href: "https://instagram.com/", icon: "instagram" },
-    { label: "Facebook", href: "https://facebook.com/", icon: "facebook" },
+    { label: "Instagram", href: "https://www.instagram.com/hive.hojanovice?igsh=MTRtY3k1ZWFqMHAwYg==", icon: "instagram" },
   ],
   columns: [
     {

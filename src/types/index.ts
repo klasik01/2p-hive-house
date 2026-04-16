@@ -1,4 +1,4 @@
-// Centrální typy pro 2P Hive House
+// Centrální typy pro Hive House
 
 export type CookieConsentState = "unset" | "accepted" | "rejected";
 
@@ -24,6 +24,8 @@ export type SeoMeta = {
 
 export type OfferingCard = {
   id: string;
+  /** Zobrazit kartu na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   description: string;
@@ -53,6 +55,8 @@ export type OfferingArticle = {
 
 export type VideoCard = {
   id: string;
+  /** Zobrazit kartu na webu? (default true) */
+  visible?: boolean;
   title: string;
   eyebrow: string;
   /** YouTube / Vimeo / vlastní MP4. Pokud MP4, komponenta použije <video>. */

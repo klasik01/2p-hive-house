@@ -4,7 +4,7 @@
 
 export const cs = {
   nav: {
-    brandAlt: "2P Hive House",
+    brandAlt: "Hive House",
     uvod: "Úvod",
     vcelin: "Včelín & Glamping",
     ubytovani: "Ubytování",
@@ -17,7 +17,7 @@ export const cs = {
   },
   hero: {
     scrollHint: "Scroll",
-    logoAlt: "2P Hive House",
+    logoAlt: "Hive House",
   },
   common: {
     close: "Zavřít",
@@ -53,10 +53,10 @@ export const cs = {
     checkOutLabel: "Check-out",
     icoLabel: "IČO",
     rights: "Všechna práva vyhrazena.",
-    madeBy: "Vyrobeno s ♥ pro 2P Hive House.",
+    madeBy: "Vyrobeno s ♥ pro Hive House.",
   },
   map: {
-    iframeTitle: "Mapa lokality 2P Hive House",
+    iframeTitle: "Mapa lokality Hive House",
   },
   apitherapy: {
     imageAlt: "Glamping se včelami",

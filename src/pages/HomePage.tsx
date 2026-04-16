@@ -21,7 +21,7 @@ type Props = {
 };
 
 /**
- * Úvodní stránka 2P Hive House.
+ * Úvodní stránka Hive House.
  * Sekce pod hero jsou znovupoužitelné — najdeš je v `components/sections.ts`
  * a můžeš je bez přeposílání props použít kdekoli jinde.
  */

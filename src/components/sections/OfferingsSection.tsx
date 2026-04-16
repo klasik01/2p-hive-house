@@ -20,10 +20,13 @@ export function OfferingsSection({ data = defaultData, id = "nabidka" }: Props) 
   // Body lock + ESC řeší <OfferingArticleModal /> přes useModalOpen.
   const [activeArticle, setActiveArticle] = useState<OfferingArticle | null>(null);
 
+  // Filtruj karty podle visible (default true).
+  const visibleCards = data.cards.filter((c) => c.visible !== false);
+
   // Auto-rotace karet na tabletu (768–1023 px) + klikatelné dots.
   // Jednoduchý ping-pong: doprava → doleva → doprava… Žádné zrcadlení DOM.
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const carousel = useCarouselAutoRotate(gridRef, [data.cards.length]);
+  const carousel = useCarouselAutoRotate(gridRef, [visibleCards.length]);
 
   return (
     <section className="offerings section-pad" id={id} aria-labelledby={titleId}>
@@ -39,7 +42,7 @@ export function OfferingsSection({ data = defaultData, id = "nabidka" }: Props) 
         </div>
 
         <div className="offerings-grid" ref={gridRef}>
-          {data.cards.map((card, i) => {
+          {visibleCards.map((card, i) => {
             const hasArticle = !!card.article;
             const className = "offerings-card reveal";
             const style = { transitionDelay: `${i * 0.08}s` } as React.CSSProperties;

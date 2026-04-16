@@ -36,11 +36,11 @@ export type FishingPageConfig = {
 
 export const fishingPage: FishingPageConfig = {
   seo: {
-    title: "Rybaření u chalupy | 2P Hive House — soukromý rybník",
+    title: "Rybaření u chalupy | Hive House — soukromý rybník",
     description:
-      "Rybaření u 2P Hive House — soukromý rybník přímo u chalupy. Kupte si povolenku a užijte si klidný den u vody.",
+      "Rybaření u Hive House — soukromý rybník přímo u chalupy. Kupte si povolenku a užijte si klidný den u vody.",
     keywords:
-      "rybaření 2P Hive House, soukromý rybník, povolenka rybaření, rybaření Hojanovice, glamping s rybaříním",
+      "rybaření Hive House, soukromý rybník, povolenka rybaření, rybaření Hojanovice, glamping s rybaříním",
     canonical: "https://hivehouse.2pmoment.cz/rybareni",
     ogImage: "https://hivehouse.2pmoment.cz/og-image.jpg",
   },
@@ -49,9 +49,9 @@ export const fishingPage: FishingPageConfig = {
     title: "Soukromý rybník",
     titleAccent: "přímo u chalupy",
     lead:
-      "Užijte si klidný den u vody. Pro hosty i návštěvníky máme povolenky na rybaření v soukromém rybníku jen pár kroků od 2P Hive House.",
+      "Užijte si klidný den u vody. Pro hosty i návštěvníky máme povolenky na rybaření v soukromém rybníku jen pár kroků od Hive House.",
     image: "/picture_3.jpg",
-    imageAlt: "Soukromý rybník u 2P Hive House",
+    imageAlt: "Soukromý rybník u Hive House",
   },
   info: {
     eyebrow: "O rybníku",
