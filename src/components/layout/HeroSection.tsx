@@ -3,11 +3,14 @@ import type { HeroData } from "../../types";
 import type { T } from "../../i18n";
 import { asset } from "../../utils/asset";
 import { VideoLightbox } from "./VideoLightbox";
+import { isActive, constructionConfig } from "../../config/profiles";
 
 type Props = {
   t: T;
   hero: HeroData;
   onVoucherClick: () => void;
+  /** Callback pro "Ve výstavbě" CTA — otevře construction modal. */
+  onConstructionClick?: () => void;
   logoSrc?: string;
   logoAlt?: string;
 };
@@ -16,6 +19,7 @@ export function HeroSection({
   t,
   hero,
   onVoucherClick,
+  onConstructionClick,
   logoSrc = "/logo.png",
   logoAlt = "Hive House",
 }: Props) {
@@ -23,6 +27,9 @@ export function HeroSection({
   const [activeIdx, setActiveIdx] = useState(0);
   const [showIntro, setShowIntro] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const underConstruction = isActive("VE_VYSTAVBE");
+  const noPromo = isActive("BEZ_REKLAMY");
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -32,9 +39,12 @@ export function HeroSection({
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [images.length]);
 
-  const hasIntroVideo = Boolean(hero.introVideoUrl);
+  // Video v hero logo se skryje při VE_VYSTAVBE nebo BEZ_REKLAMY
+  const videoDisabled = underConstruction || noPromo;
+  const hasIntroVideo = !videoDisabled && Boolean(hero.introVideoUrl);
   const introVideoLabel = hero.introVideoLabel || t.common.watchVideo;
 
+  // Logo badge vždy pulzuje, ale jen při aktivním videu je klikatelné
   const Badge = hasIntroVideo ? "button" : "div";
 
   return (
@@ -53,7 +63,7 @@ export function HeroSection({
       <div className="container">
         <div className="hero-content reveal visible">
           <Badge
-            className={`hero-logo-badge${hasIntroVideo ? " is-playable" : ""}`}
+            className={`hero-logo-badge${hasIntroVideo ? " is-playable" : ""}${videoDisabled ? " is-pulsing" : ""}`}
             {...(hasIntroVideo
               ? {
                   type: "button" as const,
@@ -62,7 +72,7 @@ export function HeroSection({
                 }
               : {})}
           >
-            {hasIntroVideo && <span className="hero-logo-ring" aria-hidden="true" />}
+            <span className="hero-logo-ring" aria-hidden="true" />
             <img src={asset(logoSrc)} alt={logoAlt} className="hero-logo" />
             {hasIntroVideo && (
               <span className="hero-logo-play" aria-hidden="true">
@@ -85,13 +95,32 @@ export function HeroSection({
 
           <p className="hero-desc">{hero.text}</p>
 
+          {underConstruction && (
+            <div className="hero-coming-soon">
+              <span className="hero-coming-soon-badge">{constructionConfig.badge}</span>
+              <span className="hero-coming-soon-date">{constructionConfig.expectedDate}</span>
+            </div>
+          )}
+
           <div className="hero-actions">
-            <a href={hero.ctaReserveHref} className="btn btn-primary">
-              {hero.ctaReserveLabel}
-            </a>
-            <button type="button" className="btn btn-white" onClick={onVoucherClick}>
-              {hero.ctaVoucherLabel}
-            </button>
+            {underConstruction ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={onConstructionClick}
+              >
+                {constructionConfig.heroCtaLabel}
+              </button>
+            ) : (
+              <>
+                <a href={hero.ctaReserveHref} className="btn btn-primary">
+                  {hero.ctaReserveLabel}
+                </a>
+                <button type="button" className="btn btn-white" onClick={onVoucherClick}>
+                  {hero.ctaVoucherLabel}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

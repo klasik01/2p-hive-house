@@ -6,6 +6,7 @@ import { asset } from "../../utils/asset";
 import { useModalOpen } from "../../hooks/useModalOpen";
 import { useCarouselAutoRotate } from "../../hooks/useCarouselAutoRotate";
 import { videoSectionData as defaultData } from "../../data/homepage";
+import { isActive } from "../../config/profiles";
 
 type Props = {
   data?: VideoSectionData;
@@ -28,8 +29,8 @@ export function VideoSection({ data = defaultData, t = cs, id = "videa" }: Props
   const gridRef = useRef<HTMLDivElement | null>(null);
   const carousel = useCarouselAutoRotate(gridRef, [visibleCards.length]);
 
-  // Pokud žádná karta není viditelná, celou sekci skryj.
-  if (visibleCards.length === 0) return null;
+  // Skryj celou sekci při profilu BEZ_REKLAMY nebo pokud žádná karta není viditelná.
+  if (isActive("BEZ_REKLAMY") || visibleCards.length === 0) return null;
 
   return (
     <section className="video-section section-pad" id={id} aria-labelledby={titleId}>

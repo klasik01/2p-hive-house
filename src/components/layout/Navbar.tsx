@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import type { T } from "../../i18n";
 import { asset } from "../../utils/asset";
 import { useHashRoute } from "../../hooks/useHashRoute";
+import { isActive as profileActive } from "../../config/profiles";
 
 type Props = {
   t: T;
   onVoucherClick: () => void;
+  onReservationClick?: () => void;
 };
 
 /**
@@ -22,10 +24,16 @@ const navLinks: { key: keyof T["nav"]; href: string; match: "/" | "/rezervace" |
   { key: "kontakt", href: "#/kontakt", match: "/kontakt" },
 ];
 
-export function Navbar({ t, onVoucherClick }: Props) {
+export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const route = useHashRoute();
+  const underConstruction = profileActive("VE_VYSTAVBE");
+
+  // Ve výstavbě skryjeme odkaz na rezervaci z navigace
+  const visibleLinks = underConstruction
+    ? navLinks.filter((l) => l.match !== "/rezervace")
+    : navLinks;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -68,7 +76,7 @@ export function Navbar({ t, onVoucherClick }: Props) {
             </a>
 
             <ul className="navbar-nav">
-              {navLinks.map(({ key, href, match }) => (
+              {visibleLinks.map(({ key, href, match }) => (
                 <li key={key}>
                   <a
                     href={href}
@@ -86,9 +94,15 @@ export function Navbar({ t, onVoucherClick }: Props) {
               <button className="btn btn-outline-honey navbar-voucher" onClick={onVoucherClick}>
                 {t.nav.poukazka}
               </button>
-              <a href="#/rezervace" className="btn btn-primary navbar-cta">
-                {t.nav.rezervace}
-              </a>
+              {underConstruction && onReservationClick ? (
+                <button className="btn btn-primary navbar-cta" onClick={onReservationClick}>
+                  {t.nav.rezervace}
+                </button>
+              ) : (
+                <a href="#/rezervace" className="btn btn-primary navbar-cta">
+                  {t.nav.rezervace}
+                </a>
+              )}
               <button
                 className={`navbar-hamburger${mobileOpen ? " open" : ""}`}
                 onClick={() => setMobileOpen((o) => !o)}
@@ -112,7 +126,7 @@ export function Navbar({ t, onVoucherClick }: Props) {
           ✕
         </button>
 
-        {navLinks.map(({ key, href, match }) => (
+        {visibleLinks.map(({ key, href, match }) => (
           <a
             key={key}
             href={href}
@@ -130,9 +144,15 @@ export function Navbar({ t, onVoucherClick }: Props) {
           >
             {t.nav.poukazka}
           </button>
-          <a href="#/rezervace" className="btn btn-primary" onClick={close}>
-            {t.nav.rezervace}
-          </a>
+          {underConstruction && onReservationClick ? (
+            <button className="btn btn-primary" onClick={() => { onReservationClick(); close(); }}>
+              {t.nav.rezervace}
+            </button>
+          ) : (
+            <a href="#/rezervace" className="btn btn-primary" onClick={close}>
+              {t.nav.rezervace}
+            </a>
+          )}
         </div>
       </div>
     </>

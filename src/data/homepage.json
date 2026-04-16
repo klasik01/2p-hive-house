@@ -7,6 +7,7 @@
     "canonical": "https://hivehouse.2pmoment.cz/"
   },
   "hero": {
+    "visible": true,
     "subtitle": "Glamping · Apiterapie · Příroda",
     "title": "Hive",
     "titleAccent": "House",
@@ -35,6 +36,7 @@
     ]
   },
   "offerings": {
+    "visible": true,
     "sectionEyebrow": "Co nabízíme",
     "sectionTitle": "Zážitky,",
     "sectionTitleAccent": "na které nezapomenete",
@@ -191,11 +193,13 @@
     ]
   },
   "fishingCta": {
+    "visible": true,
     "eyebrow": "Rybník přímo u chalupy",
     "title": "Chcete si zarybařit?",
     "desc": "Objednejte si povolenku na soukromý rybník u Hive House."
   },
   "contact": {
+    "visible": true,
     "eyebrow": "Kontakt",
     "title": "Chceš se nejdřív doptat?",
     "titleAccent": "Ozvi se nám přímo.",
@@ -209,6 +213,7 @@
     "mapEmbedUrl": ""
   },
   "howItWorks": {
+    "visible": true,
     "eyebrow": "Jak to funguje",
     "title": "Cesta k",
     "titleAccent": "vašemu pobytu",
@@ -245,6 +250,7 @@
     ]
   },
   "about": {
+    "visible": true,
     "eyebrow": "O Hive House",
     "title": "Ubytování, které vás",
     "titleAccent": "doslova nabije",
@@ -271,6 +277,7 @@
     ]
   },
   "apitherapy": {
+    "visible": true,
     "eyebrow": "Glamping se včelami",
     "title": "Apiterapie —",
     "titleAccent": "léčivá síla včel",
@@ -317,6 +324,7 @@
     "imageSmall2": "/picture_3.jpg"
   },
   "videoSection": {
+    "visible": true,
     "sectionEyebrow": "Zažijte to na vlastní kůži",
     "sectionTitle": "Podívejte se,",
     "sectionTitleAccent": "co vás u nás čeká",
@@ -358,6 +366,7 @@
     "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
   },
   "gallery": {
+    "visible": true,
     "eyebrow": "Galerie",
     "title": "Pohled do",
     "titleAccent": "Hive House",

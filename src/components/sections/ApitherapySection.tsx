@@ -1,6 +1,7 @@
 import type { ApitherapyData } from "../../types";
 import { Icon } from "../ui/Icon";
 import { apitherapyData as defaultData } from "../../data/homepage";
+import { isActive as profileActive } from "../../config/profiles";
 
 type Props = {
   data?: ApitherapyData;
@@ -13,6 +14,7 @@ type Props = {
  */
 export function ApitherapySection({ data = defaultData, id = "apiterapie" }: Props) {
   const titleId = `${id}-title`;
+  const underConstruction = profileActive("VE_VYSTAVBE");
   return (
     <section className="section-pad apitherapy-section" id={id} aria-labelledby={titleId}>
       <div className="container">
@@ -26,14 +28,16 @@ export function ApitherapySection({ data = defaultData, id = "apiterapie" }: Pro
             <p className="apitherapy-text apitherapy-text-lead">{data.text1}</p>
             <p className="apitherapy-text">{data.text2}</p>
 
-            <div className="apitherapy-actions">
-              <a href={data.ctaPrimaryHref} className="btn btn-primary">
-                {data.ctaPrimaryLabel}
-              </a>
-              <a href={data.ctaSecondaryHref} className="btn btn-outline">
-                {data.ctaSecondaryLabel}
-              </a>
-            </div>
+            {!underConstruction && (
+              <div className="apitherapy-actions">
+                <a href={data.ctaPrimaryHref} className="btn btn-primary">
+                  {data.ctaPrimaryLabel}
+                </a>
+                <a href={data.ctaSecondaryHref} className="btn btn-outline">
+                  {data.ctaSecondaryLabel}
+                </a>
+              </div>
+            )}
           </div>
 
           <div className="hook-visual reveal-right">

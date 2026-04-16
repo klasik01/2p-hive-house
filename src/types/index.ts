@@ -66,6 +66,8 @@ export type VideoCard = {
 };
 
 export type HeroData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   subtitle: string;
   title: string;
   titleAccent: string;
@@ -82,6 +84,8 @@ export type HeroData = {
 };
 
 export type OfferingsData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   sectionEyebrow: string;
   sectionTitle: string;
   sectionTitleAccent: string;
@@ -90,6 +94,8 @@ export type OfferingsData = {
 };
 
 export type VideoSectionData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   sectionEyebrow: string;
   sectionTitle: string;
   sectionTitleAccent: string;
@@ -104,6 +110,8 @@ export type ApitherapyBenefit = {
 };
 
 export type ApitherapyData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   titleAccent: string;
@@ -120,6 +128,8 @@ export type ApitherapyData = {
 };
 
 export type ContactData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   titleAccent: string;
@@ -142,6 +152,8 @@ export type HowItWorksStep = {
 };
 
 export type HowItWorksData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   titleAccent: string;
@@ -157,6 +169,8 @@ export type AboutBlock = {
 };
 
 export type AboutData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   titleAccent: string;
@@ -165,6 +179,8 @@ export type AboutData = {
 };
 
 export type FishingCtaData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   desc: string;
@@ -187,6 +203,8 @@ export type GalleryImage = {
 };
 
 export type GalleryData = {
+  /** Zobrazit sekci na webu? (default true) */
+  visible?: boolean;
   eyebrow: string;
   title: string;
   titleAccent: string;
