@@ -12,7 +12,7 @@ export const cs = {
     okoli: "Okolí",
     rezervace: "Rezervace",
     kontakt: "Kontakt",
-    poukazka: "Dárková poukázka",
+    poukazka: "Koupit poukázku",
     menu: "Menu",
   },
   hero: {
@@ -40,7 +40,12 @@ export const cs = {
   },
   fishing: {
     modalTitle: "Rybářská povolenka",
-    modalDesc: "Formulář pro objednání bude brzy doplněn.",
+    modalDesc: "Formulář pro objednání rybářské povolenky bude brzy doplněn.",
+    soon: "Brzy k dispozici",
+  },
+  voucher: {
+    modalTitle: "Koupit poukázku",
+    modalDesc: "Formulář pro zakoupení dárkové poukázky bude brzy doplněn.",
     soon: "Brzy k dispozici",
   },
   footer: {

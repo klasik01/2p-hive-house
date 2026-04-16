@@ -42,7 +42,7 @@ export const fishingPage: FishingPageConfig = {
     keywords:
       "rybaření Hive House, soukromý rybník, povolenka rybaření, rybaření Hojanovice, glamping s rybaříním",
     canonical: "https://hivehouse.2pmoment.cz/rybareni",
-    ogImage: "https://hivehouse.2pmoment.cz/og-image.jpg",
+    ogImage: "https://hivehouse.2pmoment.cz/image_rybareni.heic",
   },
   hero: {
     eyebrow: "Rybaření",
@@ -50,7 +50,7 @@ export const fishingPage: FishingPageConfig = {
     titleAccent: "přímo u chalupy",
     lead:
       "Užijte si klidný den u vody. Pro hosty i návštěvníky máme povolenky na rybaření v soukromém rybníku jen pár kroků od Hive House.",
-    image: "/picture_3.jpg",
+    image: "/picture_8.png",
     imageAlt: "Soukromý rybník u Hive House",
   },
   info: {

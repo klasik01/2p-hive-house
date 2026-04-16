@@ -13,6 +13,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { Loader } from "./components/ui/Loader";
 import { FishingModal } from "./components/modals/FishingModal";
+import { VoucherModal } from "./components/modals/VoucherModal";
 import { CookieConsentBanner } from "./components/overlays/CookieConsentBanner";
 import { PromoPopup } from "./components/overlays/PromoPopup";
 import { HomePage } from "./pages/HomePage";
@@ -38,6 +39,7 @@ function App() {
   const [loadedKeys, setLoadedKeys] = useState<Set<string>>(new Set());
   const [cookieConsent, setCookieConsentState] = useState<CookieConsentState>(() => getCookieConsent());
   const [showFishing, setShowFishing] = useState(false);
+  const [showVoucher, setShowVoucher] = useState(false);
 
   // Sezónní akce — subscribe z Firestore. Jakmile přijde první snapshot
   // (i prázdný), označíme "promotions" jako načtené a aplikace se zobrazí.
@@ -79,9 +81,7 @@ function App() {
 
   if (!isReady) return <Loader t={t} />;
 
-  // Mock voucher — zatím otevře pouze rybářský popup (dle zadání
-  // je definován jako prázdný placeholder; voucher se dodělá později).
-  const onVoucherClick = () => setShowFishing(true);
+  const onVoucherClick = () => setShowVoucher(true);
 
   return (
     <>
@@ -107,6 +107,7 @@ function App() {
       <Footer t={t} />
 
       {showFishing && <FishingModal t={t} onClose={() => setShowFishing(false)} />}
+      {showVoucher && <VoucherModal t={t} onClose={() => setShowVoucher(false)} />}
 
       <PromoPopup items={activePromotions} t={t} />
 

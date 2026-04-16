@@ -114,3 +114,14 @@
   @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   img { height: 180px; }
 }
+
+// --- Sidebar varianta benefitů (místo fotek v pravém sloupci) ---
+.apitherapy-benefits--sidebar {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  margin-bottom: 0;
+  @include lg {
+    align-self: start;
+  }
+}

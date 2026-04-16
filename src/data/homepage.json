@@ -18,7 +18,7 @@
     "introVideoLabel": "Přehrát prohlídku",
     "ctaReserveLabel": "Rezervovat pobyt",
     "ctaReserveHref": "#/rezervace",
-    "ctaVoucherLabel": "Dárková poukázka",
+    "ctaVoucherLabel": "Koupit poukázku",
     "stats": [
       {
         "num": "4.9★",
@@ -85,9 +85,9 @@
         "description": "Klidné rybaření ve vlastním rybníku přímo u objektu. Povolenky pro hosty i veřejnost.",
         "ctaLabel": "Prozkoumat",
         "linkHref": "#rybareni",
-        "image": "/picture_2.jpg",
+        "image": "/picture_8.png",
         "article": {
-          "image": "/picture_2.jpg",
+          "image": "/picture_8.png",
           "eyebrow": "Soukromý rybník",
           "title": "Rybaření u chalupy",
           "lead": "Klidná voda pár kroků od dveří. Jen vy, prut a ticho.",
@@ -325,8 +325,6 @@
       {
         "id": "vcelin-video",
         "visible": false,
-        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa včelína",
-        "_posterStatus": "✅ picture_2.jpg — existuje",
         "eyebrow": "Včelín",
         "title": "Den na včelíně",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -335,8 +333,6 @@
       {
         "id": "rybnik-video",
         "visible": false,
-        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa rybníku",
-        "_posterStatus": "✅ picture_3.jpg — existuje",
         "eyebrow": "Rybník",
         "title": "Rybaření u chalupy",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -345,8 +341,6 @@
       {
         "id": "glamping-video",
         "visible": false,
-        "_videoStatus": "❌ PLACEHOLDER — nahraď skutečným YouTube URL videa glampingu",
-        "_posterStatus": "✅ picture_1.jpg — existuje",
         "eyebrow": "Glamping",
         "title": "Ráno v přírodě",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -359,7 +353,7 @@
     "title": "Hive House",
     "titleAccent": "rezervace termínu",
     "text": "Vyberte si volný termín v našem glampingu se včelami u nádrže Švihov. Rezervace probíhá online přes zabezpečený systém — po potvrzení obdržíte e-mail s pokyny k pobytu.",
-    "image": "/main-banner-01.JPG",
+    "image": "/picture_1.jpg",
     "imageAlt": "Hive House — glamping se včelami",
     "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
   },
@@ -369,10 +363,6 @@
     "titleAccent": "Hive House",
     "desc": "Jak to u nás vypadá — ubytování, rybník, včely, okolí.",
     "images": [
-      {
-        "src": "/main-banner-01.JPG",
-        "alt": "Hive House — hlavní pohled"
-      },
       {
         "src": "/picture_1.jpg",
         "alt": "Glamping se včelami"
@@ -384,6 +374,26 @@
       {
         "src": "/picture_3.jpg",
         "alt": "Domácí med"
+      },
+      {
+        "src": "/picture_4.JPG",
+        "alt": "Hive House — pohled 4"
+      },
+      {
+        "src": "/picture_5.JPG",
+        "alt": "Hive House — pohled 5"
+      },
+      {
+        "src": "/picture_6.JPG",
+        "alt": "Hive House — pohled 6"
+      },
+      {
+        "src": "/picture_7.jpg",
+        "alt": "Hive House — pohled 7"
+      },
+      {
+        "src": "/picture_8.png",
+        "alt": "Hive House — pohled 8"
       }
     ]
   }
