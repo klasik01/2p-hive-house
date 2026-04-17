@@ -1,6 +1,7 @@
 import type { HomepageData } from "../types";
 import { SEOHead } from "../components/ui/SEOHead";
 import { ReservationSection } from "../components/sections/ReservationSection";
+import { cs } from "../i18n";
 
 type Props = {
   data: HomepageData;
@@ -13,10 +14,9 @@ type Props = {
  */
 export function ReservationPage({ data }: Props) {
   const seo = {
-    title: "Rezervace | Hive House — zarezervujte si svůj termín",
-    description:
-      "Zarezervujte si svůj pobyt v Hive House. Glamping se včelami u vodní nádrže Švihov — vyberte si volný termín online.",
-    keywords: "rezervace Hive House, rezervace glamping, zarezervovat pobyt, Hive House termíny",
+    title: cs.reservation.seoTitle,
+    description: cs.reservation.seoDescription,
+    keywords: cs.reservation.seoKeywords,
     ogImage: data.seo.ogImage,
     canonical: "https://hivehouse.2pmoment.cz/rezervace",
   };

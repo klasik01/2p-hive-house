@@ -2,6 +2,7 @@ import type { OfferingArticle } from "../../types";
 import { asset } from "../../utils/asset";
 import { Icon } from "../ui/Icon";
 import { useModalOpen } from "../../hooks/useModalOpen";
+import { cs } from "../../i18n";
 
 type Props = {
   article: OfferingArticle;
@@ -27,7 +28,7 @@ export function OfferingArticleModal({ article, onClose }: Props) {
       <button
         className="article-modal-close"
         onClick={onClose}
-        aria-label="Zavřít"
+        aria-label={cs.common.close}
         type="button"
       >
         ✕

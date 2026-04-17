@@ -91,11 +91,11 @@ export function ConstructionModal({ t, onClose }: Props) {
               className="btn btn-primary construction-modal-btn"
               disabled={status === "sending"}
             >
-              {status === "sending" ? "Odesílám…" : cfg.popupCtaLabel}
+              {status === "sending" ? t.common.sending : cfg.popupCtaLabel}
             </button>
             {status === "error" && (
               <p className="construction-modal-error">
-                Něco se pokazilo, zkuste to prosím znovu.
+                {t.common.genericError}
               </p>
             )}
           </form>

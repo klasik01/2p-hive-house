@@ -3,6 +3,7 @@ import { Icon } from "../components/ui/Icon";
 import { PageHero } from "../components/layout/PageHero";
 import { asset } from "../utils/asset";
 import { contactPage } from "../config/contact";
+import { cs } from "../i18n";
 
 /**
  * Stránka KONTAKT.
@@ -87,19 +88,16 @@ export function ContactPage() {
         <div className="container">
           <div className="contact-map">
             <div className="contact-map-header">
-              <div className="section-eyebrow">Kde nás najdete</div>
-              <h2>Pozemek a okolí</h2>
-              <p>
-                Jsme kousek od vodní nádrže Švihov, v klidné obci Hojanovice.
-                Klikni na mapu pro navigaci.
-              </p>
+              <div className="section-eyebrow">{cs.contact.mapEyebrow}</div>
+              <h2>{cs.contact.mapTitle}</h2>
+              <p>{cs.contact.mapDesc}</p>
               <a
                 className="btn btn-outline-honey"
                 href={c.map.externalHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Otevřít v Google Maps
+                {cs.contact.openMaps}
               </a>
             </div>
             <div className="contact-map-frame">
@@ -122,21 +120,21 @@ export function ContactPage() {
 
             <dl className="contact-company-grid">
               <div>
-                <dt>Společnost</dt>
+                <dt>{cs.contact.companyLabel}</dt>
                 <dd>{c.company.name}</dd>
               </div>
               <div>
-                <dt>IČO</dt>
+                <dt>{cs.contact.icoLabel}</dt>
                 <dd>{c.company.ico}</dd>
               </div>
               {c.company.dic && (
                 <div>
-                  <dt>DIČ</dt>
+                  <dt>{cs.contact.dicLabel}</dt>
                   <dd>{c.company.dic}</dd>
                 </div>
               )}
               <div>
-                <dt>Sídlo</dt>
+                <dt>{cs.contact.addressLabel}</dt>
                 <dd>
                   {c.company.addressLines.map((line, i) => (
                     <span key={i}>
@@ -148,7 +146,7 @@ export function ContactPage() {
               </div>
               {c.company.bankAccount && (
                 <div>
-                  <dt>Bankovní spojení</dt>
+                  <dt>{cs.contact.bankLabel}</dt>
                   <dd>{c.company.bankAccount}</dd>
                 </div>
               )}

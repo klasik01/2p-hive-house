@@ -23,5 +23,4 @@ export const videoSectionData = homepageData.videoSection;
 export const galleryData      = homepageData.gallery;
 export const fishingCtaData   = homepageData.fishingCta;
 export const contactData      = homepageData.contact;
-export const heroData         = homepageData.hero;
 export const reservationData  = homepageData.reservation;

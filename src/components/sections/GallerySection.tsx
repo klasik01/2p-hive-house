@@ -3,6 +3,7 @@ import type { GalleryData } from "../../types";
 import { asset } from "../../utils/asset";
 import { useModalOpen } from "../../hooks/useModalOpen";
 import { galleryData as defaultData } from "../../data/homepage";
+import { cs } from "../../i18n";
 
 type Props = {
   data?: GalleryData;
@@ -128,7 +129,7 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxPro
       <button
         className="gallery-lightbox-close"
         onClick={onClose}
-        aria-label="Zavřít"
+        aria-label={cs.common.close}
         type="button"
       >
         ✕
@@ -139,7 +140,7 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxPro
           <button
             className="gallery-lightbox-nav gallery-lightbox-prev"
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            aria-label="Předchozí"
+            aria-label={cs.gallery.prev}
             type="button"
           >
             ‹
@@ -147,7 +148,7 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }: LightboxPro
           <button
             className="gallery-lightbox-nav gallery-lightbox-next"
             onClick={(e) => { e.stopPropagation(); onNext(); }}
-            aria-label="Další"
+            aria-label={cs.gallery.next}
             type="button"
           >
             ›

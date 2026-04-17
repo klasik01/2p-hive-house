@@ -2,10 +2,11 @@ import { useState } from "react";
 import type { ProfileName } from "../../config/profiles";
 import { getActiveProfiles, setActiveProfiles } from "../../config/profiles";
 import { saveAppSettings } from "../../api/appSettings";
+import { cs } from "../../i18n";
 
 const ALL_PROFILES: { value: ProfileName; label: string }[] = [
-  { value: "VE_VYSTAVBE", label: "Ve výstavbě" },
-  { value: "BEZ_REKLAMY", label: "Bez reklamy" },
+  { value: "VE_VYSTAVBE", label: cs.profiles.veVystavbe },
+  { value: "BEZ_REKLAMY", label: cs.profiles.bezReklamy },
 ];
 
 /**
@@ -25,7 +26,6 @@ export function ProfileSelector() {
     try {
       setActiveProfiles(next);
       await saveAppSettings({ activeProfiles: next });
-      // Reload — profily ovlivňují celou logiku aplikace
       window.location.reload();
     } catch (err) {
       console.error("[ProfileSelector] Save failed:", err);
@@ -35,7 +35,7 @@ export function ProfileSelector() {
 
   return (
     <div className="profile-selector">
-      <span className="profile-selector-label">Profil:</span>
+      <span className="profile-selector-label">{cs.profiles.label}</span>
       <div className="profile-selector-options">
         {ALL_PROFILES.map(({ value, label }) => (
           <label key={value} className="profile-selector-option">
@@ -49,7 +49,7 @@ export function ProfileSelector() {
           </label>
         ))}
       </div>
-      {saving && <span className="profile-selector-saving">Ukládám…</span>}
+      {saving && <span className="profile-selector-saving">{cs.common.saving}</span>}
     </div>
   );
 }

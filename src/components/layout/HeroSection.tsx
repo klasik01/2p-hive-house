@@ -132,7 +132,7 @@ export function HeroSection({
               key={idx}
               className={idx === activeIdx ? "active" : ""}
               onClick={() => setActiveIdx(idx)}
-              aria-label={`Snímek ${idx + 1}`}
+              aria-label={`${t.hero.slideLabel} ${idx + 1}`}
             />
           ))}
         </div>

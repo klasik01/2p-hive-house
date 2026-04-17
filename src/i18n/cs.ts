@@ -18,6 +18,7 @@ export const cs = {
   hero: {
     scrollHint: "Scroll",
     logoAlt: "Hive House",
+    slideLabel: "Snímek",
   },
   common: {
     close: "Zavřít",
@@ -30,6 +31,9 @@ export const cs = {
     watchVideo: "Přehrát video",
     showMore: "Zobrazit více",
     showLess: "Sbalit",
+    sending: "Odesílám…",
+    genericError: "Něco se pokazilo, zkuste to prosím znovu.",
+    saving: "Ukládám…",
   },
   cookies: {
     title: "Používáme cookies",
@@ -65,6 +69,31 @@ export const cs = {
   },
   apitherapy: {
     imageAlt: "Glamping se včelami",
+  },
+  gallery: {
+    prev: "Předchozí",
+    next: "Další",
+  },
+  profiles: {
+    label: "Profil:",
+    veVystavbe: "Ve výstavbě",
+    bezReklamy: "Bez reklamy",
+  },
+  reservation: {
+    seoTitle: "Rezervace | Hive House — zarezervujte si svůj termín",
+    seoDescription: "Zarezervujte si svůj pobyt v Hive House. Glamping se včelami u vodní nádrže Švihov — vyberte si volný termín online.",
+    seoKeywords: "rezervace Hive House, rezervace glamping, zarezervovat pobyt, Hive House termíny",
+  },
+  contact: {
+    mapEyebrow: "Kde nás najdete",
+    mapTitle: "Pozemek a okolí",
+    mapDesc: "Jsme kousek od vodní nádrže Švihov, v klidné obci Hojanovice. Klikni na mapu pro navigaci.",
+    openMaps: "Otevřít v Google Maps",
+    companyLabel: "Společnost",
+    icoLabel: "IČO",
+    dicLabel: "DIČ",
+    addressLabel: "Sídlo",
+    bankLabel: "Bankovní spojení",
   },
 } as const;
 
