@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { T } from "../../i18n";
 import { asset } from "../../utils/asset";
-import { useHashRoute } from "../../hooks/useHashRoute";
+import { useRoute, handleLinkClick } from "../../hooks/useRoute";
 import { isActive as profileActive } from "../../config/profiles";
 
 type Props = {
@@ -12,21 +12,21 @@ type Props = {
 
 /**
  * Navigace.
- * Každý odkaz má "match" — buď přesný route match (#/rezervace, #/kontakt),
- * nebo sekci v rámci homepage (začíná #). Podle aktuální routy (useHashRoute)
- * se u odpovídajícího odkazu aplikuje class "is-active".
+ * Každý odkaz má "match" — přesný route match (/rezervace, /kontakt, /fishing).
+ * Podle aktuální routy (useRoute) se u odpovídajícího odkazu aplikuje class
+ * "is-active". Kliky jsou interceptované přes handleLinkClick (pushState).
  */
 const navLinks: { key: keyof T["nav"]; href: string; match: "/" | "/rezervace" | "/kontakt" | "/fishing" }[] = [
-  { key: "vcelin", href: "#/", match: "/" },
-  { key: "fishing", href: "#/fishing", match: "/fishing" },
-  { key: "rezervace", href: "#/rezervace", match: "/rezervace" },
-  { key: "kontakt", href: "#/kontakt", match: "/kontakt" },
+  { key: "vcelin", href: "/", match: "/" },
+  { key: "fishing", href: "/fishing", match: "/fishing" },
+  { key: "rezervace", href: "/rezervace", match: "/rezervace" },
+  { key: "kontakt", href: "/kontakt", match: "/kontakt" },
 ];
 
 export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const route = useHashRoute();
+  const route = useRoute();
   const underConstruction = profileActive("VE_VYSTAVBE");
 
   // Ve výstavbě skryjeme odkaz na rezervaci z navigace
@@ -51,16 +51,11 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
   const isActive = (match: string) => route === match;
 
   /**
-   * Klik na odkaz, který směřuje na aktuální routu (typicky logo nebo
-   * "Včelín" vedoucí na homepage): hash se nezmění, takže useHashRoute
-   * nescrollne. Ručně tedy zajistíme posun na začátek.
+   * Klik intercept přes handleLinkClick (pushState). Zároveň zavře mobilní menu.
    */
-  const onNavClick = (match: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     close();
-    if (route === match) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    handleLinkClick(e);
   };
 
   return (
@@ -68,7 +63,7 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} aria-label="Hlavní navigace">
         <div className="container">
           <div className="navbar-inner">
-            <a href="#/" className="navbar-brand" onClick={onNavClick("/")} aria-label={t.nav.brandAlt}>
+            <a href="/" className="navbar-brand" onClick={onNavClick} aria-label={t.nav.brandAlt}>
               <span className="navbar-logo-badge">
                 <img src={asset("/logo.png")} alt={t.nav.brandAlt} className="navbar-logo" />
               </span>
@@ -79,7 +74,7 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
                 <li key={key}>
                   <a
                     href={href}
-                    onClick={onNavClick(match)}
+                    onClick={onNavClick}
                     className={isActive(match) ? "is-active" : undefined}
                     aria-current={isActive(match) ? "page" : undefined}
                   >
@@ -98,7 +93,7 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
                   {t.nav.rezervace}
                 </button>
               ) : (
-                <a href="#/rezervace" className="btn btn-primary navbar-cta">
+                <a href="/rezervace" className="btn btn-primary navbar-cta" onClick={onNavClick}>
                   {t.nav.rezervace}
                 </a>
               )}
@@ -129,7 +124,7 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
           <a
             key={key}
             href={href}
-            onClick={onNavClick(match)}
+            onClick={onNavClick}
             className={isActive(match) ? "is-active" : undefined}
             aria-current={isActive(match) ? "page" : undefined}
           >
@@ -148,7 +143,7 @@ export function Navbar({ t, onVoucherClick, onReservationClick }: Props) {
               {t.nav.rezervace}
             </button>
           ) : (
-            <a href="#/rezervace" className="btn btn-primary" onClick={close}>
+            <a href="/rezervace" className="btn btn-primary" onClick={onNavClick}>
               {t.nav.rezervace}
             </a>
           )}

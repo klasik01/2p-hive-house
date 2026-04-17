@@ -57,16 +57,16 @@ export const footerConfig: FooterConfig = {
     {
       title: "Navigace",
       links: [
-        { label: "Včelín & Glamping", href: "#/" },
-        { label: "Rybaření", href: "#/fishing" },
-        { label: "Rezervace", href: "#/rezervace" },
-        { label: "Kontakt", href: "#/kontakt" },
+        { label: "Včelín & Glamping", href: "/" },
+        { label: "Rybaření", href: "/fishing" },
+        { label: "Rezervace", href: "/rezervace" },
+        { label: "Kontakt", href: "/kontakt" },
       ],
     },
     {
       title: "Služby",
       links: [
-        { label: "Rezervace pobytu", href: "#/rezervace" },
+        { label: "Rezervace pobytu", href: "/rezervace" },
         { label: "Dárková poukázka", href: "#poukazka" },
         { label: "Rybářská povolenka", href: "#povolenka" },
       ],

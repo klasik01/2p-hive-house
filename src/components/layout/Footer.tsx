@@ -3,6 +3,7 @@ import { footerConfig } from "../../config/footer";
 import { asset } from "../../utils/asset";
 import { Icon } from "../ui/Icon";
 import { ProfileSelector } from "../ui/ProfileSelector";
+import { handleLinkClick } from "../../hooks/useRoute";
 
 export function Footer({ t }: { t: T }) {
   const c = footerConfig;
@@ -38,7 +39,7 @@ export function Footer({ t }: { t: T }) {
               <h4>{col.title}</h4>
               <ul>
                 {col.links.map((l) => (
-                  <li key={l.label}><a href={l.href}>{l.label}</a></li>
+                  <li key={l.label}><a href={l.href} onClick={handleLinkClick}>{l.label}</a></li>
                 ))}
               </ul>
             </div>

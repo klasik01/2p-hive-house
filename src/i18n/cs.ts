@@ -81,13 +81,13 @@ export const cs = {
   },
   reservation: {
     seoTitle: "Rezervace | Hive House — zarezervujte si svůj termín",
-    seoDescription: "Zarezervujte si svůj pobyt v Hive House. Glamping se včelami u vodní nádrže Švihov — vyberte si volný termín online.",
+    seoDescription: "Zarezervujte si svůj pobyt v Hive House. Glamping se včelami v Hojanovicích na Vysočině — vyberte si volný termín online.",
     seoKeywords: "rezervace Hive House, rezervace glamping, zarezervovat pobyt, Hive House termíny",
   },
   contact: {
     mapEyebrow: "Kde nás najdete",
     mapTitle: "Pozemek a okolí",
-    mapDesc: "Jsme kousek od vodní nádrže Švihov, v klidné obci Hojanovice. Klikni na mapu pro navigaci.",
+    mapDesc: "Najdete nás v klidné obci Hojanovice na Vysočině. Klikni na mapu pro navigaci.",
     openMaps: "Otevřít v Google Maps",
     companyLabel: "Společnost",
     icoLabel: "IČO",

@@ -18,9 +18,17 @@ type Props = {
 export function FishingPage({ onFishingClick }: Props) {
   const p = fishingPage;
 
+  const seo = {
+    ...p.seo,
+    breadcrumbs: [
+      { name: "Hive House", url: "https://hivehouse.2pmoment.cz/" },
+      { name: "Rybaření" },
+    ],
+  };
+
   return (
     <>
-      <SEOHead meta={p.seo} />
+      <SEOHead meta={seo} />
 
       <section className="fishing-page" aria-labelledby="fishing-title">
         <PageHero

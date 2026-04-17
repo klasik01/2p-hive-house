@@ -61,7 +61,7 @@ export const contactPage: ContactPageConfig = {
   seo: {
     title: "Kontakt | Hive House — Hojanovice",
     description:
-      "Kontakt na Hive House — glamping se včelami u nádrže Švihov. Pavel Pinkas, Jan Pinkas, telefon, e-mail, mapa a fakturační údaje.",
+      "Kontakt na Hive House — glamping se včelami v Hojanovicích na Vysočině. Pavel Pinkas, Jan Pinkas, telefon, e-mail, mapa a fakturační údaje.",
     keywords:
       "kontakt Hive House, Hive House kontakt, Pavel Pinkas, Jan Pinkas, glamping Hojanovice kontakt",
     canonical: "https://hivehouse.2pmoment.cz/kontakt",
@@ -95,7 +95,7 @@ export const contactPage: ContactPageConfig = {
   general: {
     eyebrow: "Obecný kontakt",
     title: "Všeobecné dotazy",
-    email: "info@hivehouse.cz",
+    email: "info@2pmoment.cz",
     phone: "+420 774 110 224",
     address: "Hojanovice 17, 396 01 Hojanovice",
     checkIn: "14:00",

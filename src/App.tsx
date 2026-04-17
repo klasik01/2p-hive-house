@@ -8,7 +8,7 @@ import { isActive, setActiveProfiles } from "./config/profiles";
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
 import { useBootReady } from "./hooks/useBootReady";
-import { useHashRoute } from "./hooks/useHashRoute";
+import { useRoute } from "./hooks/useRoute";
 
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
@@ -79,7 +79,7 @@ function App() {
   }, [promotions]);
 
   const isReady = useBootReady(loadedKeys, REQUIRED_KEYS, 4000);
-  const route = useHashRoute();
+  const route = useRoute();
   const isReservation = route === "/rezervace";
   const isContact = route === "/kontakt";
   const isFishing = route === "/fishing";

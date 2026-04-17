@@ -21,9 +21,17 @@ import { cs } from "../i18n";
 export function ContactPage() {
   const c = contactPage;
 
+  const seo = {
+    ...c.seo,
+    breadcrumbs: [
+      { name: "Hive House", url: "https://hivehouse.2pmoment.cz/" },
+      { name: "Kontakt" },
+    ],
+  };
+
   return (
     <>
-      <SEOHead meta={c.seo} />
+      <SEOHead meta={seo} />
 
       <section className="contact-page" aria-labelledby="contact-title">
         <PageHero titleId="contact-title" data={c.hero} />

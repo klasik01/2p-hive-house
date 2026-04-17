@@ -1,4 +1,4 @@
-import type { SeoMeta } from "../types";
+import type { BreadcrumbItem, SeoMeta } from "../types";
 
 /**
  * Aktualizuje <title> a meta/link tagy pro SEO dynamicky.
@@ -10,6 +10,7 @@ import type { SeoMeta } from "../types";
  *  - Open Graph (title, description, image, url, type)
  *  - Twitter Card (title, description, image)
  *  - canonical URL
+ *  - JSON-LD BreadcrumbList (pokud je meta.breadcrumbs vyplněné)
  */
 export function applySeo(meta: SeoMeta) {
   if (typeof document === "undefined") return;
@@ -32,6 +33,9 @@ export function applySeo(meta: SeoMeta) {
 
   // Canonical
   if (meta.canonical) setLink("canonical", meta.canonical);
+
+  // BreadcrumbList JSON-LD
+  applyBreadcrumbs(meta.breadcrumbs);
 }
 
 function absolute(url: string): string {
@@ -58,4 +62,45 @@ function setLink(rel: string, href: string) {
     document.head.appendChild(el);
   }
   el.setAttribute("href", href);
+}
+
+const BREADCRUMB_ID = "ld-breadcrumb";
+
+/**
+ * Injektuje (nebo smaže) JSON-LD BreadcrumbList do <head>.
+ * ID skriptu je stabilní — druhá a další volání přepíšou existující.
+ *
+ * Breadcrumbs jako [{name, url?}] — poslední položka bez url představuje
+ * aktuální stránku (v souladu se schema.org/BreadcrumbList doporučením).
+ */
+function applyBreadcrumbs(breadcrumbs?: BreadcrumbItem[]) {
+  const existing = document.getElementById(BREADCRUMB_ID);
+
+  if (!breadcrumbs || breadcrumbs.length === 0) {
+    if (existing) existing.remove();
+    return;
+  }
+
+  const payload = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.name,
+      ...(b.url ? { item: absolute(b.url) } : {}),
+    })),
+  };
+
+  const json = JSON.stringify(payload);
+  if (existing) {
+    existing.textContent = json;
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.id = BREADCRUMB_ID;
+  script.textContent = json;
+  document.head.appendChild(script);
 }

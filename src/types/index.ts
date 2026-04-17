@@ -14,12 +14,25 @@ export type Promotion = {
   endsAt?: string;
 };
 
+export type BreadcrumbItem = {
+  /** Zobrazované jméno v drobečkové navigaci. */
+  name: string;
+  /** Absolutní URL (https://…) nebo relativní (/rezervace). Pokud chybí, je to poslední/aktuální stránka. */
+  url?: string;
+};
+
 export type SeoMeta = {
   title: string;
   description: string;
   keywords?: string;
   ogImage?: string;
   canonical?: string;
+  /**
+   * Drobečková navigace — převede se na JSON-LD BreadcrumbList schema
+   * v <head>. Homepage nemá breadcrumby (pro schema.org je v pořádku
+   * je vynechat na úvodní stránce).
+   */
+  breadcrumbs?: BreadcrumbItem[];
 };
 
 export type OfferingCard = {

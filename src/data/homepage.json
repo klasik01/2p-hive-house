@@ -1,8 +1,8 @@
 {
   "seo": {
-    "title": "Hive House | Glamping se včelami v srdci České republiky",
-    "description": "Unikátní glamping ubytování s apiterapií v srdci České republiky. Spěte nad včelími úly, rybařte v soukromém rybníku, ochutnejte vlastní med.",
-    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, Hive House, Hojanovice, glamping Česko, spaní ve včelíně, netradiční ubytování",
+    "title": "Hive House | Glamping se včelami v Hojanovicích na Vysočině",
+    "description": "Unikátní glamping s apiterapií v Hojanovicích na Vysočině. Spěte nad živými včelími úly, rybařte v soukromém rybníku a ochutnejte vlastní med.",
+    "keywords": "glamping Vysočina, ubytování se včelami, apiterapie, rybník ubytování, Hive House, Hojanovice, glamping Česko, spaní ve včelíně, netradiční ubytování, včelí úly",
     "ogImage": "https://hivehouse.2pmoment.cz/og-image.jpg",
     "canonical": "https://hivehouse.2pmoment.cz/"
   },
@@ -15,16 +15,12 @@
     "images": [
       "/picture_1.jpg"
     ],
-    "introVideoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "introVideoUrl": "",
     "introVideoLabel": "Přehrát prohlídku",
     "ctaReserveLabel": "Rezervovat pobyt",
-    "ctaReserveHref": "#/rezervace",
+    "ctaReserveHref": "/rezervace",
     "ctaVoucherLabel": "Koupit poukázku",
     "stats": [
-      {
-        "num": "4.9★",
-        "label": "Hodnocení hostů"
-      },
       {
         "num": "2",
         "label": "Osoby v domečku"
@@ -32,6 +28,10 @@
       {
         "num": "100%",
         "label": "Soukromí v přírodě"
+      },
+      {
+        "num": "1",
+        "label": "Vlastní rybník"
       }
     ]
   },
@@ -76,7 +76,7 @@
             }
           ],
           "ctaLabel": "Rezervovat pobyt",
-          "ctaHref": "#/rezervace"
+          "ctaHref": "/rezervace"
         }
       },
       {
@@ -113,7 +113,7 @@
             }
           ],
           "ctaLabel": "Objednat povolenku",
-          "ctaHref": "#/fishing"
+          "ctaHref": "/fishing"
         }
       },
       {
@@ -150,7 +150,7 @@
             }
           ],
           "ctaLabel": "Rezervovat pobyt",
-          "ctaHref": "#/rezervace"
+          "ctaHref": "/rezervace"
         }
       },
       {
@@ -187,7 +187,7 @@
             }
           ],
           "ctaLabel": "Rezervovat pobyt",
-          "ctaHref": "#/rezervace"
+          "ctaHref": "/rezervace"
         }
       }
     ]
@@ -206,9 +206,9 @@
     "desc": "Pokud si chce host před rezervací potvrdit termín, zeptat se na včelín, rybaření nebo průběh pobytu, všechno důležité najde hned tady.",
     "phone": "+420 774 110 224",
     "phoneLabel": "Telefon",
-    "email": "info@hivehouse.cz",
+    "email": "info@2pmoment.cz",
     "emailLabel": "E-mail",
-    "address": "Hojnovice, Česká republika",
+    "address": "Hojanovice, Česká republika",
     "addressLabel": "Lokalita",
     "mapEmbedUrl": ""
   },
@@ -318,7 +318,7 @@
     "ctaPrimaryLabel": "Více o apiterapii",
     "ctaPrimaryHref": "#vcelin",
     "ctaSecondaryLabel": "Rezervovat pobyt",
-    "ctaSecondaryHref": "#/rezervace",
+    "ctaSecondaryHref": "/rezervace",
     "imageMain": "/picture_1.jpg",
     "imageSmall1": "/picture_2.jpg",
     "imageSmall2": "/picture_3.jpg"
@@ -335,7 +335,7 @@
         "visible": false,
         "eyebrow": "Včelín",
         "title": "Den na včelíně",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "videoUrl": "",
         "poster": "/picture_2.jpg"
       },
       {
@@ -343,7 +343,7 @@
         "visible": false,
         "eyebrow": "Rybník",
         "title": "Rybaření u chalupy",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "videoUrl": "",
         "poster": "/picture_3.jpg"
       },
       {
@@ -351,7 +351,7 @@
         "visible": false,
         "eyebrow": "Glamping",
         "title": "Ráno v přírodě",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "videoUrl": "",
         "poster": "/picture_1.jpg"
       }
     ]
@@ -360,9 +360,9 @@
     "eyebrow": "Rezervace",
     "title": "Hive House",
     "titleAccent": "rezervace termínu",
-    "text": "Vyberte si volný termín v našem glampingu se včelami u nádrže Švihov. Rezervace probíhá online přes zabezpečený systém — po potvrzení obdržíte e-mail s pokyny k pobytu.",
+    "text": "Vyberte si volný termín v našem glampingu se včelami v Hojanovicích na Vysočině. Rezervace probíhá online přes zabezpečený systém — po potvrzení obdržíte e-mail s pokyny k pobytu.",
     "image": "/picture_1.jpg",
-    "imageAlt": "Hive House — glamping se včelami",
+    "imageAlt": "Hive House — glamping se včelami v Hojanovicích",
     "embedHtml": "<\\!-- Sem vloží administrátor embed kód rezervační služby (iframe / <script> widget). -->\n<iframe src=\"about:blank\" title=\"Rezervační systém\" style=\"width:100%;min-height:640px;border:0;\"></iframe>"
   },
   "gallery": {
@@ -374,35 +374,35 @@
     "images": [
       {
         "src": "/picture_1.jpg",
-        "alt": "Glamping se včelami"
+        "alt": "Hive House — glamping domek se včelami v Hojanovicích na Vysočině"
       },
       {
         "src": "/picture_2.jpg",
-        "alt": "Soukromý rybník"
+        "alt": "Soukromý rybník u Hive House — rybaření pro hosty glampingu"
       },
       {
         "src": "/picture_3.jpg",
-        "alt": "Domácí med"
+        "alt": "Domácí med z vlastních včel Hive House — ochutnávka pro hosty"
       },
       {
         "src": "/picture_4.JPG",
-        "alt": "Hive House — pohled 4"
+        "alt": "Interiér glamping domku Hive House — dřevo, postel nad včelími úly"
       },
       {
         "src": "/picture_5.JPG",
-        "alt": "Hive House — pohled 5"
+        "alt": "Včelí úly Hive House — zdroj apiterapie a vlastního medu"
       },
       {
         "src": "/picture_6.JPG",
-        "alt": "Hive House — pohled 6"
+        "alt": "Okolí Hive House — příroda Vysočiny a klidná obec Hojanovice"
       },
       {
         "src": "/picture_7.jpg",
-        "alt": "Hive House — pohled 7"
+        "alt": "Glamping Hive House v detailu — apidomek se zázemím v přírodě"
       },
       {
         "src": "/picture_8.png",
-        "alt": "Hive House — pohled 8"
+        "alt": "Pohled na soukromý rybník Hive House — rybaření u chalupy"
       }
     ]
   }
