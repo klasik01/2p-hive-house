@@ -2,8 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { cs } from "./i18n";
 import type { CookieConsentState, HomepageData, Promotion } from "./types";
 import { getCookieConsent, setCookieConsent } from "./utils/cookieConsent";
-import { subscribePromotions } from "./api/promotions";
-import { fetchAppSettings } from "./api/appSettings";
+import { backend } from "./services";
 import { isActive, setActiveProfiles } from "./config/profiles";
 
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
@@ -50,7 +49,7 @@ function App() {
 
   // Načtení nastavení aplikace (profily) z Firestore — MUSÍ proběhnout před renderem.
   useEffect(() => {
-    fetchAppSettings().then((settings) => {
+    backend.fetchAppSettings().then((settings) => {
       setActiveProfiles(settings.activeProfiles);
       // Auto-open construction modal pokud je VE_VYSTAVBE aktivní
       if (settings.activeProfiles.includes("VE_VYSTAVBE")) {
@@ -62,7 +61,7 @@ function App() {
 
   // Sezónní akce — subscribe z Firestore.
   useEffect(() => {
-    const unsub = subscribePromotions(
+    const unsub = backend.subscribePromotions(
       (promos) => { setPromotions(promos); markLoaded("promotions"); },
       () => { setPromotions([]); markLoaded("promotions"); },
     );

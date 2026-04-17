@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ProfileName } from "../../config/profiles";
 import { getActiveProfiles, setActiveProfiles } from "../../config/profiles";
-import { saveAppSettings } from "../../api/appSettings";
+import { backend } from "../../services";
 import { cs } from "../../i18n";
 
 const ALL_PROFILES: { value: ProfileName; label: string }[] = [
@@ -25,7 +25,7 @@ export function ProfileSelector() {
     setSaving(true);
     try {
       setActiveProfiles(next);
-      await saveAppSettings({ activeProfiles: next });
+      await backend.saveAppSettings({ activeProfiles: next });
       window.location.reload();
     } catch (err) {
       console.error("[ProfileSelector] Save failed:", err);

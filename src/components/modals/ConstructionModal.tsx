@@ -3,8 +3,7 @@ import type { T } from "../../i18n";
 import { useModalOpen } from "../../hooks/useModalOpen";
 import { constructionConfig } from "../../config/profiles";
 import { asset } from "../../utils/asset";
-import { db } from "../../lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { backend } from "../../services";
 
 type Props = {
   t: T;
@@ -28,16 +27,14 @@ export function ConstructionModal({ t, onClose }: Props) {
 
     setStatus("sending");
     try {
-      console.log("[ConstructionModal] Saving to Firestore…", { collection: cfg.firestoreCollection, email: email.trim() });
-      const docRef = await addDoc(collection(db, cfg.firestoreCollection), {
-        email: email.trim().toLowerCase(),
-        createdAt: serverTimestamp(),
+      const docId = await backend.createSubscription({
+        email: email.trim(),
         source: "construction_popup",
       });
-      console.log("[ConstructionModal] Success, docId:", docRef.id);
+      console.log("[ConstructionModal] Success, docId:", docId);
       setStatus("success");
     } catch (err) {
-      console.error("[ConstructionModal] Firestore error:", err);
+      console.error("[ConstructionModal] Error:", err);
       setStatus("error");
     }
   };
