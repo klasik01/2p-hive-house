@@ -16,8 +16,10 @@ import { Loader } from "./components/ui/Loader";
 import { FishingModal } from "./components/modals/FishingModal";
 import { VoucherModal } from "./components/modals/VoucherModal";
 import { ConstructionModal } from "./components/modals/ConstructionModal";
+import { LegalModal } from "./components/modals/LegalModal";
 import { CookieConsentBanner } from "./components/overlays/CookieConsentBanner";
 import { PromoPopup } from "./components/overlays/PromoPopup";
+import { legalDocuments, type LegalId } from "./data/legal";
 import { HomePage } from "./pages/HomePage";
 import { ReservationPage } from "./pages/ReservationPage";
 import { ContactPage } from "./pages/ContactPage";
@@ -42,6 +44,7 @@ function App() {
   const [showFishing, setShowFishing] = useState(false);
   const [showVoucher, setShowVoucher] = useState(false);
   const [showConstruction, setShowConstruction] = useState(false);
+  const [legalOpen, setLegalOpen] = useState<LegalId | null>(null);
 
   const markLoaded = (key: string) => {
     setLoadedKeys((prev) => (prev.has(key) ? prev : new Set(prev).add(key)));
@@ -126,11 +129,17 @@ function App() {
         )}
       </main>
 
-      <Footer t={t} />
+      <Footer t={t} onLegalClick={setLegalOpen} />
 
       {showFishing && <FishingModal t={t} onClose={() => setShowFishing(false)} />}
       {showVoucher && <VoucherModal t={t} onClose={() => setShowVoucher(false)} />}
       {showConstruction && <ConstructionModal t={t} onClose={() => setShowConstruction(false)} />}
+      {legalOpen && (
+        <LegalModal
+          document={legalDocuments[legalOpen]}
+          onClose={() => setLegalOpen(null)}
+        />
+      )}
 
       {/* Promo popup jen když NENÍ ve výstavbě */}
       {!underConstruction && <PromoPopup items={activePromotions} t={t} />}

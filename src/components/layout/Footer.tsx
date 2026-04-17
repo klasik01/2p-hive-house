@@ -4,8 +4,15 @@ import { asset } from "../../utils/asset";
 import { Icon } from "../ui/Icon";
 import { ProfileSelector } from "../ui/ProfileSelector";
 import { handleLinkClick } from "../../hooks/useRoute";
+import type { LegalId } from "../../data/legal";
 
-export function Footer({ t }: { t: T }) {
+type Props = {
+  t: T;
+  /** Callback pro otevření právních popupů (obchodní podmínky / GDPR / cookies). */
+  onLegalClick?: (id: LegalId) => void;
+};
+
+export function Footer({ t, onLegalClick }: Props) {
   const c = footerConfig;
   const year = new Date().getFullYear();
 
@@ -75,9 +82,27 @@ export function Footer({ t }: { t: T }) {
             © {year} {c.company.name}, {t.footer.icoLabel} {c.company.ico}. {t.footer.rights}
           </div>
           <div className="footer-legal">
-            {c.legalLinks.map((l) => (
-              <a key={l.href} href={l.href}>{l.label}</a>
-            ))}
+            {c.legalLinks.map((l) => {
+              // Legal odkazy otevírají popup místo navigace.
+              if (l.legal && onLegalClick) {
+                const legalId = l.legal;
+                return (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onLegalClick(legalId);
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                );
+              }
+              return (
+                <a key={l.href} href={l.href}>{l.label}</a>
+              );
+            })}
           </div>
           <ProfileSelector />
         </div>

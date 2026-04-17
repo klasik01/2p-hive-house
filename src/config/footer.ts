@@ -4,10 +4,20 @@
 // ============================================================
 
 import { hiveHouseConfig } from "../data/hive-house";
+import type { LegalId } from "../data/legal";
 
 const cfg = hiveHouseConfig;
 
-export type FooterLink = { label: string; href: string };
+/**
+ * Footer odkaz. Pokud je vyplněné `legal`, odkaz neslouží k navigaci,
+ * ale otevírá LegalModal s odpovídajícím dokumentem (obchodní podmínky,
+ * GDPR, cookies). `href` je v tom případě pouze fallback kotva.
+ */
+export type FooterLink = {
+  label: string;
+  href: string;
+  legal?: LegalId;
+};
 export type FooterColumn = { title: string; links: FooterLink[] };
 
 export type FooterConfig = {
@@ -73,8 +83,8 @@ export const footerConfig: FooterConfig = {
     },
   ],
   legalLinks: [
-    { label: "Obchodní podmínky", href: "#obchodni-podminky" },
-    { label: "Ochrana osobních údajů", href: "#gdpr" },
-    { label: "Cookies", href: "#cookies" },
+    { label: "Obchodní podmínky", href: "#obchodni-podminky", legal: "terms" },
+    { label: "Ochrana osobních údajů", href: "#gdpr", legal: "privacy" },
+    { label: "Cookies", href: "#cookies", legal: "cookies" },
   ],
 };
