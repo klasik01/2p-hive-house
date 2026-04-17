@@ -3,7 +3,8 @@ import { cs } from "./i18n";
 import type { CookieConsentState, HomepageData, Promotion } from "./types";
 import { getCookieConsent, setCookieConsent } from "./utils/cookieConsent";
 import { subscribePromotions } from "./api/promotions";
-import { isActive } from "./config/profiles";
+import { fetchAppSettings } from "./api/appSettings";
+import { isActive, setActiveProfiles } from "./config/profiles";
 
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
@@ -21,7 +22,7 @@ import { PromoPopup } from "./components/overlays/PromoPopup";
 import { HomePage } from "./pages/HomePage";
 import { ReservationPage } from "./pages/ReservationPage";
 import { ContactPage } from "./pages/ContactPage";
-import { RybareniPage } from "./pages/RybareniPage";
+import { FishingPage } from "./pages/FishingPage";
 
 import homepageData from "./data/homepage.json";
 
@@ -30,10 +31,8 @@ import "./styles/main.scss";
 const t = cs;
 const data = homepageData as HomepageData;
 
-const underConstruction = isActive("VE_VYSTAVBE");
-
 // Klíče, které musí být "loaded" než aplikace zmizí loaderu.
-const REQUIRED_KEYS = ["promotions"] as const;
+const REQUIRED_KEYS = ["promotions", "settings"] as const;
 
 function App() {
   const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
@@ -43,17 +42,29 @@ function App() {
   const [cookieConsent, setCookieConsentState] = useState<CookieConsentState>(() => getCookieConsent());
   const [showFishing, setShowFishing] = useState(false);
   const [showVoucher, setShowVoucher] = useState(false);
-  // Construction modal se otevře automaticky při VE_VYSTAVBE
-  const [showConstruction, setShowConstruction] = useState(underConstruction);
+  const [showConstruction, setShowConstruction] = useState(false);
+
+  const markLoaded = (key: string) => {
+    setLoadedKeys((prev) => (prev.has(key) ? prev : new Set(prev).add(key)));
+  };
+
+  // Načtení nastavení aplikace (profily) z Firestore — MUSÍ proběhnout před renderem.
+  useEffect(() => {
+    fetchAppSettings().then((settings) => {
+      setActiveProfiles(settings.activeProfiles);
+      // Auto-open construction modal pokud je VE_VYSTAVBE aktivní
+      if (settings.activeProfiles.includes("VE_VYSTAVBE")) {
+        setShowConstruction(true);
+      }
+      markLoaded("settings");
+    });
+  }, []);
 
   // Sezónní akce — subscribe z Firestore.
   useEffect(() => {
-    const markLoaded = () => {
-      setLoadedKeys((prev) => (prev.has("promotions") ? prev : new Set(prev).add("promotions")));
-    };
     const unsub = subscribePromotions(
-      (promos) => { setPromotions(promos); markLoaded(); },
-      () => { setPromotions([]); markLoaded(); },
+      (promos) => { setPromotions(promos); markLoaded("promotions"); },
+      () => { setPromotions([]); markLoaded("promotions"); },
     );
     return () => unsub();
   }, []);
@@ -72,12 +83,15 @@ function App() {
   const route = useHashRoute();
   const isReservation = route === "/rezervace";
   const isContact = route === "/kontakt";
-  const isRybareni = route === "/rybareni";
+  const isFishing = route === "/fishing";
+
+  // Profily se čtou až po načtení z Firestore (po isReady)
+  const underConstruction = isActive("VE_VYSTAVBE");
 
   useRevealOnScroll(
     isReservation ? "reservation" :
     isContact ? "contact" :
-    isRybareni ? "rybareni" : "home",
+    isFishing ? "fishing" : "home",
     isReady,
   );
   useAnalyticsPageView(route, cookieConsent, gaMeasurementId);
@@ -86,9 +100,6 @@ function App() {
 
   const onVoucherClick = () => setShowVoucher(true);
   const onConstructionClick = () => setShowConstruction(true);
-
-  // Ve výstavbě: rezervace přesměruje na construction popup, ne na stránku
-  const handleReservationRoute = underConstruction;
 
   return (
     <>
@@ -99,12 +110,12 @@ function App() {
       />
 
       <main>
-        {isReservation && !handleReservationRoute ? (
+        {isReservation && !underConstruction ? (
           <ReservationPage data={data} />
         ) : isContact ? (
           <ContactPage />
-        ) : isRybareni ? (
-          <RybareniPage onFishingClick={() => setShowFishing(true)} />
+        ) : isFishing ? (
+          <FishingPage onFishingClick={() => setShowFishing(true)} />
         ) : (
           <HomePage
             t={t}

@@ -8,7 +8,7 @@ export const cs = {
     uvod: "Úvod",
     vcelin: "Včelín & Glamping",
     ubytovani: "Ubytování",
-    rybareni: "Rybaření",
+    fishing: "Rybaření",
     okoli: "Okolí",
     rezervace: "Rezervace",
     kontakt: "Kontakt",

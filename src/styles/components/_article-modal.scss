@@ -53,22 +53,13 @@
   }
 }
 
-// Sticky bar drží zavírací tlačítko vždy viditelné při scrollování.
-.article-modal-sticky-bar {
-  position: sticky;
-  top: 0;
-  z-index: 1210;
-  display: flex;
-  justify-content: flex-end;
-  padding: 14px 14px 0;
-  pointer-events: none;    // propouští klik na hero pod sebou
-  height: 0;               // nezabírá prostor v layout
-
-  @include md { padding: 18px 18px 0; }
-}
-
+// Close button je fixed přímo na backdrop — vždy viditelný nad vším,
+// včetně navbaru, a nescrolluje se s obsahem modalu.
 .article-modal-close {
-  pointer-events: auto;    // tlačítko samotné klik zachytí
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1300;           // nad navbar (1000) i backdrop (1200)
   width: 44px; height: 44px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.92);
@@ -85,6 +76,8 @@
   -webkit-backdrop-filter: blur(8px);
   transition: background .2s ease, transform .2s ease;
   flex-shrink: 0;
+
+  @include md { top: 18px; right: 18px; }
 
   &:hover {
     background: var(--honey, #D4881A);

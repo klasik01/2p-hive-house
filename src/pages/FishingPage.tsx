@@ -15,7 +15,7 @@ type Props = {
  * Stránka RYBAŘENÍ — skládá se ze sdíleného PageHero, vlastní info sekce,
  * společného CTA bandu pro povolenku a sdíleného kontaktu.
  */
-export function RybareniPage({ onFishingClick }: Props) {
+export function FishingPage({ onFishingClick }: Props) {
   const p = fishingPage;
 
   return (

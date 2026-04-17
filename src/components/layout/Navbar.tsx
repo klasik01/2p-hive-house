@@ -16,10 +16,9 @@ type Props = {
  * nebo sekci v rámci homepage (začíná #). Podle aktuální routy (useHashRoute)
  * se u odpovídajícího odkazu aplikuje class "is-active".
  */
-const navLinks: { key: keyof T["nav"]; href: string; match: "/" | "/rezervace" | "/kontakt" | "/rybareni" }[] = [
-  // Úvod je schválně sloučený s "Včelín & Glamping" — to je homepage.
+const navLinks: { key: keyof T["nav"]; href: string; match: "/" | "/rezervace" | "/kontakt" | "/fishing" }[] = [
   { key: "vcelin", href: "#/", match: "/" },
-  { key: "rybareni", href: "#/rybareni", match: "/rybareni" },
+  { key: "fishing", href: "#/fishing", match: "/fishing" },
   { key: "rezervace", href: "#/rezervace", match: "/rezervace" },
   { key: "kontakt", href: "#/kontakt", match: "/kontakt" },
 ];

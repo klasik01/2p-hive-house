@@ -2,6 +2,7 @@ import type { T } from "../../i18n";
 import { footerConfig } from "../../config/footer";
 import { asset } from "../../utils/asset";
 import { Icon } from "../ui/Icon";
+import { ProfileSelector } from "../ui/ProfileSelector";
 
 export function Footer({ t }: { t: T }) {
   const c = footerConfig;
@@ -77,6 +78,7 @@ export function Footer({ t }: { t: T }) {
               <a key={l.href} href={l.href}>{l.label}</a>
             ))}
           </div>
+          <ProfileSelector />
         </div>
       </div>
     </footer>

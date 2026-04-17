@@ -80,13 +80,13 @@
         }
       },
       {
-        "id": "rybareni",
+        "id": "fishing",
         "visible": true,
         "eyebrow": "Soukromý rybník",
         "title": "Rybaření u chalupy",
         "description": "Klidné rybaření ve vlastním rybníku přímo u objektu. Povolenky pro hosty i veřejnost.",
         "ctaLabel": "Prozkoumat",
-        "linkHref": "#rybareni",
+        "linkHref": "#fishing",
         "image": "/picture_8.png",
         "article": {
           "image": "/picture_8.png",
@@ -113,7 +113,7 @@
             }
           ],
           "ctaLabel": "Objednat povolenku",
-          "ctaHref": "#/rybareni"
+          "ctaHref": "#/fishing"
         }
       },
       {

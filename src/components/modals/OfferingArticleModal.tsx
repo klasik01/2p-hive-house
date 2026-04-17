@@ -23,17 +23,17 @@ export function OfferingArticleModal({ article, onClose }: Props) {
       aria-labelledby="article-modal-title"
       onClick={onClose}
     >
+      {/* Close button je fixed na úrovni backdrop — vždy viditelný, nad vším */}
+      <button
+        className="article-modal-close"
+        onClick={onClose}
+        aria-label="Zavřít"
+        type="button"
+      >
+        ✕
+      </button>
+
       <div className="article-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="article-modal-sticky-bar">
-          <button
-            className="article-modal-close"
-            onClick={onClose}
-            aria-label="Zavřít"
-            type="button"
-          >
-            ✕
-          </button>
-        </div>
 
         <div
           className="article-modal-hero"

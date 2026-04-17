@@ -1,7 +1,11 @@
 // ============================================================
 // Konfigurace patičky — jediný zdroj pravdy pro kontakty,
-// odkazy a texty v <Footer />. Uprav hodnoty zde, nic víc.
+// odkazy a texty v <Footer />. Sdílí globální údaje z hive-house.json.
 // ============================================================
+
+import { hiveHouseConfig } from "../data/hive-house";
+
+const cfg = hiveHouseConfig;
 
 export type FooterLink = { label: string; href: string };
 export type FooterColumn = { title: string; links: FooterLink[] };
@@ -30,31 +34,31 @@ export type FooterConfig = {
 };
 
 export const footerConfig: FooterConfig = {
-  brandName: "Hive House",
-  tagline: "Hive House je unikátní glamping ve včelíně uprostřed přírody v srdci České republiky. Spěte nad živými včelími úly, rybařte v soukromém rybníku a nabijte se energií díky apiterapii. Zážitek, který jinde nenajdete.",
+  brandName: cfg.name,
+  tagline: `${cfg.name} je unikátní glamping ve včelíně uprostřed přírody v srdci České republiky. Spěte nad živými včelími úly, rybařte v soukromém rybníku a nabijte se energií díky apiterapii. Zážitek, který jinde nenajdete.`,
   logoSrc: "/logo.png",
   company: {
-    name: "2P moment s.r.o.",
-    ico: "22395512",
-    address: "Hojanovice 17, 396 01 Hojanovice, Česká republika",
+    name: cfg.company.name,
+    ico: cfg.company.ico,
+    address: cfg.contact.address,
   },
   contact: {
-    email: "info@2pmoment.cz",
-    phone: "+420 774 110 224",
+    email: cfg.contact.email,
+    phone: cfg.contact.phone,
   },
   checkInOut: {
-    checkIn: "14:00",
-    checkOut: "11:00",
+    checkIn: cfg.checkInOut.checkIn,
+    checkOut: cfg.checkInOut.checkOut,
   },
   socials: [
-    { label: "Instagram", href: "https://www.instagram.com/hive.hojanovice?igsh=MTRtY3k1ZWFqMHAwYg==", icon: "instagram" },
+    { label: "Instagram", href: cfg.socials.instagram, icon: "instagram" },
   ],
   columns: [
     {
       title: "Navigace",
       links: [
         { label: "Včelín & Glamping", href: "#/" },
-        { label: "Rybaření", href: "#/rybareni" },
+        { label: "Rybaření", href: "#/fishing" },
         { label: "Rezervace", href: "#/rezervace" },
         { label: "Kontakt", href: "#/kontakt" },
       ],
