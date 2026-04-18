@@ -19,21 +19,7 @@
     "introVideoLabel": "Přehrát prohlídku",
     "ctaReserveLabel": "Rezervovat pobyt",
     "ctaReserveHref": "/rezervace",
-    "ctaVoucherLabel": "Koupit poukázku",
-    "stats": [
-      {
-        "num": "2",
-        "label": "Osoby v domečku"
-      },
-      {
-        "num": "100%",
-        "label": "Soukromí v přírodě"
-      },
-      {
-        "num": "1",
-        "label": "Vlastní rybník"
-      }
-    ]
+    "ctaVoucherLabel": "Koupit poukázku"
   },
   "offerings": {
     "visible": true,

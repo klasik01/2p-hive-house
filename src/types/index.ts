@@ -93,7 +93,6 @@ export type HeroData = {
   ctaReserveLabel: string;
   ctaReserveHref: string;
   ctaVoucherLabel: string;
-  stats: { num: string; label: string }[];
 };
 
 export type OfferingsData = {
