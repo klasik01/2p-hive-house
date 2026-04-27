@@ -134,13 +134,15 @@ export function ContactPage() {
               <div>
                 <dt>{cs.contact.icoLabel}</dt>
                 <dd>{c.company.ico}</dd>
-              </div>
-              {c.company.dic && (
-                <div>
+                {c.company.dic && <>
                   <dt>{cs.contact.dicLabel}</dt>
                   <dd>{c.company.dic}</dd>
-                </div>
-              )}
+                </>}
+                {c.company.dataBox && <>
+                  <dt>{cs.contact.dataBoxLabel}</dt>
+                  <dd>{c.company.dataBox}</dd>
+                </>}
+              </div>
               <div>
                 <dt>{cs.contact.addressLabel}</dt>
                 <dd>

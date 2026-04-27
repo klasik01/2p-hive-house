@@ -44,6 +44,7 @@ export type ContactPageConfig = {
     name: string;
     ico: string;
     dic?: string;
+    dataBox?: string;
     addressLines: string[];
     bankAccount?: string;
     note?: string;
@@ -95,7 +96,7 @@ export const contactPage: ContactPageConfig = {
   general: {
     eyebrow: "Obecný kontakt",
     title: "Všeobecné dotazy",
-    email: "info@2pmoment.cz",
+    email: "hivehouse@2pmoment.cz",
     phone: "+420 774 110 224",
     address: "Hojanovice 17, 396 01 Hojanovice",
     checkIn: "14:00",
@@ -106,8 +107,10 @@ export const contactPage: ContactPageConfig = {
     title: "Fakturační údaje",
     name: "2P moment s.r.o.",
     ico: "22395512",
+    dic: "CZ22395512",
+    dataBox: "2jj2mpz",
     addressLines: ["Hojanovice", "Hojanovice 17, 396 01 Hojanovice", "Česká republika"],
-    note: "Společnost zapsaná v obchodním rejstříku.",
+    note: "Společnost zapsaná v obchodním rejstříku vedeném u Krajského soudu v Českých Budějovicích.",
   },
   map: {
     // Výchozí embed na Hojanovice — po upřesnění polohy přepiš.

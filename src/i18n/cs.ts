@@ -94,6 +94,7 @@ export const cs = {
     dicLabel: "DIČ",
     addressLabel: "Sídlo",
     bankLabel: "Bankovní spojení",
+    dataBoxLabel: "Datová schránka",
   },
 } as const;
 
