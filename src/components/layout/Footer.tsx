@@ -2,7 +2,6 @@ import type { T } from "../../i18n";
 import { footerConfig } from "../../config/footer";
 import { asset } from "../../utils/asset";
 import { Icon } from "../ui/Icon";
-import { ProfileSelector } from "../ui/ProfileSelector";
 import { handleLinkClick } from "../../hooks/useRoute";
 import type { LegalId } from "../../data/legal";
 
@@ -104,7 +103,6 @@ export function Footer({ t, onLegalClick }: Props) {
               );
             })}
           </div>
-          <ProfileSelector />
         </div>
       </div>
     </footer>

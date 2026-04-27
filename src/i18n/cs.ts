@@ -46,11 +46,13 @@ export const cs = {
     modalTitle: "Rybářská povolenka",
     modalDesc: "Formulář pro objednání rybářské povolenky bude brzy doplněn.",
     soon: "Brzy k dispozici",
+    contactInfo: "Pro více informací nás prosím kontaktujte na telefonním čísle",
   },
   voucher: {
     modalTitle: "Koupit poukázku",
     modalDesc: "Formulář pro zakoupení dárkové poukázky bude brzy doplněn.",
     soon: "Brzy k dispozici",
+    contactInfo: "Pro více informací nás prosím kontaktujte na telefonním čísle",
   },
   footer: {
     heading: "Patička",

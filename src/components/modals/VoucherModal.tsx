@@ -19,6 +19,11 @@ export function VoucherModal({ t, onClose }: { t: T; onClose: () => void }) {
         <div className="modal-placeholder">
           {t.voucher.soon}
         </div>
+
+        <p className="modal-desc" style={{ marginTop: '1rem' }}>
+          {t.voucher.contactInfo}{' '}
+          <a href="tel:+420774110224" style={{ fontWeight: 600 }}>+420 774 110 224</a>.
+        </p>
       </div>
     </div>
   );

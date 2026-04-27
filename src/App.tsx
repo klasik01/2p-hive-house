@@ -107,7 +107,7 @@ function App() {
     <>
       <Navbar
         t={t}
-        onVoucherClick={underConstruction ? onConstructionClick : onVoucherClick}
+        onVoucherClick={onVoucherClick}
         onReservationClick={underConstruction ? onConstructionClick : undefined}
       />
 
@@ -122,7 +122,7 @@ function App() {
           <HomePage
             t={t}
             data={data}
-            onVoucherClick={underConstruction ? onConstructionClick : onVoucherClick}
+            onVoucherClick={onVoucherClick}
             onFishingClick={() => setShowFishing(true)}
             onConstructionClick={onConstructionClick}
           />
